@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'vision' => 'الرؤية',
+    'modules' => 'بنية النظام',
+    'requirment' => 'المتطلبات',
+    'features' => 'المزايا',
+    'gallery' => 'المعرض',
+    'show_module_images'=>'عرض صور من داخل الكتلة',
+    'req_required_hardware'=>'متطلبات العتاد الصلب',
+    'req_these_are_minimum_requirements'=>' الحدود الدنيا لمتطلبات العتاد الصلب الكافية لخدمة 75 إلى 100 مستخدم',
+    'req_main_web_server'=>'مخدم ويب رئيسي',
+    'req_processor'=>'المعالج: one processor Intel Xeon CPU E5640 2.67 ',
+    'req_ram'=>'الذواكر: 8GB DDR3 ',
+    'req_hard_drive'=>'التخزين: 1 قرص صلب (500GB)',
+    'req_back_up_web_server'=>'مخدم ويب احتياطي (اختياري)',
+    'req_backup_processor'=>'المعالج: one processor Intel Xeon CPU E5640 2.67 ',
+    'req_backup_ram'=>'الذواكر: 4GB DDR3 ',
+    'req_backup_hard_drive'=>'التخزين: 1 قرص صلب (500GB) ',
+    'req_network'=>'متطلبات الشبكة ',
+    'req_full_working_lan'=>'شبكة محالية كاملة مع المواصفات التالية',
+    'req_active_directory'=>'Microsoft Active Directory Server ',
+    'req_exchange'=>'Microsoft Exchange Server ',
+    'req_lan_access_points'=>'نقاط اتصال شبكة محلية للمستخدمين',
+    'req_public_ip_address'=>'عنوان IP عام: لإتاحة المستخدمين إمكانية الدخول إلى النظام من الانترنت',
+];
