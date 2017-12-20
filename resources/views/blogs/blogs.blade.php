@@ -16,89 +16,80 @@
                     <!-- Post modern-->
                     @foreach($blogs as $blog)
                         <article class="post-modern">
-                        <div class="post-modern-aside">
-                            <time datetime="2017"> {{$blog->created_at->format(' j F Y')}} {{trans('app.at')}} {{$blog->created_at->format('H:i:s')}} </time>
-                            <figure class="post-modern-avatar-wrap"><img class="post-modern-avatar" src="{{asset("images/$blog->image")}}" alt="" width="108" height="108"/>
-                            </figure>
-                            <p class="post-modern-author"><a href="about-me.html">Ronald Chen </a></p>
-                        </div>
-                        <div class="post-modern-main"><a class="post-modern-image" href="{{localizeURL("blogs/$blog->id")}}"><img src="{{asset("images/$blog->image")}}" alt="" width="870" height="580"/></a>
-                            <div class="post-modern-body">
-                                <h5 class="post-modern-title"><a href="{{localizeURL("blogs/$blog->id")}}">{{$blog->title}}</a></h5>
-                                <p>{{$blog->content}}</p>
-                                <div class="post-modern-footer">
-                                    <div>
-                                        <ul class="post-modern-meta">
-                                            <li><span class="icon mdi mdi-tag"></span><a href="#">{{$blog->tag['name_'.$lang]}}</a></li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <ul class="post-modern-info">
-                                            <li><span class="icon mdi mdi-eye"></span><span>193</span></li>
-                                            <li><a href="single-post.html"><span class="icon mdi mdi-comment"></span><span>3</span></a></li>
-                                        </ul>
+                            <div class="post-modern-aside">
+                                <time datetime="2017"> {{$blog->created_at->format(' j F Y')}} {{trans('app.at')}} {{$blog->created_at->format('H:i:s')}} </time>
+                                <figure class="post-modern-avatar-wrap"><img class="post-modern-avatar"
+                                                                             src="{{asset("images/$blog->image")}}"
+                                                                             alt="" width="108" height="108"/>
+                                </figure>
+                                <p class="post-modern-author"><a href="about-me.html">Ronald Chen </a></p>
+                            </div>
+                            <div class="post-modern-main"><a class="post-modern-image"
+                                                             href="{{localizeURL("blogs/$blog->id")}}"><img
+                                            src="{{asset("images/$blog->image")}}" alt="" width="870" height="580"/></a>
+                                <div class="post-modern-body">
+                                    <h5 class="post-modern-title"><a
+                                                href="{{localizeURL("blogs/$blog->id")}}">{{$blog->title}}</a></h5>
+                                    <p>{{$blog->content}}</p>
+                                    <div class="post-modern-footer">
+                                        <div>
+                                            <ul class="post-modern-meta">
+                                                <li><span class="icon mdi mdi-tag"></span><a
+                                                            href="#">{{$blog->tag['name_'.$lang]}}</a></li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul class="post-modern-info">
+                                                <li><span class="icon mdi mdi-eye"></span><span>193</span></li>
+                                                <li><a href="single-post.html"><span
+                                                                class="icon mdi mdi-comment"></span><span>3</span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </article>
+                        </article>
                     @endforeach
                     {{$blogs->links()}}
                 </div>
                 <div class="cell-sm-9 cell-md-4 cell-lg-3 blog-aside">
-                    {{--<div class="blog-aside-item">--}}
-                        {{--<h6>{{trans('app.search')}}</h6>--}}
-                        {{--<form class="rd-search rd-search-modern" action="search-results.html" method="GET">--}}
-                            {{--<div class="form-wrap">--}}
-                                {{--<input class="rd-search-input form-input" id="rd-search-input" type="text" name="s" autocomplete="off">--}}
-                                {{--<label class="form-label form-label" for="rd-search-input">{{trans('app.search')}}</label>--}}
-                            {{--</div>--}}
-                            {{--<button class="button mdi mdi-magnify" type="submit"></button>--}}
-                        {{--</form>--}}
-                    {{--</div>--}}
-                    {{--<div class="blog-aside-item">--}}
-                        {{--<h6>Archive</h6>--}}
-                        {{--<ul class="list-marked list-marked-secondary">--}}
-                            {{--<li><a href="#">January 2017</a></li>--}}
-                            {{--<li><a href="#">February 2017</a></li>--}}
-                            {{--<li><a href="#">March 2017</a></li>--}}
-                            {{--<li><a href="#">April 2017</a></li>--}}
-                            {{--<li><a href="#">May 2017</a></li>--}}
-                        {{--</ul>--}}
-                    {{--</div>--}}
                     <div class="blog-aside-item">
                         <h6>{{trans('app.about_us')}}</h6>
-                        <p>فكرة , شغف ثم هدف . هذا ما قد نصف به متجر انكوم , فمنذ اللحظة الأولى لتأسيس انكوم كانت الفكرة هي إعادة تعريف مبيعات الجملة الخاصة بالأفراد و خلق بيئة تجارية موثوقة بأسعار من الواقع , بدأ الشغف في تنفيذ الفكرة فكان الهدف انكوم .</a>
+                        <p>فكرة , شغف ثم هدف . هذا ما قد نصف به متجر انكوم , فمنذ اللحظة الأولى لتأسيس انكوم كانت الفكرة
+                            هي إعادة تعريف مبيعات الجملة الخاصة بالأفراد و خلق بيئة تجارية موثوقة بأسعار من الواقع , بدأ
+                            الشغف في تنفيذ الفكرة فكان الهدف انكوم .</p>
                     </div>
                     <div class="blog-aside-item">
                         <h6>{{trans('app.tags')}}</h6>
                         <ul class="list-marked list-marked-secondary">
                             @foreach($tags as $tag)
-                            <li><a href="#">{{$tag['name_'.$lang]}}</a></li>
-                                @endforeach
+                                <li><a href="#">{{$tag['name_'.$lang]}}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="blog-aside-item">
                         <h6>{{trans('app.recent_blog_posts')}}</h6>
                         <!-- Post minimal-->
                         @foreach($blog4 as $item)
-                        <article class="post-minimal">
-                            <p class="post-minimal-title"><a href="single-post.html">{{$item->title}}</a></p>
-                            <time class="post-minimal-time" datetime="2017">{{$blog->created_at->format(' j F Y')}} {{trans('app.at')}} {{$blog->created_at->format('H:i:s')}}</time>
-                        </article>
-                            @endforeach
+                            <article class="post-minimal">
+                                <p class="post-minimal-title"><a href="single-post.html">{{$item->title}}</a></p>
+                                <time class="post-minimal-time"
+                                      datetime="2017">{{$blog->created_at->format(' j F Y')}} {{trans('app.at')}} {{$blog->created_at->format('H:i:s')}}</time>
+                            </article>
+                        @endforeach
                     </div>
                     {{--<div class="blog-aside-item">--}}
-                        {{--<!-- Facebook Feed-->--}}
-                        {{--<div id="fb-root">--}}
-                            {{--<div class="fb-page-responsive">--}}
-                                {{--<div class="fb-page" data-href="https://www.facebook.com/TemplateMonster" data-tabs="timeline" data-height="540" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">--}}
-                                    {{--<div class="fb-xfbml-parse-ignore">--}}
-                                        {{--<blockquote cite="https://www.facebook.com/TemplateMonster"><a href="https://www.facebook.com/TemplateMonster">TemplateMonster</a></blockquote>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
+                    {{--<!-- Facebook Feed-->--}}
+                    {{--<div id="fb-root">--}}
+                    {{--<div class="fb-page-responsive">--}}
+                    {{--<div class="fb-page" data-href="https://www.facebook.com/TemplateMonster" data-tabs="timeline" data-height="540" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">--}}
+                    {{--<div class="fb-xfbml-parse-ignore">--}}
+                    {{--<blockquote cite="https://www.facebook.com/TemplateMonster"><a href="https://www.facebook.com/TemplateMonster">TemplateMonster</a></blockquote>--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
                     {{--</div>--}}
                 </div>
             </div>

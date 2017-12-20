@@ -92,7 +92,7 @@
 <div id="gotoTop" class="icon-angle-up"></div>
 
 <!-- Scripts -->
-<script type="text/javascript" src="{{url('js/jquery.js')}}"></script>
+<script type="text/javascript" src="{{url('js/jquery-1-2.js')}}"></script>
 {{--<script type="text/javascript" src="{{url('js/html5shiv.min.js')}}"></script>--}}
 <script type="text/javascript" src="{{url('js/core.min.js')}}"></script>
 <script type="text/javascript" src="{{url('js/script.js')}}"></script>

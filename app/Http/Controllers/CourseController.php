@@ -15,13 +15,14 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses=Course::paginate();
-        \Cart::instance('shopping')->add('192aod2', 'Product 1', 1, 9.99);
-        \Cart::instance('shopping')->add('192asao12', 'Product 1', 1, 9.99);
-        \Cart::instance('shopping')->add('192aods12', 'Product 1', 1, 9.99);
-        \Cart::instance('shopping')->add('192adsao12', 'Product 1', 1, 9.99);
-        \Cart::instance('shopping')->add('192adso12', 'Product 1', 1, 9.99);
-        return ['content'=>\Cart::instance('shopping')->content(),'count'=>\Cart::instance('shopping')->count()];
+        $course=Course::paginate(4);
+//        \Cart::instance('shopping')->add('192aod2', 'Product 1', 1, 9.99);
+//        \Cart::instance('shopping')->add('192asao12', 'Product 1', 1, 9.99);
+//        \Cart::instance('shopping')->add('192aods12', 'Product 1', 1, 9.99);
+//        \Cart::instance('shopping')->add('192adsao12', 'Product 1', 1, 9.99);
+//        \Cart::instance('shopping')->add('192adso12', 'Product 1', 1, 9.99);
+//        return ['content'=>\Cart::instance('shopping')->content(),'count'=>\Cart::instance('shopping')->count()];
+        return view('courses.courses',compact('course'));
     }
 
     /**
@@ -53,7 +54,8 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
+        $course=Course::findOrFail($id);
+        return view('courses.single-course',compact('course'));
     }
 
     /**

@@ -14,121 +14,35 @@
             <div class="range range-ten range-50 range-sm-90 range-sm-center range-lg-justify">
                 <div class="cell-sm-9 cell-md-7 cell-lg-6 text-center">
                     <div class="range range-30">
-                        <div class="cell-sm-6">
-                            <article class="post-blog"><a class="post-blog-image" href="single-post.html"><img src="images/grid-blog-1-420x305.jpg" alt="" width="420" height="305"/></a>
+                        @foreach($course as $cours)
+                            <div class="cell-sm-6">
+                            <article class="post-blog"><a class="post-blog-image" href="single-post.html"><img src="{{asset('images/blog.jpg')}}" alt="" width="420" height="305"/></a>
                                 <div class="post-blog-caption">
                                     <div class="post-blog-caption-header">
-                                        <ul class="post-blog-tags">
-                                            <li><a class="button-tags" href="single-post.html">business</a></li>
-                                        </ul>
+                                        {{--<ul class="post-blog-tags">--}}
+                                            {{--<li><a class="button-tags" href="single-post.html">business</a></li>--}}
+                                        {{--</ul>--}}
                                         <ul class="post-blog-meta">
-                                            <li><span>by</span>&nbsp;<a href="about-me.html">Ronald Chen</a></li>
+                                            <li><span>by</span>&nbsp;<a href="{{localizeURL("courses/$cours->course_id")}}">{{$cours['title_'.$lang]}}</a></li>
                                         </ul>
                                     </div>
                                     <div class="post-blog-caption-body">
-                                        <h5><a class="post-blog-title" href="single-post.html">How to Turn Small Talk Into Smart Conversation</a></h5>
+                                        <h5><a class="post-blog-title" href="single-post.html">{{$cours->place}}</a></h5>
                                     </div>
                                     <div class="post-blog-caption-footer">
-                                        <time datetime="2017">Feb 27, 2017 at 6:53 pm</time><a class="post-comment" href="single-post.html"><span class="icon icon-md-middle icon-gray-1 mdi mdi-comment"></span><span>3</span></a>
+                                        <time datetime="2017">{{$cours->date}} {{trans('app.at')}} {{$cours->time}} </time><a class="post-comment" href="single-post.html"><span class="icon icon-md-middle icon-gray-1 mdi mdi-comment"></span><span>3</span></a>
                                     </div>
                                 </div>
                             </article>
                         </div>
-                        <div class="cell-sm-6">
-                            <article class="post-blog"><a class="post-blog-image" href="image-post.html"><img src="images/blog-02-868x640.jpg" alt="" width="868" height="640"/></a>
-                                <div class="post-blog-caption">
-                                    <div class="post-blog-caption-header">
-                                        <ul class="post-blog-tags">
-                                            <li><a class="button-tags" href="image-post.html">Tips & Tricks</a></li>
-                                        </ul>
-                                        <ul class="post-blog-meta">
-                                            <li><span>by</span>&nbsp;<a href="about-me.html">Ronald Chen</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="post-blog-caption-body">
-                                        <h5><a class="post-blog-title" href="image-post.html">The Top 5 Reasons Why ‘The Customer Is Always Right’ Is Wrong</a></h5>
-                                    </div>
-                                    <div class="post-blog-caption-footer">
-                                        <time datetime="2017">Feb 27, 2017 at 6:53 pm</time><a class="post-comment" href="image-post.html"><span class="icon icon-md-middle icon-gray-1 mdi mdi-comment"></span><span>3</span></a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="cell-sm-6">
-                            <article class="post-blog"><a class="post-blog-video" href="video-post.html">
-                                    <figure><img src="images/grid-blog-2-420x305.jpg" alt="" width="420" height="305"/>
-                                    </figure><span class="icon mdi mdi-play-circle-outline"></span></a>
-                                <div class="post-blog-caption">
-                                    <div class="post-blog-caption-header">
-                                        <ul class="post-blog-tags">
-                                            <li><a class="button-tags" href="video-post.html">business</a></li>
-                                        </ul>
-                                        <ul class="post-blog-meta">
-                                            <li><span>by</span>&nbsp;<a href="about-me.html">Ronald Chen</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="post-blog-caption-body">
-                                        <h5><a class="post-blog-title" href="video-post.html">How to Improve Performance of Your Sales Managers</a></h5>
-                                    </div>
-                                    <div class="post-blog-caption-footer">
-                                        <time datetime="2017">Feb 27, 2017 at 6:53 pm</time><a class="post-comment" href="video-post.html"><span class="icon icon-md-middle icon-gray-1 mdi mdi-comment"></span><span>3</span></a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="cell-sm-6">
-                            <article class="post-blog"><a class="post-blog-quote" href="single-post.html">
-                                    <p class="post-blog-quote-text">Success is the result of preparation, hard work, and learning from failure.</p></a>
-                                <div class="post-blog-caption">
-                                    <div class="post-blog-caption-header">
-                                        <ul class="post-blog-tags">
-                                            <li><a class="button-tags" href="single-post.html">Tips & Tricks</a></li>
-                                        </ul>
-                                        <ul class="post-blog-meta">
-                                            <li><span>by</span>&nbsp;<a href="about-me.html">Ronald Chen</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="post-blog-caption-body">
-                                        <h5><a class="post-blog-title" href="single-post.html">7 Ways to Inspire Your Employees</a></h5>
-                                    </div>
-                                    <div class="post-blog-caption-footer">
-                                        <time datetime="2017">Feb 27, 2017 at 6:53 pm</time><a class="post-comment" href="single-post.html"><span class="icon icon-md-middle icon-gray-1 mdi mdi-comment"></span><span>3</span></a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                    </div><a class="button button-default-outline button-nina button-block button-blog" href="#">Load more posts</a>
-                    <ul class="pagination-custom">
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                    </ul>
+                        @endforeach
+                    </div>
+                    {{$course->links()}}
                 </div>
                 <div class="cell-sm-9 cell-md-3 blog-aside">
                     <div class="blog-aside-item">
-                        <h6>Search</h6>
-                        <form class="rd-search rd-search-modern" action="search-results.html" method="GET">
-                            <div class="form-wrap">
-                                <input class="rd-search-input form-input" id="rd-search-input" type="text" name="s" autocomplete="off">
-                                <label class="form-label form-label" for="rd-search-input">Search</label>
-                            </div>
-                            <button class="button mdi mdi-magnify" type="submit"></button>
-                        </form>
-                    </div>
-                    <div class="blog-aside-item">
-                        <h6>Archive</h6>
-                        <ul class="list-marked list-marked-secondary">
-                            <li><a href="#">January 2017</a></li>
-                            <li><a href="#">February 2017</a></li>
-                            <li><a href="#">March 2017</a></li>
-                            <li><a href="#">April 2017</a></li>
-                            <li><a href="#">May 2017</a></li>
-                        </ul>
-                    </div>
-                    <div class="blog-aside-item">
-                        <h6>About us</h6>
-                        <p>Made to be used by anyone who is looking for a stunning multifunctional website, this template is a universal solution, which can be used already after being installed. It differs from other similar projects in everything - be it the initial concept or the final look.</p><a class="button button-xs button-default-outline button-nina" href="about-us.html">learn more</a>
+                        <h6>{{trans('app.about_us')}}</h6>
+                        <p>فكرة , شغف ثم هدف . هذا ما قد نصف به متجر انكوم , فمنذ اللحظة الأولى لتأسيس انكوم كانت الفكرة هي إعادة تعريف مبيعات الجملة الخاصة بالأفراد و خلق بيئة تجارية موثوقة بأسعار من الواقع , بدأ الشغف في تنفيذ الفكرة فكان الهدف انكوم .</p>
                     </div>
                     <div class="blog-aside-item">
                         <h6>categories</h6>

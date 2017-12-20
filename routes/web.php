@@ -28,5 +28,6 @@ Route::get('/', 'HomeController@index');
 Route::resource('products','ProductController');
 Route::resource('blogs','BlogController');
 Route::resource('courses','CourseController');
+Route::post('blog/comment/{id}','BlogController@comment');
 });
 

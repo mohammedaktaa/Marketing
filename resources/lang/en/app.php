@@ -196,7 +196,13 @@ return [
     'Search'=>'Search',
     'recent_blog_posts'=>'Recent Blog Posts',
     'by'=>'By',
-    'at'=>'at'
+    'at'=>'at',
+    'course'=>'Course',
+    'comments'=>'Comments',
+    'reply'=>'Reply',
+    'send_comment'=>'Send Comment',
+    'price'=>'Price',
+
 
     
 ];

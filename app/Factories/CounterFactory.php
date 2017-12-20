@@ -17,8 +17,8 @@ class CounterFactory extends GlobalFactory
         $query = $model::all();
         return \Datatable::queryConfig('counters')
             ->queryDatatable($query)
-            ->queryUpdateButton('course_id')
-            ->queryDeleteButton('course_id')
+            ->queryUpdateButton('counter_id')
+            ->queryDeleteButton('counter_id')
             ->queryAddColumn('icon_name',function ($item){
                 return "<em class='$item->icon'></em>";
             })
@@ -32,7 +32,7 @@ class CounterFactory extends GlobalFactory
     {
         try {
             return \Datatable::config('counters')
-                ->addHiddenInput('course_id', 'course_id', '', true)
+                ->addHiddenInput('counter_id', 'counter_id', '', true)
                 ->addInputText(trans('app.title').' '.trans('app._en'), 'title_en', 'title_en', 'en d:en req required')
                 ->addInputText(trans('app.title').' '.trans('app._ar'), 'title_ar', 'title_ar', 'ar d:ar req required')
                 ->addInputText(trans('app.count'), 'count', 'count', 'req required')

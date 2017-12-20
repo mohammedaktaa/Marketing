@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Comment;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -51,12 +52,26 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        $blog=Blog::findOrFail($id);
-//        dd($blog);
+        $blog=Blog::findOrFail($id)->with(['comment'])->first();
+//        $comment=Comment::all();
+//        dd($comment);
         return view('blogs.single-blog',compact('blog'));
 
     }
 
+    public function comment(Request $request,$id)
+    {
+//        dd($request->all(),$id);
+        $comment=new Comment;
+        $comment->first_name=$request->first_name;
+        $comment->last_name=$request->last_name;
+        $comment->phone=$request->phone;
+        $comment->email=$request->email;
+        $comment->blog_id=$id;
+        $comment->content=$request['content'];
+        $comment->save();
+        return ['success'];
+    }
     /**
      * Show the form for editing the specified resource.
      *
