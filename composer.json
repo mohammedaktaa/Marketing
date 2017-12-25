@@ -15,6 +15,7 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4",
         "mcamara/laravel-localization": "^1.2",
+        "netshell/paypal": "dev-master",
         "nwidart/laravel-modules": "^1.27",
         "stripe/stripe-php": "^5.7",
         "unisharp/laravel-ckeditor": "^4.6",

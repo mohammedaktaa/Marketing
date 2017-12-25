@@ -174,6 +174,7 @@ return [
         Way\Generators\GeneratorsServiceProvider::class,
         Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Netshell\Paypal\PaypalServiceProvider::class,
 
       /*
          * Package Service Providers...
@@ -248,6 +249,7 @@ return [
         'Datatables' => Yajra\Datatables\Facades\Datatable::class,
         'Datatable' =>Aut\DataTable\DataTableFacade::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Paypal' => Netshell\Paypal\Facades\Paypal::class,
     ],
 
 ];

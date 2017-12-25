@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2017-12-18.
+    * Generated on 2017-12-25.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -60,6 +60,8 @@ namespace PHPSTORM_META {
         'generate.publish-templates' => \Way\Generators\Commands\PublishTemplatesCommand::class,
         'migration.generate' => \Xethron\MigrationsGenerator\MigrateGenerateCommand::class,
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
+        'cart' => \Gloudemans\Shoppingcart\Cart::class,
+        'Paypal' => \Netshell\Paypal\Paypal::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
@@ -203,6 +205,8 @@ namespace PHPSTORM_META {
         'generate.publish-templates' => \Way\Generators\Commands\PublishTemplatesCommand::class,
         'migration.generate' => \Xethron\MigrationsGenerator\MigrateGenerateCommand::class,
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
+        'cart' => \Gloudemans\Shoppingcart\Cart::class,
+        'Paypal' => \Netshell\Paypal\Paypal::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
@@ -346,6 +350,8 @@ namespace PHPSTORM_META {
         'generate.publish-templates' => \Way\Generators\Commands\PublishTemplatesCommand::class,
         'migration.generate' => \Xethron\MigrationsGenerator\MigrateGenerateCommand::class,
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
+        'cart' => \Gloudemans\Shoppingcart\Cart::class,
+        'Paypal' => \Netshell\Paypal\Paypal::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
@@ -489,6 +495,8 @@ namespace PHPSTORM_META {
         'generate.publish-templates' => \Way\Generators\Commands\PublishTemplatesCommand::class,
         'migration.generate' => \Xethron\MigrationsGenerator\MigrateGenerateCommand::class,
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
+        'cart' => \Gloudemans\Shoppingcart\Cart::class,
+        'Paypal' => \Netshell\Paypal\Paypal::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
@@ -632,6 +640,8 @@ namespace PHPSTORM_META {
         'generate.publish-templates' => \Way\Generators\Commands\PublishTemplatesCommand::class,
         'migration.generate' => \Xethron\MigrationsGenerator\MigrateGenerateCommand::class,
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
+        'cart' => \Gloudemans\Shoppingcart\Cart::class,
+        'Paypal' => \Netshell\Paypal\Paypal::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
@@ -775,6 +785,8 @@ namespace PHPSTORM_META {
         'generate.publish-templates' => \Way\Generators\Commands\PublishTemplatesCommand::class,
         'migration.generate' => \Xethron\MigrationsGenerator\MigrateGenerateCommand::class,
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
+        'cart' => \Gloudemans\Shoppingcart\Cart::class,
+        'Paypal' => \Netshell\Paypal\Paypal::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
@@ -918,6 +930,8 @@ namespace PHPSTORM_META {
         'generate.publish-templates' => \Way\Generators\Commands\PublishTemplatesCommand::class,
         'migration.generate' => \Xethron\MigrationsGenerator\MigrateGenerateCommand::class,
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
+        'cart' => \Gloudemans\Shoppingcart\Cart::class,
+        'Paypal' => \Netshell\Paypal\Paypal::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
