@@ -53,8 +53,6 @@ class BlogController extends Controller
     public function show($id)
     {
         $blog=Blog::findOrFail($id)->with(['comment'])->first();
-//        $comment=Comment::all();
-//        dd($comment);
         return view('blogs.single-blog',compact('blog'));
 
     }
@@ -63,11 +61,8 @@ class BlogController extends Controller
     {
 //        dd($request->all(),$id);
         $comment=new Comment;
-        $comment->first_name=$request->first_name;
-        $comment->last_name=$request->last_name;
-        $comment->phone=$request->phone;
-        $comment->email=$request->email;
         $comment->blog_id=$id;
+        $comment->user_id=1;/*\Auth::user()->id*/
         $comment->content=$request['content'];
         $comment->save();
         return ['success'];

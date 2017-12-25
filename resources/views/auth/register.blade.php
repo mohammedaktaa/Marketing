@@ -11,8 +11,9 @@
                     <div class="range range-xs-center">
                         <div class="cell-sm-8 cell-md-6 cell-lg-4">
                             <!-- RD Mailform-->
-                            <form class="rd-mailform rd-mailform-small" class="form-horizontal" method="POST"
+                            <form class="{{--rd-mailform rd-mailform-small--}} ajax-form" class="form-horizontal" method="POST" enctype="multipart/form-data"
                                   action="{{ route('register') }}">
+                                {{csrf_field()}}
                                 <div class="form-wrap   {{ $errors->has('email') ? ' has-error' : '' }}">
                                     <input class="form-input" id="form-1-email" type="email" name="email" autofocus>
                                     <label class="form-label" for="form-1-email">{{trans('app.email')}}</label>

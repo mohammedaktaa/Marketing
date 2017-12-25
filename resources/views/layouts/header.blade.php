@@ -47,6 +47,7 @@
                                             <form class="form-horizontal ajax-form" action="{{route('login')}}"
                                                   method="post"
                                                   enctype="multipart/form-data">
+                                                {{csrf_field()}}
                                                 <div class="context-dark icon-primary">{{trans('app.login')}}</div>
                                                 <div class="form-group">
                                                     <input class="form-control" name="email" type="email"
@@ -76,17 +77,9 @@
                                                 <div class="row"
                                                      style="color: rgba(51,51,51,0.52)">{{trans('profile.email')}}
                                                     <b>{{Auth::user()->email}}</b></div>
-                                                {{--<div class="row"><a href=""--}}
-                                                {{--class="local">{{trans('profile.profile')}}</a>--}}
-                                                {{--</div>--}}
                                                 <div class="row text-center"><a class="btn btn-danger"
                                                                                 href="{{localizeURL('logout')}}">{{trans('app.logout')}}</a>
                                                 </div>
-                                                {{--@if(Auth::user()->isAdmin())--}}
-                                                {{--<div class="row"><a class="local"--}}
-                                                {{--href="{{route('admin-home')}}"><span>{{trans('app.admin_panel')}}</span></a>--}}
-                                                {{--</div>--}}
-                                                {{--@endif--}}
                                                 <br>
                                             </div>
                                         </div>
@@ -119,5 +112,9 @@
             </div>
         </nav>
     </div>
-
+    @foreach($sections as $section)
+        @if($section['name_en']=='slider')
+            @include('partials.'.$section['name_en'])
+        @endif
+    @endforeach
 </header>

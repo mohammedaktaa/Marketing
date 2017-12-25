@@ -80,7 +80,7 @@
             <div class="swiper-pagination"></div>
         </div>
     </div>
-    <div class="parallax-scene-js parallax-scene" data-scalar-x="5" data-scalar-y="10">
+    <div class="parallax-scene-js parallax-scene" data-scalar-x="5" data-scalar-y="10" >
         <div class="layer-01">
             <div class="layer" data-depth="0.25"><img src="{{url('images/parallax-scene-01-132x133.png')}}" alt=""
                                                       width="132"

@@ -10,6 +10,7 @@
 
     <title>{{trans('app.project_name')}} | @yield('title')</title>
         <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" type="text/css">
+        <link rel="stylesheet" href="{{asset('css/font-icons.css')}}" type="text/css">
     @if($dir=='rtl')
         <link rel="stylesheet" href="{{asset('css/bootstrap-rtl.css')}}" type="text/css">
         <link rel="stylesheet" href="{{asset('css/style-rtl.css')}}" type="text/css">
@@ -93,11 +94,6 @@
 
 <!-- Scripts -->
 <script type="text/javascript" src="{{url('js/jquery-1-2.js')}}"></script>
-{{--<script type="text/javascript" src="{{url('js/html5shiv.min.js')}}"></script>--}}
-<script type="text/javascript" src="{{url('js/core.min.js')}}"></script>
-<script type="text/javascript" src="{{url('js/script.js')}}"></script>
-@yield('scripts')
-
 
 <script>
     var dir = "{{$dir}}";
@@ -115,6 +111,12 @@
         }
     });
 </script>
+{{--<script type="text/javascript" src="{{url('js/html5shiv.min.js')}}"></script>--}}
+<script type="text/javascript" src="{{url('js/core.min.js')}}"></script>
+<script type="text/javascript" src="{{url('js/jquery.nicescroll.js')}}"></script>
+<script type="text/javascript" src="{{url('js/script.js')}}"></script>
+<script type="text/javascript" src="{{url('js/index.js')}}"></script>
+@yield('scripts')
 
 </body>
 </html>

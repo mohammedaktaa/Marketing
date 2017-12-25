@@ -25,11 +25,11 @@
                                 <p class="post-modern-author"><a href="about-me.html">Ronald Chen </a></p>
                             </div>
                             <div class="post-modern-main"><a class="post-modern-image"
-                                                             href="{{localizeURL("blogs/$blog->id")}}"><img
+                                                             href="{{localizeURL("blogs/$blog->blog_id")}}"><img
                                             src="{{asset("images/$blog->image")}}" alt="" width="870" height="580"/></a>
                                 <div class="post-modern-body">
                                     <h5 class="post-modern-title"><a
-                                                href="{{localizeURL("blogs/$blog->id")}}">{{$blog->title}}</a></h5>
+                                                href="{{localizeURL("blogs/$blog->blog_id")}}">{{$blog->title}}</a></h5>
                                     <p>{{$blog->content}}</p>
                                     <div class="post-modern-footer">
                                         <div>

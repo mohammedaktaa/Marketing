@@ -87,5 +87,9 @@ return [
         'model'         => \App\Models\Tag::class,
         'factory' => \App\Factories\TagFactory::class
     ],
+    'requests' => [
+        'model'         => \App\Models\Request::class,
+        'factory' => \App\Factories\RequestFactory::class
+    ],
 
 ];

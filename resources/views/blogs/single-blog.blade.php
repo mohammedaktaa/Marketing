@@ -102,72 +102,25 @@
                     @endif
                     <div class="section-lg">
                         <!-- RD Mailform-->
-                        <form method="post" action="{{localizeURL('blog/comment')}}" enctype="multipart/form-data" data-id="{{$blog->blog_id}}">
+                        <form method="post" action="{{localizeURL('blog/comment')}}" enctype="multipart/form-data"
+                              data-id="{{$blog->blog_id}}">
+                            {{csrf_field()}}
                             <div class="range range-20">
-                                @if(!Auth::check())
-                                    <div class="cell-sm-6">
-                                        <div class="form-wrap form-wrap-validation">
-                                            <label class="form-label-outside"
-                                                   for="form-comment-name">{{trans('app.f_name')}}</label>
-                                            <input class="form-input" id="form-comment-name" type="text"
-                                                   name="first_name"
-                                                   >
-                                        </div>
+                                <div class="cell-xs-12">
+                                    <div class="form-wrap form-wrap-validation">
+                                        <label class="form-label-outside"
+                                               for="form-comment-message">{{trans('app.content')}}</label>
+                                        <textarea class="form-input" id="form-comment-message" name="content"
+                                                  data-constraints="@Required"></textarea>
                                     </div>
-                                    <div class="cell-sm-6">
-                                        <div class="form-wrap form-wrap-validation">
-                                            <label class="form-label-outside"
-                                                   for="form-comment-last-name">{{trans('app.l_name')}}</label>
-                                            <input class="form-input" id="form-comment-last-name" type="text"
-                                                   name="last_name" >
-                                        </div>
+                                </div>
+                                <div class="cell-xs-12 offset-custom-1">
+                                    <div class="form-button">
+                                        <button class="button button-secondary button-nina"
+                                                type="submit">{{trans('app.send_comment')}}
+                                        </button>
                                     </div>
-                                    <div class="cell-sm-6">
-                                        <div class="form-wrap form-wrap-validation">
-                                            <label class="form-label-outside"
-                                                   for="form-comment-email">{{trans('app.email')}}</label>
-                                            <input class="form-input" id="form-comment-email" type="email" name="email">
-                                        </div>
-                                    </div>
-                                    <div class="cell-sm-6">
-                                        <div class="form-wrap form-wrap-validation">
-                                            <label class="form-label-outside"
-                                                   for="form-comment-phone">{{trans('app.phone')}}</label>
-                                            <input class="form-input" id="form-comment-phone" type="text" name="phone">
-                                        </div>
-                                    </div>
-                                    <div class="cell-xs-12">
-                                        <div class="form-wrap form-wrap-validation">
-                                            <label class="form-label-outside"
-                                                   for="form-comment-message">{{trans('app.content')}}</label>
-                                            <textarea class="form-input" id="form-comment-message" name="content"
-                                                     ></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="cell-xs-12 offset-custom-1">
-                                        <div class="form-button">
-                                            <button class="button button-secondary button-nina"
-                                                    type="submit">{{trans('app.send_comment')}}
-                                            </button>
-                                        </div>
-                                    </div>
-                                @else
-                                    <div class="cell-xs-12">
-                                        <div class="form-wrap form-wrap-validation">
-                                            <label class="form-label-outside"
-                                                   for="form-comment-message">{{trans('app.content')}}</label>
-                                            <textarea class="form-input" id="form-comment-message" name="content"
-                                                      data-constraints="@Required"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="cell-xs-12 offset-custom-1">
-                                        <div class="form-button">
-                                            <button class="button button-secondary button-nina"
-                                                    type="submit">{{trans('app.send_comment')}}
-                                            </button>
-                                        </div>
-                                    </div>
-                                @endif
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -179,20 +132,27 @@
 @section('scripts')
     <script>
         $(function () {
-            $('form').on('submit',function (e) {
+            $('form').on('submit', function (e) {
                 e.preventDefault();
-                var id=$(this).data('id');
-                var form=$(this).serialize();
+                var id = $(this).data('id');
+                var form = $(this).serialize();
+                {{--@if (!Auth::check())--}}
+                {{--_notifyMsg('danger','{{trans('app.error_comment')}}', 'right');--}}
+                {{--_notifyMsg('success','', 'right');--}}
+                {{--SEMICOLON.widget.notifications($('<div id="" data-notify-position="top-right" data-notify-type="danger" data-notify-msg="<i class=\'icon-info-sign\'></i>  ' + '{{trans('app.error_comment')}}' + '"></div>'));--}}
+                {{--console.log('not Auth');--}}
+                {{--@else--}}
                 $.ajax({
-                    type:'POST',
-                    url:$(this).attr('action')+'/'+id,
-                    data:form,
-                    success:function () {
+                    type: 'POST',
+                    url: $(this).attr('action') + '/' + id,
+                    data: form,
+                    success: function () {
                         console.log('success')
                     }
-                })
+                });
+                {{--@endif--}}
 
             })
         })
     </script>
-    @endsection
+@endsection

@@ -29,5 +29,8 @@ Route::resource('products','ProductController');
 Route::resource('blogs','BlogController');
 Route::resource('courses','CourseController');
 Route::post('blog/comment/{id}','BlogController@comment');
+Route::get('requests','HomeController@requests');
+Route::post('request','HomeController@request');
+Route::post('request/{id}','HomeController@requestUpdate');
 });
 
