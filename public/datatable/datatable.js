@@ -281,6 +281,11 @@ function aut_datatable_clearFrom(t) {
                 $(this).html("")
         }
     }), t.find("#password").attr("type", "password"), t.find("#icon-password span").addClass("fa-eye-slash").removeClass("fa-eye")
+    if (typeof(CKEDITOR) != 'undefined') {
+        for (instance in CKEDITOR.instances) {
+            CKEDITOR.instances[instance].setData('');
+        }
+    }
 }
 
 function aut_datatable_dialogOpen(t) {

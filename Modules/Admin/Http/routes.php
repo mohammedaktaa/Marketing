@@ -7,6 +7,7 @@ Route::group(['middleware' => ['web','auth.admin'], 'prefix' => LaravelLocalizat
     Route::get('menu-items-autocomplete','AutoCompleteController@menuItemAutocomplete');
     Route::get('icons-autocomplete','AutoCompleteController@iconAutocomplete');
     Route::get('pages-autocomplete','AutoCompleteController@pageAutocomplete');
+    Route::get('city-autocomplete','AutoCompleteController@cityAutocomplete');
     Route::get('attributes-autocomplete','AutoCompleteController@attributeAutocomplete');
     Route::put('courses/{id}','AdminController@updateImageCourses');
     Route::put('products/{id}','AdminController@updateImageCourses');

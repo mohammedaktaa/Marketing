@@ -5,6 +5,7 @@ namespace Modules\Admin\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Attribute;
 use App\Models\Category;
+use App\Models\City;
 use App\Models\FontAwesome;
 use App\Models\MenuItem;
 use App\Models\Page;
@@ -46,6 +47,12 @@ class AutoCompleteController extends Controller
         $data = FontAwesome::whereRaw('upper(content) like upper(\'%' . $q . '%\')')
             ->get(['content as name', 'icon as id']);
         return ['items' => $data];
+    }
+    public function cityAutocomplete(Request $request)
+    {
+        $q = str_replace(' ', '%', $request->get('q', ''));
+        $data = City::whereRaw('upper(cities.name_' . $this->lang . ') like upper(\'%' . $q . '%\')');
+        return ['items' => $data->get(['name_' . $this->lang . ' as name', 'city_id as id'])];
     }
 
 }

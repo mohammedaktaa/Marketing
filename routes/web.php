@@ -39,5 +39,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get('add-cart/{id}/{model}', 'HomeController@addCart');
     Route::get('shopping-cart', 'HomeController@shoppingCart');
     Route::get('about/{id}', 'HomeController@about');
+    Route::get('careers', 'HomeController@careers');
+    Route::get('privacy', 'HomeController@privacy');
 });
 

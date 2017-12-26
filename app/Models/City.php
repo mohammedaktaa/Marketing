@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class City extends Model
+class City extends \Eloquent
 {
     protected $primaryKey="city_id";
     protected $fillable=["state_id","name_en","name_ar"];

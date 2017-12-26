@@ -225,6 +225,18 @@
                             <em class="icon-user"></em> <span>{{trans('app.about_manager')}}</span>
                         </a>
                     </li>
+                    <li class="">
+                        <a href="{{route('table',['table'=>'careers'])}}"
+                           class="@if(URL::current()==route('table',['table'=>'careers'])){{ 'current' }}@endif ">
+                            <em class="fa fa-sign-in"></em> <span>{{trans('app.careers')}}</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="{{route('table',['table'=>'privacy'])}}"
+                           class="@if(URL::current()==route('table',['table'=>'privacy'])){{ 'current' }}@endif ">
+                            <em class="icon-notebook"></em> <span>{{trans('app.privacy')}}</span>
+                        </a>
+                    </li>
                 </ul>
                 <!-- END sidebar nav-->
             </nav>

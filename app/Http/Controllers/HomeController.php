@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Attribute;
 use App\Models\Coupon;
 use App\Models\Page;
+use App\Models\PrivacyPolicy;
 use App\Models\Product;
 use App\Models\Team;
 use Auth;
@@ -190,5 +191,14 @@ class HomeController extends Controller
     public function insert()
     {
         return view('payment.insert-code');
+    }
+    public function careers()
+    {
+        return view('careers');
+    }
+    public function privacy()
+    {
+        $privacy=PrivacyPolicy::first();
+        return view('privacy',compact('privacy'));
     }
 }

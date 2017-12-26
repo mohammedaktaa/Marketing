@@ -107,5 +107,13 @@ return [
         'model'         => \App\Models\Manager::class,
         'factory' => \App\Factories\ManagerFactory::class
     ],
+    'careers' => [
+        'model'         => \App\Models\Career::class,
+        'factory' => \App\Factories\CareersFactory::class
+    ],
+    'privacy' => [
+        'model'         => \App\Models\PrivacyPolicy::class,
+        'factory' => \App\Factories\CareersFactory::class
+    ],
 
 ];
