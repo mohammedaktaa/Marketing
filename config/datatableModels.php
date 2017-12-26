@@ -113,7 +113,7 @@ return [
     ],
     'privacy' => [
         'model'         => \App\Models\PrivacyPolicy::class,
-        'factory' => \App\Factories\CareersFactory::class
+        'factory' => \App\Factories\PrivacyFactory::class
     ],
 
 ];

@@ -40,6 +40,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get('shopping-cart', 'HomeController@shoppingCart');
     Route::get('about/{id}', 'HomeController@about');
     Route::get('careers', 'HomeController@careers');
+    Route::get('career/{id}', 'HomeController@career');
     Route::get('privacy', 'HomeController@privacy');
 });
 

@@ -277,6 +277,8 @@ return [
     'privacy'=>'Privacy Policies',
     'full_time'=>'Full Time',
     'part_time'=>'Part Time',
+    'full'=>'Full Time',
+    'part'=>'Part Time',
     'type_attend'=>'Type Attendance',
     'talent'=>'WE\'RE ALWAYS LOOKING FOR TALENTS',
     'benefits'=>'BENEFITS',

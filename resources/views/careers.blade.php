@@ -57,8 +57,8 @@
                 <div class="cell-lg-3 cell-sm-6 cell-md-4">
                     <div class="box-info">
                         <div class="box-info-inner">
-                            <h6 class="box-info-title">{{$career['title_'.$lang]}}</h6>
-                            <p>{{$career['content_'.$lang]}}</p>
+                            <h6 class="box-info-title"><a href="{{localizeURL('career/'.$career->id)}}">{{$career['title_'.$lang]}}</a></h6>
+                            <p>{!! $career['content_'.$lang] !!}</p>
                         </div>
                         <div class="box-info-footer">
                             <ul class="list-inline-md">

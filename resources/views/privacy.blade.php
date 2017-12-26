@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title',$teams['name_'.$lang])
+@section('title',trans('app.privacy'))
 @section('content')
     <section class="section section-lg bg-white">
         <!-- section wave-->

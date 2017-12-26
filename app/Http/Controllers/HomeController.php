@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attribute;
+use App\Models\Career;
 use App\Models\Coupon;
 use App\Models\Page;
 use App\Models\PrivacyPolicy;
@@ -195,6 +196,11 @@ class HomeController extends Controller
     public function careers()
     {
         return view('careers');
+    }
+    public function career($id)
+    {
+        $career=Career::findOrFail($id);
+        return view('single-career',compact('career'));
     }
     public function privacy()
     {

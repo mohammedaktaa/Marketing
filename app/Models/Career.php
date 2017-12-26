@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Career extends Model
+class Career extends \Eloquent
 {
     protected $fillable = ['title_en','content_en', 'title_ar','content_ar', 'type','city_id'];
 
