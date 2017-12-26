@@ -17,48 +17,34 @@
                         <div class="tabs-custom tabs-horizontal tabs-line" id="tabs-1">
                             <!-- Nav tabs-->
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tabs-1-1" data-toggle="tab">Overview</a></li>
-                                <li><a href="#tabs-1-2" data-toggle="tab">Founder</a></li>
-                                <li><a href="#tabs-1-3" data-toggle="tab">Mission</a></li>
+                                <li class="active"><a href="#tabs-1-1" data-toggle="tab">{{trans('app.overview')}}</a></li>
+                                <li><a href="#tabs-1-2" data-toggle="tab">{{trans('app.founder')}}</a></li>
+                                <li><a href="#tabs-1-3" data-toggle="tab">{{trans('app.mission')}}</a></li>
                             </ul>
                             <!-- Tab panes-->
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="tabs-1-1">
-                                    <h5>Brave is an innovative web solution, which combines captivating design and flawless functionality in a multipurpose HTML template.</h5>
-                                    <p>Made to be used by anyone who is looking for a stunning multifunctional website, this template is a universal solution, which can be used already after being installed. It differs from other similar projects in everything - be it the initial concept or the final look. Brave also can boast the set of powerful features that can be used by anyone without being afraid to overload their site.</p><a class="button button-default-outline button-nina" href="#">learn more</a>
+                                    <p>{!! $manager['overview'] !!}</p>
                                 </div>
                                 <div class="tab-pane fade" id="tabs-1-2">
                                     <!-- Card info-->
                                     <article class="card-info">
-                                        <div class="card-info-aside"><img class="card-info-image" src="images/roy-henry-150x150.jpg" alt="" width="150" height="150"/>
+                                        <div class="card-info-aside"><img class="card-info-image" src="{{asset(\App\Models\Manager::IMAGE_File_PATH.$manager->image_manager)}}" alt="" width="150" height="150"/>
                                         </div>
                                         <div class="card-info-main">
-                                            <h5 class="card-info-title">Roy Henry</h5>
-                                            <p class="card-info-subtitle">Founder</p>
-                                            <p>Roy is the main person behind Brave. He is the multitalented manager and a former UX designer who is a true mine of creative ideas for everyone at our team.</p><a class="button button-default-outline button-nina" href="#">learn more</a>
+                                            <h5 class="card-info-title">{{$manager['name']}}</h5>
+                                            <p class="card-info-subtitle">{{trans('app.founder')}}</p>
+                                            <p>{!! $manager['about_manager'] !!}</p>
                                         </div>
                                     </article>
                                 </div>
                                 <div class="tab-pane fade" id="tabs-1-3">
                                     <div class="box-width-2">
-                                        <p>In the digital age, we are marketing ourselves on the web.  That is why we aim to make it as easy and affordable for everyone to take charge of their web presence.  Words like tweet and yelp should be part of your marketing campaign, and not part of your stress.</p>
-                                        <!-- Quote minimal-->
-                                        <article class="quote-minimal">
-                                            <p class="quote-minimal-text">We strive to create a memorable web image for everyone.</p>
-                                        </article>
-                                        <p>We establish a relationship with all of our clients, and we feel it is our responsibility to help them grow and harness the opportunity of their presence on the Internet.</p><a class="button button-default-outline button-nina" href="#">learn more</a>
+                                        <p>{!! $manager['mission'] !!}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="cell-lg-5 text-center">
-                <div class="image-position-01">
-                    <div class="blick-wrap"><img class="image-wrap" src="images/ipad-01-1360x1233.png" alt="" width="1360" height="1233"/>
-                        <div class="blick-overlay" data-blick-overlay="ipad"></div>
-                        <div class="blick-content"><img src="images/blick-content-01.png" alt=""></div>
                     </div>
                 </div>
             </div>

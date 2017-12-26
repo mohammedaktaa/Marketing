@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Team extends Model
+class Team extends \Eloquent
 {
     use SoftDeletes;
     protected $table = "team";
     protected $fillable = ['name_en', 'name_ar', 'job_title_en', 'job_title_ar', 'facebook', 'google', 'linkedin', 'team_order', 'image', 'active'];
     protected $primaryKey = "team_id";
+    protected $appends=['name'];
 
     const IMAGE_URL_PATH = 'images/team/';
     const IMAGE_File_PATH = 'storage/images/team/';
@@ -18,5 +19,10 @@ class Team extends Model
     public function getImageFileSystem()
     {
         return storage_path('app\\public\\' . self::IMAGE_File_PATH . $this->pic_name);
+    }
+
+    public function getName($lang='ar')
+    {
+        return $this['name_'.$lang];
     }
 }

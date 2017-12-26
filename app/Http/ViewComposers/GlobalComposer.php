@@ -15,7 +15,9 @@ class GlobalComposer
 {
     public function compose(View $view)
     {
-        $lang = LaravelLocalization::getCurrentLocale();
+        $cartCount= \Cart::instance('shopping')->count();
+//        dd($cartCount);
+        $lang = \App::getLocale();
         $LANG = strtoupper($lang);
         $dir = LaravelLocalization::getCurrentLocaleDirection();
         $left = ($dir == 'ltr') ? 'left' : 'right';
@@ -53,6 +55,6 @@ class GlobalComposer
                               <script type="text/javascript" src="' . asset('js/jquery.gmap.js') . '"></script>',
             'cropper' => '<script type="text/javascript" src="' . asset('js/components/cropper.min.js') . '"></script>',];
 //dd($content);
-        $view->with(compact('lang', 'LANG', 'dir', 'left', 'right', 'pageName', 'menus', 'content', 'CSS', 'JS','loader'));
+        $view->with(compact('lang', 'LANG', 'dir', 'left', 'right', 'pageName', 'menus','cartCount', 'content', 'CSS', 'JS','loader'));
     }
 }

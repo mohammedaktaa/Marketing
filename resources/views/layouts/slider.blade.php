@@ -3,81 +3,44 @@
     <div class="swiper-container swiper-slider swiper-slider_height-1 swiper-main" data-loop="false"
          data-autoplay="5500" data-simulate-touch="false" data-slide-effect="fade">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" data-slide-bg="">
-                <div class="swiper-slide-caption">
-                    <div class="shell-wide swiper-main-section">
-                        <div class="range range-xs-center">
-                            <div class="cell-sm-10 cell-lg-10">
-                                <p class="breadcrumbs-custom-subtitle" data-caption-animate="fxRotateInUp"
-                                   data-caption-delay="550">Make the Right Choice with TemplateMonster</p>
-                                <p class="heading-1 breadcrumbs-custom-title" data-caption-animate="blurIn"
-                                   data-caption-delay="50">be brave</p>
-                                <p class="heading-2" data-caption-animate="fxRotateInDown" data-caption-delay="550">
-                                    Universal Multipurpose HTML Template</p>
-                                <div class="group-md button-group"><a
-                                            class="button button-secondary button-nina button-lg" href="#"
-                                            data-custom-scroll-to="#start" data-caption-animate="fxRotateInDown"
-                                            data-caption-delay="550"> start a journey</a><a
-                                            class="button button-default-outline button-nina button-lg" href="#"
-                                            data-caption-animate="fxRotateInDown" data-caption-delay="550"> view
-                                        advantages</a></div>
+            @foreach($sliders as $slider)
+                <div class="swiper-slide" data-slide-bg="">
+                    <div class="swiper-slide-caption">
+                        <div class="shell-wide swiper-main-section">
+                            <div class="range range-xs-center">
+                                <div class="cell-sm-10 cell-lg-10">
+                                    <p class="heading-1 breadcrumbs-custom-title" data-caption-animate="blurIn"
+                                       data-caption-delay="50">{{trans('app.project_name')}}</p>
+                                    <p class="heading-2" data-caption-animate="fxRotateInDown" data-caption-delay="550">
+                                        {{$slider['text_'.$lang]}}</p>
+                                    <div class="group-md button-group">
+                                        @if($slider->num_of_btn)
+                                            @if($slider->num_of_btn==1)
+                                                <a class="button button-secondary button-nina button-lg"
+                                                   href="{{localizeURL($slider->url1?$slider->url1:$slider->url2)}}"
+                                                   data-custom-scroll-to="#start" data-caption-animate="fxRotateInDown"
+                                                   data-caption-delay="550">{{$slider->btn1_text?$slider->btn1_text:$slider->btn2_text}}</a>
+                                            @else
+                                                <a class="button button-secondary button-nina button-lg"
+                                                   href="{{localizeURL($slider->url1)}}"
+                                                   data-custom-scroll-to="#start" data-caption-animate="fxRotateInDown"
+                                                   data-caption-delay="550">{{$slider->btn1_text}}</a>
+                                                <a class="button button-secondary button-nina button-lg"
+                                                   href="{{localizeURL($slider->url2)}}"
+                                                   data-custom-scroll-to="#start" data-caption-animate="fxRotateInDown"
+                                                   data-caption-delay="550">{{$slider->btn2_text}}</a>
+                                            @endif
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="swiper-slide" data-slide-bg="">
-                <div class="swiper-slide-caption">
-                    <div class="shell-wide swiper-main-section">
-                        <div class="range range-xs-center">
-                            <div class="cell-sm-10 cell-lg-10">
-                                <p class="breadcrumbs-custom-subtitle" data-caption-animate="fxRotateInUp"
-                                   data-caption-delay="550">Make your website look stunning with several dozen
-                                    features of Brave</p>
-                                <p class="heading-1 breadcrumbs-custom-title" data-caption-animate="blurIn"
-                                   data-caption-delay="50">be strong</p>
-                                <p class="heading-2" data-caption-animate="fxRotateInDown" data-caption-delay="550">
-                                    Save time with our newest HTML template</p>
-                                <div class="group-md button-group"><a
-                                            class="button button-secondary button-nina button-lg" href="#"
-                                            data-custom-scroll-to="#start" data-caption-animate="fxRotateInDown"
-                                            data-caption-delay="550"> start a journey</a><a
-                                            class="button button-default-outline button-nina button-lg" href="#"
-                                            data-caption-animate="fxRotateInDown" data-caption-delay="550"> view
-                                        advantages</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide" data-slide-bg="">
-                <div class="swiper-slide-caption">
-                    <div class="shell-wide swiper-main-section">
-                        <div class="range range-xs-center">
-                            <div class="cell-sm-10 cell-lg-10">
-                                <p class="breadcrumbs-custom-subtitle" data-caption-animate="fxRotateInUp"
-                                   data-caption-delay="550">Change the impression of your website visitors with our
-                                    template</p>
-                                <p class="heading-1 breadcrumbs-custom-title" data-caption-animate="blurIn"
-                                   data-caption-delay="50">be first</p>
-                                <p class="heading-2" data-caption-animate="fxRotateInDown" data-caption-delay="550">
-                                    Become the leader of the web with Brave</p>
-                                <div class="group-md button-group"><a
-                                            class="button button-secondary button-nina button-lg" href="#"
-                                            data-custom-scroll-to="#start" data-caption-animate="fxRotateInDown"
-                                            data-caption-delay="550"> start a journey</a><a
-                                            class="button button-default-outline button-nina button-lg" href="#"
-                                            data-caption-animate="fxRotateInDown" data-caption-delay="550"> view
-                                        advantages</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
-        <!-- Swiper controls-->
         <div class="swiper-pagination-wrap">
-            <div class="swiper-pagination"></div>
+            <div class="swiper-pagination swiper-pagination-clickable"><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span></div>
         </div>
     </div>
     <div class="parallax-scene-js parallax-scene" data-scalar-x="5" data-scalar-y="10">

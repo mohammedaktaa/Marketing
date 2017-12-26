@@ -14,7 +14,7 @@
             <div class="cell-sm-6 cell-lg-4">
                 <article class="event-default-wrap">
                     <div class="event-default">
-                        <figure class="event-default-image"><img src="images/event-02-570x370.jpg" alt="" width="570" height="370"/>
+                        <figure class="event-default-image"><img src="{{asset('images/event-02-570x370.jpg')}}" alt="" width="570" height="370"/>
                         </figure>
                         <div class="event-default-date-wrap">
                             <time datetime="{{date('Y')}}"><span class="event-default-date">{{date('d', strtotime($cours->date))}}</span><span class="event-default-month">{{date('m', strtotime($cours->date))}}</span><span class="event-default-time">{{$cours->time}}</span></time>

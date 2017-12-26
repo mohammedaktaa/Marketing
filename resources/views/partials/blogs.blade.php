@@ -62,6 +62,6 @@
                             </figure><span class="icon mdi mdi-play-circle-outline"></span></a></div>
                 </div>
             </div>
-        </div><a class="button button-secondary button-nina" href="classic-blog.html">view all blog posts</a>
+        </div><a class="button button-secondary button-nina" href="{{localizeURL('blogs')}}">{{trans('app.view_all_blog_posts')}}</a>
     </div>
 </section>

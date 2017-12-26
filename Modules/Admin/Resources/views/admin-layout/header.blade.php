@@ -36,7 +36,7 @@
                             <li>
                                 <div class="list-group">
                                     <div class=""
-                                         style="margin-top: 10px;text-align: center;">{{Auth::user()->getFullNameAttribute()}}</div>
+                                         style="margin-top: 10px;text-align: center;">{{Auth::user()->name}}</div>
                                     <div class=""
                                          style="margin-top: 10px;text-align: center;">{{Auth::user()->email}}</div>
                                     <div class="topmargin-sm">
@@ -174,7 +174,7 @@
                     <li class="">
                         <a href="{{route('table',['table'=>'services'])}}"
                            class="@if(URL::current()==route('table',['table'=>'services'])){{ 'current' }}@endif ">
-                            <em class="fa fa-briefcase"></em> <span>{{trans('app.services')}}</span>
+                            <em class="fa fa-server"></em> <span>{{trans('app.services')}}</span>
                         </a>
                     </li>
                     <li class="">
@@ -199,6 +199,30 @@
                         <a href="{{route('table',['table'=>'questions'])}}"
                            class="@if(URL::current()==route('table',['table'=>'questions'])){{ 'current' }}@endif ">
                             <em class="icon icon-question"></em> <span>{{trans('app.questions')}}</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="{{route('table',['table'=>'cards'])}}"
+                           class="@if(URL::current()==route('table',['table'=>'cards'])){{ 'current' }}@endif ">
+                            <em class="fa fa-credit-card"></em> <span>{{trans('app.cards')}}</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="{{route('table',['table'=>'coupons'])}}"
+                           class="@if(URL::current()==route('table',['table'=>'coupons'])){{ 'current' }}@endif ">
+                            <em class="icon-wallet"></em> <span>{{trans('app.coupons')}}</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="{{route('table',['table'=>'sliders'])}}"
+                           class="@if(URL::current()==route('table',['table'=>'sliders'])){{ 'current' }}@endif ">
+                            <em class="icon-map"></em> <span>{{trans('app.sliders')}}</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="{{route('table',['table'=>'manager'])}}"
+                           class="@if(URL::current()==route('table',['table'=>'manager'])){{ 'current' }}@endif ">
+                            <em class="icon-user"></em> <span>{{trans('app.about_manager')}}</span>
                         </a>
                     </li>
                 </ul>

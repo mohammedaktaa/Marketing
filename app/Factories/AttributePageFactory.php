@@ -13,6 +13,10 @@ class AttributePageFactory extends GlobalFactory
      */
     public function getDatatable($model, $request)
     {
+//        dd(request('page'));
+        if(request('page'))
+        $query = $model::where('page_id',request('page'))->with(['page','attribute']);
+        else
         $query = $model::with(['page','attribute']);
         return \Datatable::queryConfig('attribute_page')
             ->queryDatatable($query)

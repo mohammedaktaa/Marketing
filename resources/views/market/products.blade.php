@@ -15,87 +15,126 @@
                 <div class="cell-lg-9">
                     <div class="range range-70 text-left">
                         @foreach($produtess as $product)
-                        <div class="cell-sm-6 cell-md-4">
-                            <figure class="block-with-details book-info">
-                                <div class="perspective">
-                                    <div class="book" data-book="book-4">
-                                        <div class="cover">
-                                            <div class="front"></div>
-                                            <div class="inner inner-left"></div>
+                            <div class="cell-sm-6 cell-md-4">
+                                <figure class="block-with-details book-info">
+                                    <div class="perspective">
+                                        <div class="book" data-book="book-4">
+                                            <div class="cover">
+                                                <div class="front"></div>
+                                                <div class="inner inner-left"></div>
+                                            </div>
+                                            <div class="inner inner-right"></div>
                                         </div>
-                                        <div class="inner inner-right"></div>
                                     </div>
-                                </div>
-                                <div class="figcaption">
-                                    <h5 class="book-title"><a href="product-page.html">{{$product['name_'.$lang]}}</a></h5>
-                                    <div class="book-price">
-                                        <div class="heading-6">{{$product->price}}$</div>
+                                    <div class="figcaption">
+                                        <h5 class="book-title"><a
+                                                    href="product-page.html">{{$product['name_'.$lang]}}</a></h5>
+                                        <div class="book-price">
+                                            <div class="heading-6">{{$product->price}}$</div>
+                                        </div>
+                                        <div class="book-button"><a
+                                                    class="button button-sm button-secondary button-nina add_cart"
+                                                    href="{{localizeURL('add-cart/'.$product->product_id.'/Product')}}">{{trans('app.add_to_cart')}}</a>
+                                        </div>
+                                        <div class="book-button"><a
+                                                    class="button button-sm button-secondary button-nina"
+                                                    href="{{localizeURL('pay/product/'.$product->product_id)}}"><em
+                                                        class="fa fa-paypal"></em>{{trans('app.pay_now')}}</a>
+                                        </div>
+                                        <div class="book-button"><a
+                                                    class="button button-sm button-secondary button-nina local_pay"
+                                                    href="{{localizeURL('pay-local/product/'.$product->product_id)}}"><em
+                                                        class="fa fa-credit-card"></em>{{trans('app.pay_now')}}</a>
+                                        </div>
+                                        {{--<div class="show-details"><a--}}
+                                        {{--href="{{localizeURL('products/'.$product->product_id)}}">{{trans('app.view_details')}}</a>--}}
+                                        {{--</div>--}}
                                     </div>
-                                    <div class="book-button"><a class="button button-sm button-secondary button-nina" href="shopping-cart.html">{{trans('app.add_to_cart')}}</a></div>
-                                    <div class="show-details"><a href="{{localizeURL('products/'.$product->product_id)}}">{{trans('app.view_details')}}</a></div>
-                                </div>
-                                <div class="details">
-                                    <ul>
-                                        <li>
-                                            <h5></h5>
-                                            <p class="book-cite">{{$product['name_'.$lang]}}</p>
-                                            <p class="book-tag"><a href="#">{{$product->category['name_'.$lang]}}</a>
-                                            </p>
-                                            <p class="book-content">{{$product['description_'.$lang]}}</p>
-                                        </li>
-                                    </ul>
-                            </figure>
-                        </div>
-                            @endforeach
+                                    <div class="details">
+                                        <ul>
+                                            <li>
+                                                <h5></h5>
+                                                <p class="book-cite">{{$product['name_'.$lang]}}</p>
+                                                <p class="book-tag"><a
+                                                            href="#">{{$product->category['name_'.$lang]}}</a>
+                                                </p>
+                                                <p class="book-content">{{$product['description_'.$lang]}}</p>
+                                            </li>
+                                        </ul>
+                                </figure>
+                            </div>
+                        @endforeach
                     </div>
                     {{--<ul class="pagination-custom">--}}
-                       <li>{{$produtess->links()}}</li>
+                    <li>{{$produtess->links()}}</li>
                     {{--</ul>--}}
                 </div>
                 <!-- Shop Sidebar-->
                 <div class="cell-lg-3 shop-aside text-left">
                     <div class="shop-aside-item">
                         <h6>{{trans('app.categories')}}</h6>
-                        <ul class="list-marked list-marked-secondary">
+                        <ul class="list-marked list-marked-secondary" style="color: ">
                             @foreach($categories as $category)
-                            <li><a href="#">{{$category['name_'.$lang]}}</a></li>
-                                @endforeach
+                                <li><a href="#">{{$category['name_'.$lang]}}</a></li>
+                            @endforeach
                         </ul>
                     </div>
-                    {{--<div class="shop-aside-item">--}}
-                        {{--<h6>twitter</h6>--}}
-                        {{--<ul class="twitter list-twitter" data-twitter-username="templatemonster">--}}
-                            {{--<li data-twitter-type="tweet">--}}
-                                {{--<div class="unit unit-xs-horizontal">--}}
-                                    {{--<div class="unit-left"><span class="mdi mdi-twitter twitter-icon icon-md-middle"></span></div>--}}
-                                    {{--<div class="unit-body">--}}
-                                        {{--<p data-tweet="text"></p>--}}
-                                        {{--<time data-date="text" data-datetime="datetime" datetime="2017"></time>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</li>--}}
-                            {{--<li data-twitter-type="tweet">--}}
-                                {{--<div class="unit unit-xs-horizontal">--}}
-                                    {{--<div class="unit-left"><span class="mdi mdi-twitter twitter-icon icon-md-middle"></span></div>--}}
-                                    {{--<div class="unit-body">--}}
-                                        {{--<p data-tweet="text"></p>--}}
-                                        {{--<time data-date="text" data-datetime="datetime" datetime="2017"></time>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</li>--}}
-                            {{--<li data-twitter-type="tweet">--}}
-                                {{--<div class="unit unit-xs-horizontal">--}}
-                                    {{--<div class="unit-left"><span class="mdi mdi-twitter twitter-icon icon-md-middle"></span></div>--}}
-                                    {{--<div class="unit-body">--}}
-                                        {{--<p data-tweet="text"></p>--}}
-                                        {{--<time data-date="text" data-datetime="datetime" datetime="2017"></time>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</li>--}}
-                        {{--</ul>--}}
-                    {{--</div>--}}
                 </div>
             </div>
         </div>
     </section>
+@endsection
+@section('scripts')
+    <script>
+        @if( isset($success) && $success=='success')
+        $(function () {
+            swal({
+                title: success_payed,
+                type: "success",
+                confirmButtonColor: "#4CDC80",
+                confirmButtonText: okay
+            });
+        });
+        @endif
+        $(function () {
+            $('.add_cart').click(function (e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    success: function (data) {
+                        $('#cart-count').text(data.count);
+                    }
+                })
+            });
+            $('.local_pay').click(function (e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    success: function (data) {
+                        if (data.success === 'success') {
+                            swal({
+                                title: data.msg,
+                                type: data.type,
+                                confirmButtonColor: "#4CDC80",
+                                confirmButtonText: okay
+                            });
+                            $('#money').text(data.money);
+                        }else {
+                            swal({
+                                title: data.msg,
+                                type: 'error',
+                                confirmButtonColor: "#FF3D4A",
+                                confirmButtonText: okay
+                            });
+                            $('#money').text(data.money);
+                        }
+                    }
+                })
+            })
+        })
+    </script>
 @endsection

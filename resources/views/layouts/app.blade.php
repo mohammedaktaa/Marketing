@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="{{asset('css/mdi.css')}}" type="text/css">
         <link rel="stylesheet" href="{{asset('css/fl-bigmug-line.css')}}" type="text/css">
     @endif
+        <link rel="stylesheet" href="{{asset('css/sweetalert.css')}}" type="text/css">
 
     @yield('styles')
     <style>
@@ -88,6 +89,7 @@
     </div>
     @include('layouts.header')
     @yield('content')
+    {{--<div id="paypal-button"></div>--}}
     @include('layouts.footer')
 </div>
 <div id="gotoTop" class="icon-angle-up"></div>
@@ -96,6 +98,9 @@
 <script type="text/javascript" src="{{url('js/jquery-1-2.js')}}"></script>
 
 <script>
+    var success_payed='{{trans('app.success_payed')}}';
+    var account='{{trans('app.account')}}';
+    var okay='{{trans('app.sweet.ok')}}';
     var dir = "{{$dir}}";
     var _csrf = '{{csrf_token()}}';
     var lang = '{{$lang}}';
@@ -116,7 +121,44 @@
 <script type="text/javascript" src="{{url('js/jquery.nicescroll.js')}}"></script>
 <script type="text/javascript" src="{{url('js/script.js')}}"></script>
 <script type="text/javascript" src="{{url('js/index.js')}}"></script>
+<script type="text/javascript" src="{{url('js/sweetalert.min.js')}}"></script>
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
 @yield('scripts')
+{{--<script>--}}
+    {{--paypal.Button.render({--}}
+        {{--env: 'production', // Or 'sandbox',--}}
 
+        {{--commit: true, // Show a 'Pay Now' button--}}
+
+        {{--style: {--}}
+            {{--color: 'gold',--}}
+            {{--size: 'small'--}}
+        {{--},--}}
+
+        {{--payment: function(data, actions) {--}}
+            {{--/*--}}
+             {{--* Set up the payment here--}}
+             {{--*/--}}
+        {{--},--}}
+
+        {{--onAuthorize: function(data, actions) {--}}
+            {{--/*--}}
+             {{--* Execute the payment here--}}
+             {{--*/--}}
+        {{--},--}}
+
+        {{--onCancel: function(data, actions) {--}}
+            {{--/*--}}
+             {{--* Buyer cancelled the payment--}}
+             {{--*/--}}
+        {{--},--}}
+
+        {{--onError: function(err) {--}}
+            {{--/*--}}
+             {{--* An error occurred during the transaction--}}
+             {{--*/--}}
+        {{--}--}}
+    {{--}, '#paypal-button');--}}
+{{--</script>--}}
 </body>
 </html>

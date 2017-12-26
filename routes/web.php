@@ -14,23 +14,30 @@
 
 use App\Models\Page;
 
-Route::group(['prefix'=>LaravelLocalization::setLocale()],function (){
+Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'HomeController@index');
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index');
     Auth::routes();
     Route::get('logout', 'Auth\LoginController@logout');
-    Route::get('page/{page}',function ($page){
-        $pageContent=Page::where('page_name',$page)->with(['attributePage.page','attributePage.attribute'])->first();
-//        dd($pageContent);
-       return view('pages.'.$page,compact('pageContent'));
-    })->name('page');
-Route::resource('products','ProductController');
-Route::resource('blogs','BlogController');
-Route::resource('courses','CourseController');
-Route::post('blog/comment/{id}','BlogController@comment');
-Route::get('requests','HomeController@requests');
-Route::post('request','HomeController@request');
-Route::post('request/{id}','HomeController@requestUpdate');
+    Route::get('page/{page}','HomeController@page')->name('page');
+    Route::resource('products', 'ProductController');
+    Route::resource('blogs', 'BlogController');
+    Route::resource('courses', 'CourseController');
+    Route::post('blog/comment/{id}', 'BlogController@comment');
+    Route::get('requests', 'HomeController@requests');
+    Route::post('request', 'HomeController@request');
+    Route::post('request/{id}', 'HomeController@requestUpdate');
+    Route::get('pay/product/{id}', 'ProductController@payNow');
+    Route::get('pay-local/product/{id}', 'ProductController@payLocalNow');
+    Route::get('pay-local/{sum}', 'HomeController@payLocalNow');
+    Route::get('apply-coupon/{sum}', 'HomeController@applyCoupon');
+    Route::get('pay-done', 'PaymentController@getDone');
+    Route::get('pay-cancel', 'PaymentController@getCancel');
+    Route::post('insert', 'PaymentController@insert');
+    Route::get('insert', 'HomeController@insert');
+    Route::get('add-cart/{id}/{model}', 'HomeController@addCart');
+    Route::get('shopping-cart', 'HomeController@shoppingCart');
+    Route::get('about/{id}', 'HomeController@about');
 });
 

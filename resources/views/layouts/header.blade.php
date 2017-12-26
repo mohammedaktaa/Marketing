@@ -36,12 +36,13 @@
                                         @endif
                                     </li>
                                 @endif
-                                    @if(($menuItem->type=='I'||$menuItem->type=='E') && $menuItem->parent_id==null)
-                                        <li><a href="{{$menuItem->url}}">{{$menuItem['name_'.$lang]}}</a></li>
-                                    @endif
+                                @if(($menuItem->type=='I'||$menuItem->type=='E') && $menuItem->parent_id==null)
+                                    <li><a href="{{$menuItem->url}}">{{$menuItem['name_'.$lang]}}</a></li>
+                                @endif
                             @endforeach
                             <li><a href="#"><span class="fa fa-user fa-2x"></span></a>
-                                <ul class="rd-navbar-dropdown" style="{{$dir=='rtl'?'right:auto !important;left:0':''}}">
+                                <ul class="rd-navbar-dropdown"
+                                    style="{{$dir=='rtl'?'right:auto !important;left:0':''}}">
                                     @if(!Auth::check())
                                         <li>
                                             <form class="form-horizontal ajax-form" action="{{route('login')}}"
@@ -77,6 +78,9 @@
                                                 <div class="row"
                                                      style="color: rgba(51,51,51,0.52)">{{trans('profile.email')}}
                                                     <b>{{Auth::user()->email}}</b></div>
+                                                <div class="row"
+                                                     style="color: rgba(51,51,51,0.52)">{{trans('profile.account_money')}}
+                                                    <b id="money">{{Auth::user()->account_money}}</b></div>
                                                 <div class="row text-center"><a class="btn btn-danger"
                                                                                 href="{{localizeURL('logout')}}">{{trans('app.logout')}}</a>
                                                 </div>
@@ -89,32 +93,15 @@
                         </ul>
                     </div>
                     <div class="rd-navbar-aside-right-inner">
-                        <!-- RD Navbar Search-->
-                        <div class="rd-navbar-search"><a class="rd-navbar-search-toggle"
-                                                         data-rd-navbar-toggle=".rd-navbar-search"
-                                                         href="#"><span></span></a>
-                            <form class="rd-search" action="search-results.html"
-                                  data-search-live="rd-search-results-live" method="GET">
-                                <div class="form-wrap">
-                                    <label class="form-label form-label"
-                                           for="rd-navbar-search-form-input">Search...</label>
-                                    <input class="rd-navbar-search-form-input form-input"
-                                           id="rd-navbar-search-form-input" type="text" name="s" autocomplete="off">
-                                    <div class="rd-search-results-live" id="rd-search-results-live"></div>
-                                </div>
-                                <button class="rd-search-form-submit mdi mdi-magnify"></button>
-                            </form>
-                        </div>
                         <div class="rd-navbar-shop"><a class="rd-navbar-shop-icon mdi mdi-cart"
-                                                       href="shopping-cart.html"><span>2</span></a></div>
+                                                       href="{{localizeURL('shopping-cart')}}"><span
+                                        id="cart-count">{{$cartCount }}</span></a></div>
                     </div>
                 </div>
             </div>
         </nav>
     </div>
-    @foreach($sections as $section)
-        @if($section['name_en']=='slider')
-            @include('partials.'.$section['name_en'])
-        @endif
-    @endforeach
+    @if(URL::current()!=route('login'))
+        @include('layouts.slider')
+    @endif
 </header>

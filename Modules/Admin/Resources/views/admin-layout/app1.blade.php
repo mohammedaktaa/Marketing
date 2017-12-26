@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{asset('favicon.ico')}}" sizes="16x16">
+    <link rel="icon" href="{{asset('images/favicon.ico')}}" type="image/x-icon">
 
     <title>{{trans('app.project_name')}} | @yield('title')</title>
 

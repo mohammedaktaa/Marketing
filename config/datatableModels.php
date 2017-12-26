@@ -91,5 +91,21 @@ return [
         'model'         => \App\Models\Request::class,
         'factory' => \App\Factories\RequestFactory::class
     ],
+    'cards' => [
+        'model'         => \App\Models\Card::class,
+        'factory' => \App\Factories\CardFactory::class
+    ],
+    'coupons' => [
+        'model'         => \App\Models\Coupon::class,
+        'factory' => \App\Factories\CouponFactory::class
+    ],
+    'sliders' => [
+        'model'         => \App\Models\Slider::class,
+        'factory' => \App\Factories\SliderFactory::class
+    ],
+    'manager' => [
+        'model'         => \App\Models\Manager::class,
+        'factory' => \App\Factories\ManagerFactory::class
+    ],
 
 ];

@@ -4,6 +4,7 @@ namespace Modules\Admin\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Manager;
 use App\Models\Product;
 use App\Models\Team;
 use Illuminate\Http\Request;
@@ -131,6 +132,16 @@ class AdminController extends Controller
           $this->moveFileFromTemp(Team::IMAGE_URL_PATH, $request->get('image'));
         }
         $team->update($request->input());
+    }
+    public function updateImageManager($id, Request $request)
+    {
+        $manager = Manager::find($id);
+        if ($request->get('image') != $manager->image_manager) {
+            \File::delete($manager->getImageFileSystem());
+          $this->moveFileFromTemp(Manager::IMAGE_URL_PATH, $request->get('image'));
+        }
+        $manager->image_manager=$request->get('image');
+        $manager->save();
     }
 
 }

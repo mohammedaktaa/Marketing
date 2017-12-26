@@ -11,6 +11,7 @@ return [
     'birth_date'=>'تاريخ الولادة',
     'birth_place'=>'مكان الولادة',
     'email'=>'البريد الألكتروني',
+    'account_money'=>'الرصيد',
     'address'=>'العنوان',
     'fax'=>'الفاكس',
     'choose_username'=>'اختر اسم مستخدم',

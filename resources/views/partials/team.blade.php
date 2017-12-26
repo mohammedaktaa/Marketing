@@ -1,4 +1,4 @@
-<section class="section section-variant-1 bg-white text-center text-xs-left">
+<section class="section section-variant-1 bg-white text-center text-xs-left" dir="ltr">
     <div class="shell shell-wide">
         <div class="range range-lg-right range-30">
             <div class="cell-lg-8">
@@ -14,7 +14,7 @@
                 @foreach($team as $item)
             <div class="team-classic">
                 <div class="team-classic-image">
-                    <figure><img src="{{\App\Models\Team::IMAGE_File_PATH.$item->image}}" alt="" width="270" height="270"/>
+                    <figure><img src="{{asset(\App\Models\Team::IMAGE_File_PATH.$item->image)}}" alt="" width="270" height="270"/>
                     </figure>
                     <div class="team-classic-image-caption">
                         <ul class="list-inline list-team">
@@ -25,8 +25,8 @@
                     </div>
                 </div>
                 <div class="team-classic-caption">
-                    <h5><a class="team-classic-title" href="about-me.html">{{$item['name_'.$lang]}}</a></h5>
-                    <p class="team-classic-job-position">{{$item['job_title_'.$lang]}}</p><a class="button button-xs button-default-outline" href="about-me.html">get in touch</a>
+                    <h5><a class="team-classic-title" href="{{localizeURL('about/'.$item->team_id)}}">{{$item['name_'.$lang]}}</a></h5>
+                    <p class="team-classic-job-position">{{$item['job_title_'.$lang]}}</p>
                 </div>
             </div>
                 @endforeach

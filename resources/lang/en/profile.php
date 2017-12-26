@@ -11,6 +11,7 @@ return [
     'birth_date'=>'Birth Date',
     'birth_place'=>'Birth Place',
     'email'=>'Email',
+    'account_money'=>'Account Money',
     'address'=>'Address',
     'fax'=>'Fax',
     'choose_username'=>'Choose Username',

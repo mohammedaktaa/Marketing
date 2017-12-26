@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => 'web', 'prefix' => LaravelLocalization::setLocale().'/admin', 'namespace' => 'Modules\Admin\Http\Controllers'], function()
+Route::group(['middleware' => ['web','auth.admin'], 'prefix' => LaravelLocalization::setLocale().'/admin', 'namespace' => 'Modules\Admin\Http\Controllers'], function()
 {
     Route::get('table/{table}','AdminController@table')->name('table');
     Route::get('categories-autocomplete','AutoCompleteController@categoryAutocomplete');
@@ -11,6 +11,7 @@ Route::group(['middleware' => 'web', 'prefix' => LaravelLocalization::setLocale(
     Route::put('courses/{id}','AdminController@updateImageCourses');
     Route::put('products/{id}','AdminController@updateImageCourses');
     Route::put('team/{id}','AdminController@updateImageTeam');
+    Route::put('manager/{id}','AdminController@updateImageManager');
     Route::post('upload-image/{resize?}', 'AdminController@uploadImage');
     Route::post('upload-doc/{file}', 'AdminController@uploadDocument');
     Route::get('/', 'AdminController@index')->name('admin-home');
