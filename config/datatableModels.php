@@ -115,5 +115,10 @@ return [
         'model'         => \App\Models\PrivacyPolicy::class,
         'factory' => \App\Factories\PrivacyFactory::class
     ],
+    'styles' => [
+        'model'         => \App\Models\Style::class,
+        'factory' => \App\Factories\StyleFactory::class,
+
+    ],
 
 ];

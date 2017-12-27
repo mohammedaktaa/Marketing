@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{asset('images/favicon.ico')}}" type="image/x-icon">
 
-    <title>{{trans('app.project_name')}} | @yield('title')</title>
+    <title>{{$projectname->value}} | @yield('title')</title>
 
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/font-icons.css')}}" type="text/css">
@@ -58,6 +58,7 @@
         'canceled': "@lang('app.sweet.canceled')",
         'canceled_file': "@lang('app.sweet.canceled_file')"
     };
+    var accepted='{{trans('app.accepted')}}';
     var success = "@lang('app.success')";
     var pickimage = "@lang('app.pick_image')";
     var pickdoc = "@lang('app.pick_doc')";
@@ -85,6 +86,7 @@
 <script type="text/javascript" src="{{asset('js/functions.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery-request-types.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/sweet-alert-new.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/index.js')}}"></script>
 @yield('scripts')
 

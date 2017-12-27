@@ -3,6 +3,7 @@
 namespace Modules\Admin\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\CmpGeneral;
 use App\Models\Course;
 use App\Models\Manager;
 use App\Models\Product;
@@ -132,6 +133,15 @@ class AdminController extends Controller
           $this->moveFileFromTemp(Team::IMAGE_URL_PATH, $request->get('image'));
         }
         $team->update($request->input());
+    }
+    public function updateImageGenerals($id, Request $request)
+    {
+        $general = CmpGeneral::find($id);
+        if ($request->get('image') != $general->image) {
+            \File::delete($general->getImageFileSystem());
+          $this->moveFileFromTemp(CmpGeneral::IMAGE_URL_PATH, $request->get('image'));
+        }
+        $general->update($request->input());
     }
     public function updateImageManager($id, Request $request)
     {

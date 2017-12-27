@@ -13,15 +13,10 @@ class RequestFactory extends GlobalFactory
      */
     public function getDatatable($model, $request)
     {
-        $query = $model::all();
+        $query = $model::with(['user']);
         return \Datatable::queryConfig('requests')
             ->queryDatatable($query)
-//            ->queryUpdateButton('request_id')
-//            ->queryDeleteButton('request_id')
             ->queryCustomButton('accept','request_id','icon-list',''," onClick='open_request_modal($(this))' href='javascript:void(0);'")
-//            ->queryAddColumn('icon_name',function ($item){
-//                return "<em class='$item->icon'></em>";
-//            })
             ->queryRender();
     }
 
@@ -31,11 +26,12 @@ class RequestFactory extends GlobalFactory
     public function buildDatatable($model, $request)
     {
         try {
+            $count=$model::where('is_accepted','<>','1')->count();
             return \Datatable::config('requests', '', ['gridSystem' => true])
                 ->addHiddenInput('request_id', 'request_id', '', true)
-                ->addInputText(trans('app.name'), 'name', 'name', 'req required')
-                ->addInputText(trans('app.email'), 'email', 'email', ' req required')
-                ->addInputText(trans('app.phone'), 'phone', 'phone', 'req required')
+                ->addInputText(trans('app.name'), 'user.name', 'user.name', 'req required')
+                ->addInputText(trans('app.email'), 'user.email', 'user.email', ' req required')
+                ->addInputText(trans('app.phone'), 'user.phone', 'user.phone', 'req required')
                 ->addInputText(trans('app.delivery_place'), 'delivery_place', 'delivery_place', 'none')
                 ->addInputText(trans('app.delivery_way'), 'delivery_way', 'delivery_way', 'none')
                 ->addInputText(trans('app.shipping_bool'), 'shipping_bool', 'shipping_bool', ' none')
@@ -49,8 +45,9 @@ class RequestFactory extends GlobalFactory
                 ->addInputText(trans('app.side_type'), 'side_type', 'side_type', ' none')
                 ->addInputText(trans('app.print_type'), 'print_type', 'print_type', 'none')
                 ->addInputText(trans('app.paper_type'), 'paper_type', 'paper_type', ' none')
-                    ->addActionButton(trans('app.submit'),'accept','accept')
+                ->addActionButton(trans('app.submit'),'accept','accept')
                 ->addNavButton([],['add'])
+                ->onLoad('$("#requests tbody tr:nth-child(-n+' . $count . ')").addClass("red");')
                 ->onModalOpen('_textEditor($(modal))')
                 ->render();
         } catch (\Exception $e) {

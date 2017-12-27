@@ -9,6 +9,8 @@ use App\Models\Page;
 use App\Models\PrivacyPolicy;
 use App\Models\Product;
 use App\Models\Team;
+use App\Notifications\RequestNotification;
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -34,6 +36,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+//        dd(Auth::user()->notifications);
         return view('home');
     }
 
@@ -87,7 +90,6 @@ class HomeController extends Controller
 
     public function request(Request $request, $id)
     {
-//        Stripe::
         $req = new \App\Models\Request;
         $req->create($request->all());
         return $req;
@@ -175,36 +177,50 @@ class HomeController extends Controller
         $pageContent = Page::where('page_name', $page)->with(['attributePage.attribute'])->first();
         $attrs = Attribute::all();
         foreach ($pageContent->attributePage as $item) {
-                foreach ($attrs as $attr) {
-                    if ($item->attribute->text==$attr->text)
-                        $info[$item->attribute->text] = [$item->attribute->text =>$item->attribute_value];
-                }
+            foreach ($attrs as $attr) {
+                if ($item->attribute->text == $attr->text)
+                    $info[$item->attribute->text] = [$item->attribute->text => $item->attribute_value];
+            }
         }
+
         return view('pages.' . $page, compact('pageContent', 'info'));
     }
 
     public function about($id)
     {
-        $teams=Team::where('team_id',$id)->first();
-        return view('about-me',compact('teams'));
+        $teams = Team::where('team_id', $id)->first();
+        return view('about-me', compact('teams'));
     }
 
     public function insert()
     {
         return view('payment.insert-code');
     }
+
     public function careers()
     {
         return view('careers');
     }
+
     public function career($id)
     {
-        $career=Career::findOrFail($id);
-        return view('single-career',compact('career'));
+        $career = Career::findOrFail($id);
+        return view('single-career', compact('career'));
     }
+
     public function privacy()
     {
-        $privacy=PrivacyPolicy::first();
-        return view('privacy',compact('privacy'));
+        $privacy = PrivacyPolicy::first();
+        return view('privacy', compact('privacy'));
+    }
+
+    public function sendRequest(Request $request,$id)
+    {
+//        $user = Auth::user();
+        $req=\App\Models\Request::findOrFail($id);
+        $req->update($request->all());
+        $user=User::findOrFail($req->user_id);
+        $user->notify(new RequestNotification($req));
+        return ['success'=>true];
     }
 }

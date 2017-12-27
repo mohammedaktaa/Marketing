@@ -6,6 +6,7 @@ use App\Models\CmpGeneral;
 use App\Models\CmpLoader;
 use App\Models\MenuItem;
 use App\Models\Page;
+use App\Models\Style;
 use Illuminate\Support\Facades\Request;
 use Illuminate\View\View;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -27,11 +28,10 @@ class GlobalComposer
         else
             $pageName = 'home';
         $loader=CmpGeneral::where('type','loader')->first();
-//        dd($loader);
-//        dd(Request::route()->parameter('page'));
-//        $menus = MenuItem::where('menu_item_id', '>=', 1)->where('type', 'I')->orderBy('menu_item_order')->get();
-//        $content = GenContent::where('page', '=', $pageName['page_name'])->first();
-
+        $projectname=CmpGeneral::where('type','project_name')->first();
+        $request=\App\Models\Request::where('is_accepted')->count();
+        $logo=CmpGeneral::where('type','logo')->first();
+        $style=Style::first();
         $CSS = ['select2' => '     <link rel="stylesheet" href="' . asset('css/components/select-boxes.css') . '" type="text/css"/>
                                <link rel="stylesheet" href="' . asset('css/components/select2-bootstrap.min.css') . '" type="text/css"/>',
             'datatable' => '   <link rel="stylesheet" href="' . asset("datatable/datatable-$dir.css") . '" type="text/css"/>',
@@ -55,6 +55,6 @@ class GlobalComposer
                               <script type="text/javascript" src="' . asset('js/jquery.gmap.js') . '"></script>',
             'cropper' => '<script type="text/javascript" src="' . asset('js/components/cropper.min.js') . '"></script>',];
 //dd($content);
-        $view->with(compact('lang', 'LANG', 'dir', 'left', 'right', 'pageName', 'menus','cartCount', 'content', 'CSS', 'JS','loader'));
+        $view->with(compact('lang', 'LANG', 'dir', 'projectname','style','logo','left', 'right', 'pageName', 'menus','cartCount', 'content', 'CSS', 'JS','loader'));
     }
 }

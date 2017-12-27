@@ -29,24 +29,6 @@
                         <div class="range range-20">
                             <div class="cell-sm-6">
                                 <div class="form-wrap form-wrap-validation">
-                                    <label for="forms-3-name">{{trans('app.name')}}</label>
-                                    <input class="form-input" id="forms-3-name" type="text" name="name" >
-                                </div>
-                            </div>
-                            <div class="cell-sm-6">
-                                <div class="form-wrap form-wrap-validation">
-                                    <label for="forms-3-phone">{{trans('app.phone')}}</label>
-                                    <input class="form-input" id="forms-3-phone" type="text" name="phone" >
-                                </div>
-                            </div>
-                            <div class="cell-sm-6">
-                                <div class="form-wrap form-wrap-validation">
-                                    <label for="forms-3-email">{{trans('app.email')}}</label>
-                                    <input class="form-input" id="forms-3-email" type="email" name="email" >
-                                </div>
-                            </div>
-                            <div class="cell-sm-6">
-                                <div class="form-wrap form-wrap-validation">
                                     <label for="forms-3-delivery_place">{{trans('app.delivery_place')}}</label>
                                     <input class="form-input" id="forms-3-delivery_place" type="text" name="delivery_place" >
                                 </div>
@@ -156,24 +138,6 @@
                       {{csrf_field()}}
                         <div class="range range-20">
                             <div class="cell-sm-6">
-                                <div class="form-wrap form-wrap-validation">
-                                    <label for="forms-3-name">{{trans('app.name')}}</label>
-                                    <input class="form-input" id="forms-3-name" type="text" name="name" >
-                                </div>
-                            </div>
-                            <div class="cell-sm-6">
-                                <div class="form-wrap form-wrap-validation">
-                                    <label for="forms-3-phone">{{trans('app.phone')}}</label>
-                                    <input class="form-input" id="forms-3-phone" type="text" name="phone" >
-                                </div>
-                            </div>
-                            <div class="cell-sm-6">
-                                <div class="form-wrap form-wrap-validation">
-                                    <label for="forms-3-email">{{trans('app.email')}}</label>
-                                    <input class="form-input" id="forms-3-email" type="email" name="email" >
-                                </div>
-                            </div>
-                            <div class="cell-sm-6">
                                 <div class="form-wrap">
                                     <!-- Select 2-->
                                     <label for="payment_way">{{trans('app.payment_way')}}</label>
@@ -204,24 +168,6 @@
                         <div class="range range-20">
                             <div class="cell-sm-6">
                                 <div class="form-wrap form-wrap-validation">
-                                    <label for="forms-3-name">{{trans('app.name')}}</label>
-                                    <input class="form-input" id="forms-3-name" type="text" name="name" >
-                                </div>
-                            </div>
-                            <div class="cell-sm-6">
-                                <div class="form-wrap form-wrap-validation">
-                                    <label for="forms-3-phone">{{trans('app.phone')}}</label>
-                                    <input class="form-input" id="forms-3-phone" type="text" name="phone" >
-                                </div>
-                            </div>
-                            <div class="cell-sm-6">
-                                <div class="form-wrap form-wrap-validation">
-                                    <label for="forms-3-email">{{trans('app.email')}}</label>
-                                    <input class="form-input" id="forms-3-email" type="email" name="email" >
-                                </div>
-                            </div>
-                            <div class="cell-sm-6">
-                                <div class="form-wrap form-wrap-validation">
                                     <label for="forms-3-reason">{{trans('app.reason')}}</label>
                                     <textarea class="form-input" id="forms-3-reason"  name="reason" ></textarea>
                                 </div>
@@ -237,24 +183,6 @@
                     <form class="rd-mailform text-left workshop" method="post" action="{{localizeURL('request')}}" hidden enctype="multipart/form-data">
                        {{csrf_field()}}
                         <div class="range range-20">
-                            <div class="cell-sm-6">
-                                <div class="form-wrap form-wrap-validation">
-                                    <label for="forms-3-name">{{trans('app.name')}}</label>
-                                    <input class="form-input" id="forms-3-name" type="text" name="name" >
-                                </div>
-                            </div>
-                            <div class="cell-sm-6">
-                                <div class="form-wrap form-wrap-validation">
-                                    <label for="forms-3-phone">{{trans('app.phone')}}</label>
-                                    <input class="form-input" id="forms-3-phone" type="text" name="phone" >
-                                </div>
-                            </div>
-                            <div class="cell-sm-6">
-                                <div class="form-wrap form-wrap-validation">
-                                    <label for="forms-3-email">{{trans('app.email')}}</label>
-                                    <input class="form-input" id="forms-3-email" type="email" name="email" >
-                                </div>
-                            </div>
                             <div class="cell-sm-6">
                                 <div class="form-wrap form-wrap-validation">
                                     <label for="forms-3-side_type">{{trans('app.side_type')}}</label>
@@ -287,7 +215,7 @@
                     <h4 class="modal-title">@lang('app.update_image')</h4>
                 </div>
                 <div class=" modal-body clearfix margin-sm">
-                    {!! Form::thImageUpload('col_full','image',false,'',true,null,null,'','','','image',$imageWidth!==null?'data-width='.$imageWidth.' data-height='.$imageHeight:'') !!}
+                    {!! Form::bsImageUpload('col_full','image',false,'',true,null,null,'','','','image',$imageWidth!==null?'data-width='.$imageWidth.' data-height='.$imageHeight:'') !!}
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="button button-3d button-reveal button-reveal "><i

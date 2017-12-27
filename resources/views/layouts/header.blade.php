@@ -12,12 +12,14 @@
                     <!-- RD Navbar Toggle-->
                     <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                     <!-- RD Navbar Brand-->
-                    <div class="rd-navbar-brand"><a class="brand-name" href="index.html"><img class="logo-default"
-                                                                                              src="{{url('images/logo-default-128x61.png')}}"
-                                                                                              alt="" width="128"
-                                                                                              height="61"/><img
-                                    class="logo-inverse" src="{{url('images/logo-inverse-128x61.png')}}" alt=""
-                                    width="128" height="61"/></a></div>
+                    <div class="rd-navbar-brand"><a class="brand-name" href="index.html">
+                            <img class="logo-default"
+                                 src="{{url(\App\Models\CmpGeneral::IMAGE_File_PATH.$logo->image)}}"
+                                 alt="" width="128"
+                                 height="61"/>
+                            <img class="logo-inverse"
+                                 src="{{url(\App\Models\CmpGeneral::IMAGE_File_PATH.$logo->image)}}" alt=""
+                                 width="128" height="61"/></a></div>
                 </div>
                 <div class="rd-navbar-aside-right">
                     <div class="rd-navbar-nav-wrap">
@@ -78,6 +80,12 @@
                                                 <div class="row"
                                                      style="color: rgba(51,51,51,0.52)">{{trans('profile.email')}}
                                                     <b>{{Auth::user()->email}}</b></div>
+                                                @if(Auth::user()->isAdmin())
+                                                    <div class="row"
+                                                         style="color: rgba(51,51,51,0.52)">
+                                                        <b><a href="{{route('admin-home')}}">{{trans('app.admin_panel')}}</a></b>
+                                                    </div>
+                                                @endif
                                                 <div class="row"
                                                      style="color: rgba(51,51,51,0.52)">{{trans('profile.account_money')}}
                                                     <b id="money">{{Auth::user()->account_money}}</b></div>
@@ -93,6 +101,22 @@
                         </ul>
                     </div>
                     <div class="rd-navbar-aside-right-inner">
+                        <div class="rd-navbar-shop"><a class="rd-navbar-shop-icon fa fa-bell"
+                                                       href="#">
+                                    <em class="btn-danger badge">
+                                        {{Auth::user()->notifications->count()}}
+                                    </em>
+                                @if(Auth::user()->notifications)
+                                    <ul class="rd-navbar-dropdown"
+                                        style="{{$dir=='rtl'?'right:auto !important;left:0':''}}">
+                                        @foreach(Auth::user()->notifications as $notification)
+                                                <li>{{trans('app.request_replay')}}</li>
+                                            @endforeach
+                                    </ul>
+                                @endif
+                            </a></div>
+                    </div>
+                    <div class="rd-navbar-aside-right-inner">
                         <div class="rd-navbar-shop"><a class="rd-navbar-shop-icon mdi mdi-cart"
                                                        href="{{localizeURL('shopping-cart')}}"><span
                                         id="cart-count">{{$cartCount }}</span></a></div>
@@ -105,3 +129,24 @@
         @include('layouts.slider')
     @endif
 </header>
+<script>
+    swal({
+        content: {
+            element: "input",
+            attributes: {
+                placeholder: "Type your password",
+                type: "password",
+            },
+        },
+    });
+    swal({
+        buttons: {
+            cancel: true,
+            confirm: "Confirm",
+            roll: {
+                text: "Do a barrell roll!",
+                value: "roll",
+            },
+        },
+    });
+</script>

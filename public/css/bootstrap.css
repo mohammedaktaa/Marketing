@@ -2785,4 +2785,5 @@ button.close { padding: 0; cursor: pointer; background: transparent; border: 0; 
 
 @media print { .hidden-print { display: none !important; } }
 
+.badge-red { color: #337ab7; background-color: #fff; }
 /*# sourceMappingURL=bootstrap.css.map */

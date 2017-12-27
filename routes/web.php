@@ -42,5 +42,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get('careers', 'HomeController@careers');
     Route::get('career/{id}', 'HomeController@career');
     Route::get('privacy', 'HomeController@privacy');
+    Route::post('request/send/{id}', 'HomeController@sendRequest');
 });
 

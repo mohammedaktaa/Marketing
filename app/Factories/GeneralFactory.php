@@ -2,6 +2,7 @@
 
 namespace App\Factories;
 
+use App\Models\CmpGeneral;
 use App\Models\Product;
 use Aut\DataTable\DataTableBuilder;
 use Aut\DataTable\Factories\GlobalFactory;
@@ -15,7 +16,9 @@ class GeneralFactory extends GlobalFactory
         parent::__construct($table);
         $this->types=[
             'loader'=>trans('app.loader'),
-            'slider_state'=>trans('app.slider_state'),
+//            'slider_state'=>trans('app.slider_state'),
+            'project_name'=>trans('app.name_project'),
+            'logo'=>trans('app.logo')
         ];
     }
 
@@ -32,6 +35,11 @@ class GeneralFactory extends GlobalFactory
             ->queryAddColumn('type_name',function ($item){
                 return $this->types[$item->type];
             })
+            ->queryCustomButton('update_image', 'id', 'fa fa-image', '', "href='javascript:void(0)' onclick='admin_update_image(this)'")
+            ->queryAddColumn('image',function ($item) use($model){
+//                dd($item->logo);
+                return '<img src="' . ($item->image ? asset(CmpGeneral::IMAGE_File_PATH . $item->image) : '') . '" />';
+            })
             ->queryRender();
     }
 
@@ -44,7 +52,9 @@ class GeneralFactory extends GlobalFactory
             return \Datatable::config('generals')
                 ->addHiddenInput('general_id', 'general_id', '', true)
                 ->addSelect($this->types,trans('app.type'),'type','type','type_name','req required')
-                ->addInputText(trans('app.value'), 'value', 'value', ' req required')
+                ->addInputText(trans('app.value'), 'value', 'value', ' ')
+                ->addViewField('', 'image', 'image', '', 'none')
+                ->addActionButton(trans('app.update_image'), 'update_image', 'update_image')
                 ->addActionButton($this->update, 'update', 'update')
                 ->addActionButton($this->delete, 'delete', 'delete')
                 ->addNavButton()

@@ -287,5 +287,10 @@ return [
     'corp_desc'=>'A good job isn\'t just about the paycheck and insurance benefits. Most people want to feel like their work is contributing to the greater good of the world. and that’s exactly what we give our team members at Brave. At the end of the day, every employee feels that he/she is the part of not just a team but a family',
     'ben_desc'=>'There are multiple benefits available to our employees, both experienced and new. Every employee has a challenging and fulfilling role in a great team, while dealing with great clients and rewarding projects. We provide our team members with free access to our social events and corporate benefits.',
     'learn_desc'=>'Working at Brave gives our employees a chance to challenge themselves and learn something new in web design, while also communicating with important people in the industry. We also organize refresher courses that allow our junior employees to extend their skills and explore the world of design without limits.',
-    'curr_opening'=>'Current Opening'
+    'curr_opening'=>'Current Opening',
+    'name_project'=>'Website Name',
+    'styles'=>'Styles',
+    'accepted'=>'The request price has saved.',
+    'admin_panel'=>'Admin Panel',
+    'request_replay'=>'You have a replay for your service.'
 ];

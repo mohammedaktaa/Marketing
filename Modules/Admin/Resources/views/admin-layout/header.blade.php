@@ -5,10 +5,10 @@
         <div class="navbar-header">
             <a href="#" class="navbar-brand">
                 <div class="brand-logo">
-                    <img src="{{url('img/logo.png')}}" alt="App Logo" class="img-responsive" style="">
+                    <img src="{{asset('images/logo.png')}}" alt="App Logo" class="img-responsive" style="width: 75%;">
                 </div>
                 <div class="brand-logo-collapsed">
-                    <img src="{{url('img/logo_collapsed.png')}}" alt="App Logo" class="img-responsive"
+                    <img src="{{asset('images/logo.png')}}" alt="App Logo" class="img-responsive"
                          style="margin-top: 22%">
                 </div>
             </a>
@@ -27,6 +27,11 @@
                     </li>
                 </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="{{route('table',['table'=>'requests'])}}">
+                        <em class="fa fa-inbox"></em>
+                    </a>
+                </li>
                 @if(Auth::check())
                     <li class="dropdown dropdown-list">
                         <a href="#" data-toggle="dropdown">
@@ -113,6 +118,18 @@
                                 <a href="{{route('table',['table'=>'generals'])}}"
                                    class="@if(URL::current()==route('table',['table'=>'generals'])){{ 'current' }}@endif ">
                                     <em class="fa fa-spinner"></em><span>{{trans('app.generals')}}</span>
+                                </a>
+                            </li>
+                            <li class=" ">
+                                <a href="{{route('table',['table'=>'requests'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'requests'])){{ 'current' }}@endif ">
+                                    <em class="fa fa-spinner"></em><span>{{trans('app.requests')}}</span>
+                                </a>
+                            </li>
+                            <li class=" ">
+                                <a href="{{route('table',['table'=>'styles'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'styles'])){{ 'current' }}@endif ">
+                                    <em class="fa fa-puzzle-piece"></em><span>{{trans('app.styles')}}</span>
                                 </a>
                             </li>
                             <li class=" ">

@@ -8,17 +8,17 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{trans('app.project_name')}} | @yield('title')</title>
+    <title>{{$projectname->value}} | @yield('title')</title>
         <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" type="text/css">
         <link rel="stylesheet" href="{{asset('css/font-icons.css')}}" type="text/css">
     @if($dir=='rtl')
         <link rel="stylesheet" href="{{asset('css/bootstrap-rtl.css')}}" type="text/css">
-        <link rel="stylesheet" href="{{asset('css/style-rtl.css')}}" type="text/css">
+        <link rel="stylesheet" href="{{asset('css/'.$style->value.'-rtl.css')}}" type="text/css">
         <link rel="stylesheet" href="{{asset('css/mdi-rtl.css')}}" type="text/css">
         <link rel="stylesheet" href="{{asset('css/fl-bigmug-line-rtl.css')}}" type="text/css">
     @else
         <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}" type="text/css">
-        <link rel="stylesheet" href="{{asset('css/style.css')}}" type="text/css">
+        <link rel="stylesheet" href="{{asset('css/'.$style->value.'.css')}}" type="text/css">
         <link rel="stylesheet" href="{{asset('css/mdi.css')}}" type="text/css">
         <link rel="stylesheet" href="{{asset('css/fl-bigmug-line.css')}}" type="text/css">
     @endif
