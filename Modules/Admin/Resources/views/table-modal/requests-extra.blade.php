@@ -24,7 +24,9 @@
     function open_request_modal($this) {
         var obj = _aut_datatable_getSelectedRow(_aut_datatable_getTableObjectApi('#{{$table}}'), $(($this).closest('tr')));
         modal.attr('data-id', obj.request_id);
-        aut_datatable_refresh('#modal-accept', true);
+        if(obj.price){
+            modal.find('#price').val(obj.price);
+        }
         $('#modal-accept').modal('show');
     }
 
@@ -42,9 +44,10 @@
                 success: function (data) {
                     swal({
                         title: accepted,
-                        icon: "success",
+                        icon: "info",
                         buttons: [language.ok]
                     });
+                    aut_datatable_refresh('#modal-accept', true);
                     $('#price').val('');
                 }
             })

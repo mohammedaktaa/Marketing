@@ -36,7 +36,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        dd(Auth::user()->notifications);
+//        dd(Auth::user()->notifications[0]->data);
         return view('home');
     }
 
@@ -92,14 +92,6 @@ class HomeController extends Controller
     {
         $req = new \App\Models\Request;
         $req->create($request->all());
-        return $req;
-    }
-
-    public function requestUpdate(Request $request, $id)
-    {
-        $req = \App\Models\Request::findOrFail($id);
-        $req->price = $request->price;
-        $req->is_accepted = $request->is_accepted;
         return $req;
     }
 

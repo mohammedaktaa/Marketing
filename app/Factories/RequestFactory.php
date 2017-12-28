@@ -45,6 +45,7 @@ class RequestFactory extends GlobalFactory
                 ->addInputText(trans('app.side_type'), 'side_type', 'side_type', ' none')
                 ->addInputText(trans('app.print_type'), 'print_type', 'print_type', 'none')
                 ->addInputText(trans('app.paper_type'), 'paper_type', 'paper_type', ' none')
+                ->addInputText(trans('app.price'), 'price', 'price', ' none')
                 ->addActionButton(trans('app.submit'),'accept','accept')
                 ->addNavButton([],['add'])
                 ->onLoad('$("#requests tbody tr:nth-child(-n+' . $count . ')").addClass("red");')

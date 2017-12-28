@@ -14,11 +14,11 @@
                     <!-- RD Navbar Brand-->
                     <div class="rd-navbar-brand"><a class="brand-name" href="index.html">
                             <img class="logo-default"
-                                 src="{{url(\App\Models\CmpGeneral::IMAGE_File_PATH.$logo->image)}}"
+                                 src="{{url('images/logo.png')}}"
                                  alt="" width="128"
                                  height="61"/>
                             <img class="logo-inverse"
-                                 src="{{url(\App\Models\CmpGeneral::IMAGE_File_PATH.$logo->image)}}" alt=""
+                                 src="{{url('images/logo.png')}}" alt=""
                                  width="128" height="61"/></a></div>
                 </div>
                 <div class="rd-navbar-aside-right">
@@ -100,21 +100,29 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="rd-navbar-aside-right-inner">
-                        <div class="rd-navbar-shop"><a class="rd-navbar-shop-icon fa fa-bell"
-                                                       href="#">
-                                    <em class="btn-danger badge">
-                                        {{Auth::user()->notifications->count()}}
-                                    </em>
-                                @if(Auth::user()->notifications)
-                                    <ul class="rd-navbar-dropdown"
-                                        style="{{$dir=='rtl'?'right:auto !important;left:0':''}}">
-                                        @foreach(Auth::user()->notifications as $notification)
-                                                <li>{{trans('app.request_replay')}}</li>
+                    <div class="rd-navbar-nav-wrap">
+                        <!-- RD Navbar Nav-->
+                        <ul class="rd-navbar-nav">
+                            <li><a href="#"><span class="fa fa-user fa-2x">  <em class="btn-danger badge"
+                                                                                 style="background-color: #ff353e !important;">
+                                        {{Auth::check()?Auth::user()->notifications->count():''}}
+                                    </em></span></a>
+                                <ul class="rd-navbar-dropdown"
+                                    style="{{$dir=='rtl'?'right:auto !important;left:0':''}}">
+                                    @if(Auth::check())
+                                        @if(Auth::user()->notifications)
+                                            @foreach(Auth::user()->notifications as $notification)
+                                                {{$notification->markAsRead()}}
+                                                <li>
+                                                    <a href="#">{{--{{trans('app.request_replay')}}--}}{!! $notification->data['title'] !!}</a>
+                                                    <em>{{$notification->data['date']}}</em>
+                                                </li>
                                             @endforeach
-                                    </ul>
-                                @endif
-                            </a></div>
+                                        @endif
+                                    @endif
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                     <div class="rd-navbar-aside-right-inner">
                         <div class="rd-navbar-shop"><a class="rd-navbar-shop-icon mdi mdi-cart"

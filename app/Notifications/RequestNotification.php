@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 
@@ -34,8 +35,8 @@ class RequestNotification extends Notification
     public function toDatabase()
     {
         return [
-            'title' => '',
-            'date' => ''
+            'title' => trans('app.'.$this->request['payment_way']),
+            'date' => Carbon::now()
         ];
     }
 
