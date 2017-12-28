@@ -1,4 +1,4 @@
-<section class="section section-variant-2 bg-gray-lighter">
+<section class="section section-variant-2 bg-gray-lighter" dir="ltr">
     <div class="shell shell-bigger">
         <div class="range range-ten range-50 range-sm-center range-lg-justify range-md-reverse">
             <div class="cell-sm-9 cell-md-5">

@@ -9,6 +9,7 @@ namespace App\Http\ViewComposers;
  * Time: 10:33 PM
  */
 use App\Models\Advantage;
+use App\Models\Blog;
 use App\Models\Career;
 use App\Models\ClientSay;
 use App\Models\CmpCounter;
@@ -38,6 +39,8 @@ class HomeComposer
         $sliders=Slider::all();
         $manager=Manager::first();
         $careers=Career::all();
-        $view->with(compact('counters','careers','manager','sliders', 'clientSay', 'courses', 'team', 'questions', 'services', 'products', 'sections','advantages'));
+        $prodcts=Product::paginate(4);
+        $blogss=Blog::paginate(4);
+        $view->with(compact('counters','prodcts','blogss','careers','manager','sliders', 'clientSay', 'courses', 'team', 'questions', 'services', 'products', 'sections','advantages'));
     }
 }

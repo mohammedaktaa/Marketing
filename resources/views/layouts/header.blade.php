@@ -108,14 +108,14 @@
                                         {{Auth::check()?Auth::user()->notifications->count():''}}
                                     </em></span></a>
                                 <ul class="rd-navbar-dropdown"
-                                    style="{{$dir=='rtl'?'right:auto !important;left:0':''}}">
+                                    style="{{$dir=='rtl'?'right:auto !important;left:0':'0'}}">
                                     @if(Auth::check())
                                         @if(Auth::user()->notifications)
                                             @foreach(Auth::user()->notifications as $notification)
                                                 {{$notification->markAsRead()}}
                                                 <li>
                                                     <a href="#">{{--{{trans('app.request_replay')}}--}}{!! $notification->data['title'] !!}</a>
-                                                    <em>{{$notification->data['date']}}</em>
+{{--                                                    <em>{{$notification->data['date']['date']}}</em>--}}
                                                 </li>
                                             @endforeach
                                         @endif

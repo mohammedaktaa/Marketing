@@ -122,7 +122,7 @@
 <script type="text/javascript" src="{{url('js/script.js')}}"></script>
 <script type="text/javascript" src="{{url('js/index.js')}}"></script>
 <script type="text/javascript" src="{{url('js/sweetalert.min.js')}}"></script>
-<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+{{--<script src="https://www.paypalobjects.com/api/checkout.js"></script>--}}
 @yield('scripts')
 {{--<script>--}}
     {{--paypal.Button.render({--}}

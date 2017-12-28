@@ -12,57 +12,23 @@
                 </div>
                 <hr class="divider divider-default">
             </div>
-            <div class="cell-lg-3 text-lg-right"><a class="button button-default-outline button-nina" href="shop-4-columns-layout.html">view all shop</a></div>
+            <div class="cell-lg-3 text-lg-right"><a class="button button-default-outline button-nina" href="{{localizeURL('products')}}">{{trans('app.view_all_products')}}</a></div>
         </div>
         <div class="range range-30 range-xl">
+            @foreach($prodcts as $prodct)
             <div class="cell-sm-6 cell-md-4 cell-lg-3 cell-xl-3">
                 <div class="product">
-                    <div class="product-image"><a href="product-page.html"><img src="images/book-01-188x246.jpg" alt="" width="188" height="246"/></a></div>
+                    <div class="product-image"><a href="#"><img src="{{asset('images/book-01-188x246.jpg')}}" alt="" width="188" height="246"/></a></div>
                     <div class="product-title">
-                        <h5><a href="product-page.html">Immutable Laws<br class="veil reveal-xxl-block">&nbsp;of Marketing</a></h5>
+                        <h5><a href="product-page.html">{{$prodct['name_'.$lang]}}</a></h5>
                     </div>
                     <div class="product-price">
-                        <h6>$27.00</h6>
+                        <h6>{{$prodct->price}}</h6>
                     </div>
-                    <div class="product-button"><a class="button button-secondary" href="shopping-cart.html">add to cart</a></div>
+                    <div class="product-button"><a class="button button-secondary" href="{{localizeURL('add-cart/'.$prodct->product_id.'/Product')}}">{{trans('app.add_to_cart')}}</a></div>
                 </div>
             </div>
-            <div class="cell-sm-6 cell-md-4 cell-lg-3 cell-xl-3">
-                <div class="product">
-                    <div class="product-image"><a href="product-page.html"><img src="images/book-02-188x246.jpg" alt="" width="188" height="246"/></a></div>
-                    <div class="product-title">
-                        <h5><a href="product-page.html">The Art of<br class="veil reveal-xxl-block">&nbsp;Leadership</a></h5>
-                    </div>
-                    <div class="product-price">
-                        <h6>$25.00</h6>
-                    </div>
-                    <div class="product-button"><a class="button button-secondary" href="shopping-cart.html">add to cart</a></div>
-                </div>
-            </div>
-            <div class="cell-sm-6 cell-md-4 cell-lg-3 cell-xl-3">
-                <div class="product">
-                    <div class="product-image"><a href="product-page.html"><img src="images/book-03-188x246.jpg" alt="" width="188" height="246"/></a></div>
-                    <div class="product-title">
-                        <h5><a href="product-page.html">The Basics of<br class="veil reveal-xxl-block">&nbsp;Web Design</a></h5>
-                    </div>
-                    <div class="product-price">
-                        <h6>$21.00</h6>
-                    </div>
-                    <div class="product-button"><a class="button button-secondary" href="shopping-cart.html">add to cart</a></div>
-                </div>
-            </div>
-            <div class="cell-sm-6 cell-md-4 cell-lg-3 cell-xl-3">
-                <div class="product">
-                    <div class="product-image"><a href="product-page.html"><img src="images/book-04-188x246.jpg" alt="" width="188" height="246"/></a></div>
-                    <div class="product-title">
-                        <h5><a href="product-page.html">Grid Systems in<br class="veil reveal-xxl-block">&nbsp;Web Design</a></h5>
-                    </div>
-                    <div class="product-price">
-                        <h6>$29.00</h6>
-                    </div>
-                    <div class="product-button"><a class="button button-secondary" href="shopping-cart.html">add to cart</a></div>
-                </div>
-            </div>
+                @endforeach
         </div>
     </div>
 </section>

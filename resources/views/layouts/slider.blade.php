@@ -1,4 +1,4 @@
-<section class="breadcrumbs-custom-svg text-center">
+<section class="breadcrumbs-custom-svg text-center" dir="ltr">
     <!-- Swiper-->
     <div class="swiper-container swiper-slider swiper-slider_height-1 swiper-main" data-loop="false"
          data-autoplay="5500" data-simulate-touch="false" data-slide-effect="fade">

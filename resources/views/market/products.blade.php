@@ -28,7 +28,7 @@
                                     </div>
                                     <div class="figcaption">
                                         <h5 class="book-title"><a
-                                                    href="product-page.html">{{$product['name_'.$lang]}}</a></h5>
+                                                    href="#">{{$product['name_'.$lang]}}</a></h5>
                                         <div class="book-price">
                                             <div class="heading-6">{{$product->price}}$</div>
                                         </div>

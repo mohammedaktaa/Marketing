@@ -5,9 +5,9 @@
                 <div class="cell-sm-10 cell-md-7 cell-lg-6">
                     <div class="section-md">
                         <div class="shell-custom-inner">
-                            <h3>newsletter</h3>
+                            <h3>{{trans('app.newsletter')}}</h3>
                             <hr class="divider divider-left divider-default">
-                            <p>Keep up with our always upcoming product features and technologies. Enter your e-mail and subscribe to our newsletter.</p>
+                            <p>{{trans('app.letter')}}</p>
                             <!-- RD Mailform: Subscribe-->
                             <form class="rd-mailform rd-mailform-inline rd-mailform-sm rd-mailform-inline-modern" data-form-output="form-output-global" data-form-type="subscribe" method="post" action="bat/rd-mailform.php">
                                 <div class="rd-mailform-inline-inner">

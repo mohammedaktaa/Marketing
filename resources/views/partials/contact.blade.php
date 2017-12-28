@@ -4,10 +4,10 @@
             <div class="cell-xl-8">
                 <div class="box-cta box-cta-inline">
                     <div class="box-cta-inner">
-                        <h3 class="box-cta-title">do you need a consultation?</h3>
-                        <p>Feel free to contact us if you have any questions on how you can use Brave.</p>
+                        <h3 class="box-cta-title">{{trans('app.consolution')}}</h3>
+                        <p>{{trans('app.contact_content')}}</p>
                     </div>
-                    <div class="box-cta-inner"><a class="button button-default-outline button-nina" href="contacts.html">learn more</a></div>
+                    <div class="box-cta-inner"><a class="button button-default-outline button-nina" href="{{route('page',['page'=>'contact'])}}">learn more</a></div>
                 </div>
             </div>
         </div>

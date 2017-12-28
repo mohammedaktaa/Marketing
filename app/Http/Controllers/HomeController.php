@@ -36,7 +36,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        dd(Auth::user()->notifications[0]->data);
+//        dd(Auth::user()->notifications[0]->data['date']['date']);
         return view('home');
     }
 

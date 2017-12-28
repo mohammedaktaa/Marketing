@@ -168,6 +168,7 @@ return [
     'frequently_asked_questions'=>'الأسئلة الشائعة',
     'study_with_us'=>'ادرس معنا',
     'view_all_courses'=>'كل الدورات',
+    'view_all_products'=>'كل المنتجات',
     'meet_our_people'=>'قابل مسؤولينا',
     'our_team'=>'فريقنا',
     'view_all_team'=>'كل الفريق',
@@ -290,6 +291,11 @@ return [
     'styles'=>"الثيمة",
     'accepted'=>'لقد تم حفظ السعر لهذا الطلب.',
     'admin_panel'=>'لوحة التحكم',
-    'request_replay'=>'لديك رد عل الخدمة التي طلبتها.'
+    'request_replay'=>'لديك رد عل الخدمة التي طلبتها.',
+    'letter'=>'ابقى على تواصل دائم وكن على علم بأحدث المنتجات.ادخل إيميلك للاشتراك.',
+    'newsletter'=>'رسالة',
+    'consolution'=>'هل تحتاج للمساعدة؟',
+    'contact_content'=>'اشعر بالراحة عندما تسأل انكوم.',
+    'continue_reading'=>'قراءة المزيد...'
 
 ];

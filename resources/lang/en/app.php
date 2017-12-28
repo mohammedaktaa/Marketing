@@ -170,6 +170,7 @@ return [
     'frequently_asked_questions'=>'Frequently Asked Questions',
     'study_with_us'=>'Study With Us',
     'view_all_courses'=>'View All Courses',
+    'view_all_products'=>'View All Products',
     'meet_our_people'=>'Meet Our People',
     'our_team'=>'Our Team',
     'view_all_team'=>'View All Team',
@@ -292,5 +293,10 @@ return [
     'styles'=>'Styles',
     'accepted'=>'The request price has saved.',
     'admin_panel'=>'Admin Panel',
-    'request_replay'=>'You have a replay for your service.'
+    'request_replay'=>'You have a replay for your service.',
+    'letter'=>'Keep up with our always upcoming product features and technologies. Enter your e-mail and subscribe to our newsletter.',
+    'newsletter'=>'Newsletter',
+    'consolution'=>'Do You Need AConsultation?',
+    'contact_content'=>'Feel free to contact us if you have any questions on how you can use Inkom.',
+    'continue_reading'=>'Continue reading'
 ];

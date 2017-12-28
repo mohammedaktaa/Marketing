@@ -7,61 +7,26 @@
             </div>
         </div>
         <div class="range range-30 range-xs-center">
+            @foreach($blogss as $blogs)
             <div class="cell-sm-6 cell-lg-5 cell-xl-6">
                 <article class="post-blog-large">
-                    <figure class="post-blog-large-image"><img src="images/blog-01-868x640.jpg" alt="" width="868" height="640"/>
+                    <figure class="post-blog-large-image"><img src="{{asset('images/blog-01-868x640.jpg')}}" alt="" width="868" height="640"/>
                     </figure>
                     <ul class="post-blog-meta">
-                        <li><span>by</span>&nbsp;<a href="about-me.html">Ronald Chen</a></li>
+                        <li><span>by</span>&nbsp;<a href="#">{{$blogs->user->name}}</a></li>
                         <li>
-                            <time datetime="2017">Feb, 27 2017 at 5:47 pm</time>
+                            <time datetime="2017">{{$blogs->created_at->format('Y-m-d')}}</time>
                         </li>
                     </ul>
                     <div class="post-blog-large-caption">
                         <ul class="post-blog-tags">
-                            <li><a class="button-tags" href="single-post.html">News</a></li>
-                        </ul><a class="post-blog-large-title" href="single-post.html">How to Turn Small Talk <br class="veil reveal-sm"> into Smart Conversation</a>
-                        <p class="post-blog-large-text">One way to get beyond small talk is to ask open-ended questions. Aim for questions that invite people to tell stories, rather than give bland, one-word answers.</p><a class="button button-xs button-secondary button-nina" href="single-post.html">Continue reading</a>
+                            <li><a class="button-tags" href="#">{{$blogs->tag['name_'.$lang]}}</a></li>
+                        </ul><a class="post-blog-large-title" href="{{localizeURL('blogs/'.$blogs->blog_id)}}">{{$blogs->title}}<br class="veil reveal-sm"></a>
+                        <p class="post-blog-large-text">{!! str_limit(strip_tags($blogs->content,"<u><i>"),300) !!}</p><a class="button button-xs button-secondary button-nina" href="{{localizeURL('blogs/'.$blogs->blog_id)}}">{{trans('app.continue_reading')}}</a>
                     </div>
                 </article>
             </div>
-            <div class="cell-sm-6 cell-lg-5 cell-xl-3">
-                <article class="post-blog"><a class="post-blog-image" href="single-post.html"><img src="images/blog-02-868x640.jpg" alt="" width="868" height="640"/></a>
-                    <div class="post-blog-caption">
-                        <div class="post-blog-caption-header">
-                            <ul class="post-blog-tags">
-                                <li><a class="button-tags" href="single-post.html">Tips & Tricks</a></li>
-                            </ul>
-                            <ul class="post-blog-meta">
-                                <li><span>by</span>&nbsp;<a href="about-me.html">Ronald Chen</a></li>
-                            </ul>
-                        </div>
-                        <div class="post-blog-caption-body">
-                            <h5><a class="post-blog-title" href="single-post.html">The Top 5 Reasons Why ‘The Customer Is Always Right’ Is Wrong</a></h5>
-                        </div>
-                        <div class="post-blog-caption-footer">
-                            <time datetime="2017">Feb 27, 2017 at 6:53 pm</time><a class="post-comment" href="single-post.html"><span class="icon icon-md-middle icon-gray-1 mdi mdi-comment"></span><span>12</span></a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            <div class="cell-sm-12 cell-lg-10 cell-xl-3">
-                <div class="range range-30">
-                    <div class="cell-sm-6 cell-xl-12"><a class="post-blog-quote" href="single-post.html">
-                            <div class="quote-primary">
-                                <svg class="quote-primary-mark" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="35px" height="25px" viewbox="0 0 35 25">
-                                    <path d="M27.461,10.206h7.5v15h-15v-15L25,0.127h7.5L27.461,10.206z M7.539,10.206h7.5v15h-15v-15L4.961,0.127h7.5                                      L7.539,10.206z"></path>
-                                </svg>
-                                <div class="quote-primary-text">
-                                    <p>Success is the result of preparation, hard work, and learning from failure.</p>
-                                </div>
-                                <p class="quote-primary-meta"><span>by</span><span class="cite">Ronald Chen</span></p>
-                            </div></a></div>
-                    <div class="cell-sm-6 cell-xl-12"><a class="post-blog-video" href="single-post.html">
-                            <figure><img src="images/blog-post-video-01-420x305.jpg" alt="" width="420" height="305"/>
-                            </figure><span class="icon mdi mdi-play-circle-outline"></span></a></div>
-                </div>
-            </div>
+                @endforeach
         </div><a class="button button-secondary button-nina" href="{{localizeURL('blogs')}}">{{trans('app.view_all_blog_posts')}}</a>
     </div>
 </section>

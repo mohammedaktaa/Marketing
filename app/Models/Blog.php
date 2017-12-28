@@ -17,7 +17,7 @@ class Blog extends Model
 
     public function user()
     {
-        return self::belongsTo(User::class, 'id', 'user_id');
+        return self::belongsTo(User::class, 'user_id', 'id');
     }
 
     public function comment()
