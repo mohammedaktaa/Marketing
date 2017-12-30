@@ -40,7 +40,7 @@ class AttributePageFactory extends GlobalFactory
                 else
                 $table->addAutocomplete('admin/pages-autocomplete',trans('app.page'),'page_id','page_id','page.page_name','req required');
                 $table->addAutocomplete('admin/attributes-autocomplete',trans('app.attribute'),'attribute_id','attribute_id','attribute.text','req required')
-                ->addInputText(trans('app.value'), 'attribute_value', 'attribute_value', 'req required')
+                ->addTextArea(trans('app.value'), 'attribute_value', 'attribute_value', 'req required')
                 ->addActionButton($this->update, 'update', 'update')
                 ->addActionButton($this->delete, 'delete', 'delete')
                 ->addNavButton();

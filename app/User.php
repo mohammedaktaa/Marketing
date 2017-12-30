@@ -21,7 +21,8 @@ class User extends Authenticatable
         'name', 'email', 'image', 'is_admin', 'password', 'account_money'
     ];
 
-    /**
+    const IMAGE_URL_PATH='images/users/';
+    const IMAGE_File_PATH = 'storage/images/users/';    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
@@ -33,6 +34,11 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->is_admin == 1 ? true : false;
+    }
+
+    public function getImageFileSystem()
+    {
+        return storage_path('app\\public\\' . self::IMAGE_File_PATH . $this->image);
     }
 
 }

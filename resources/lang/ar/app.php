@@ -4,7 +4,7 @@ return [
     'project_name'=>'انكوم',
     '404' => 'عذراً... الصفحة التي قمت بطلبها غير موجودة في نظامنا',
     'name' => 'الاسم',
-    'copyright' => 'جميع الحقوق محفوظة &copy; '.date('Y').' مجموعة أتوماتا 4',
+    'copyright' => 'جميع الحقوق محفوظة &copy; '.date('Y'),
     'read_more' => 'إقرأ المزيد',
     'back' => 'عودة',
     'solutions'=>'الحلول',
@@ -296,6 +296,17 @@ return [
     'newsletter'=>'رسالة',
     'consolution'=>'هل تحتاج للمساعدة؟',
     'contact_content'=>'اشعر بالراحة عندما تسأل انكوم.',
-    'continue_reading'=>'قراءة المزيد...'
-
+    'continue_reading'=>'قراءة المزيد...',
+    'blogs'=>'المدونات',
+    'contact_mails'=>'الرسائل البريدية',
+    'contact-mails'=>'الرسائل البريدية',
+    'accept'=>'هل تريد الموافقة على هذا السعر؟ ',
+    'is_admin'=>'هل هو أدمن؟',
+    'all'=>'الكل',
+    'modern_blogs'=>'احدث المدونات',
+    'modern_courses'=>'أحدث الدورات',
+    'modern_products'=>'أحدث المنتجات',
+    'new_sign_up'=>'تسجيل عضو جديد؟',
+    'learn_more'=>'اعرف المزيد',
+    'settings_website'=>'إعدادات الموقع'
 ];

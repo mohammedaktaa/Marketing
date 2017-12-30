@@ -38,14 +38,40 @@ function _loadEvents($container, callback) {
     _timePicker($container);
 }
 
+function _accept($id,$price) {
+    swal({
+            title: accept+$price,
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: language.ok,
+            cancelButtonText: language.cancel
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                   type:'POST',
+                   url:baseUrl+'request-accept'+'/'+$id,
+                    data:{_token:_csrf},
+                    success:function (data) {
+                        swal({
+                            type: "success",
+                            confirmButtonColor: "#31A788",
+                            confirmButtonText: language.ok
+                        });
+                    }
+                });
+            }
+        });
+}
 
 function _scroll() {
     $('body').niceScroll({
-        cursorcolor: "#564aa3",
+        cursorcolor: style==='pink'?"#FF2558":"#564aa3",
         cursorwidth: "5px",
         zindex: 9999999,
         background: "rgba(20,20,20,0.7)",
-        cursorborder: "1px solid #564aa3",
+        cursorborder: "1px solid "+style==='pink'?"#FF2558":"#564aa3",
         cursorborderradius: 10
     });
 }

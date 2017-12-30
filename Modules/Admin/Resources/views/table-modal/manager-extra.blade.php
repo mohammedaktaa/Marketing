@@ -38,7 +38,6 @@
     @endif
     function admin_update_image($this) {
         var obj = _aut_datatable_getSelectedRow(_aut_datatable_getTableObjectApi('#{{$table}}'), $($($this).closest('tr')));
-        console.log(obj);
         var $imageUrl = $(obj.image).attr('src');
         if (typeof ($imageUrl) == typeof (undefined))
             $imageUrl = $(obj.image).find('img').attr('src');

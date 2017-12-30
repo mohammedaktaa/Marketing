@@ -41,6 +41,10 @@ class HomeComposer
         $careers=Career::all();
         $prodcts=Product::paginate(4);
         $blogss=Blog::paginate(4);
-        $view->with(compact('counters','prodcts','blogss','careers','manager','sliders', 'clientSay', 'courses', 'team', 'questions', 'services', 'products', 'sections','advantages'));
+        $blog4=Blog::orderBy('created_at')->paginate(4);
+        $address='Oman';
+        $phone='096321545';
+        $email='Zeyad@gmail.com';
+    $view->with(compact('counters','phone','blog4','email','address','prodcts','blogss','careers','manager','sliders', 'clientSay', 'courses', 'team', 'questions', 'services', 'products', 'sections','advantages'));
     }
 }

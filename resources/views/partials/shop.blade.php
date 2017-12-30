@@ -18,14 +18,17 @@
             @foreach($prodcts as $prodct)
             <div class="cell-sm-6 cell-md-4 cell-lg-3 cell-xl-3">
                 <div class="product">
-                    <div class="product-image"><a href="#"><img src="{{asset('images/book-01-188x246.jpg')}}" alt="" width="188" height="246"/></a></div>
+                    <div class="product-image"><a href="#"><img src="{{$prodct->image!=null?asset(\App\Models\Product::IMAGE_File_PATH.$prodct->image):asset('images/book-01-188x246.jpg')}}" alt="" width="188" height="246"/></a></div>
                     <div class="product-title">
-                        <h5><a href="product-page.html">{{$prodct['name_'.$lang]}}</a></h5>
+                        <h5><a href="#">{{$prodct['name_'.$lang]}}</a></h5>
                     </div>
                     <div class="product-price">
                         <h6>{{$prodct->price}}</h6>
                     </div>
-                    <div class="product-button"><a class="button button-secondary" href="{{localizeURL('add-cart/'.$prodct->product_id.'/Product')}}">{{trans('app.add_to_cart')}}</a></div>
+                    <a class="button button-secondary button-nina button-lg"
+                       href="{{localizeURL('add-cart/'.$prodct->product_id.'/Product')}}"
+                       data-custom-scroll-to="#start" data-caption-animate="fxRotateInDown"
+                       data-caption-delay="550" style="padding: 10px 0px !important; width: 75%">{{trans('app.add_to_cart')}}</a>
                 </div>
             </div>
                 @endforeach

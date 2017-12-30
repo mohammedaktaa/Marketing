@@ -17,7 +17,7 @@ use App\Models\Page;
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/', 'HomeController@index');
+//    Route::get('/', 'HomeController@index')->name('home');
     Auth::routes();
     Route::get('logout', 'Auth\LoginController@logout');
     Route::get('page/{page}','HomeController@page')->name('page');
@@ -26,7 +26,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::resource('courses', 'CourseController');
     Route::post('blog/comment/{id}', 'BlogController@comment');
     Route::get('requests', 'HomeController@requests');
-    Route::post('request', 'HomeController@request')->middleware('auht');
+    Route::post('request', 'HomeController@request')->middleware('auth');
+    Route::post('request-accept/{id}', 'HomeController@acceptRequest')->middleware('auth');
     Route::get('pay/product/{id}', 'ProductController@payNow');
     Route::get('pay-local/product/{id}', 'ProductController@payLocalNow');
     Route::get('pay-local/{sum}', 'HomeController@payLocalNow');
@@ -42,5 +43,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get('career/{id}', 'HomeController@career');
     Route::get('privacy', 'HomeController@privacy');
     Route::post('request/send/{id}', 'HomeController@sendRequest');
+    Route::post('contact','HomeController@contact');
+    Route::get('services','HomeController@services');
+    Route::get('team','HomeController@team');
 });
 

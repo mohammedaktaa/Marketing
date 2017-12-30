@@ -9,42 +9,43 @@
         <hr class="divider divider-default">
         <div class="range range-xs-center range-50">
             @foreach($advantages as $advantage)
-            <div class="cell-sm-9 cell-md-4">
-                <div class="thumbnail-classic unit unit-sm-horizontal unit-md-vertical">
-                    <div class="thumbnail-classic-icon unit-left"><span class="{{$advantage->icon}} fa-2x"></span></div>
-                    <div class="thumbnail-classic-caption unit-body">
-                        <h6 class="thumbnail-classic-title">{{$advantage['title_'.$lang]}}</h6>
-                        <hr class="divider divider-default divider-sm"/>
-                        <p class="thumbnail-classic-text">{{$advantage['content_'.$lang]}}</p>
+                <div class="cell-sm-9 cell-md-4">
+                    <div class="thumbnail-classic unit unit-sm-horizontal unit-md-vertical">
+                        <div class="thumbnail-classic-icon unit-left"><span class="{{$advantage->icon}} fa-2x"></span>
+                        </div>
+                        <div class="thumbnail-classic-caption unit-body">
+                            <h6 class="thumbnail-classic-title">{{$advantage['title_'.$lang]}}</h6>
+                            <hr class="divider divider-default divider-sm"/>
+                            <p class="thumbnail-classic-text">{!! $advantage['content_'.$lang] !!}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-                @endforeach
+            @endforeach
         </div>
     </div>
     <div class="parallax-scene-js parallax-scene" data-scalar-x="5" data-scalar-y="10">
         <div class="layer-01">
-            <div class="layer" data-depth="0.25"><img src="images/parallax-scene-01-132x133.png" alt="" width="132" height="133"/>
+            <div class="layer" data-depth="0.25"><img src="{{asset('images/parallax-scene-01-132x133.png')}}" alt="" width="132" height="133"/>
             </div>
         </div>
         <div class="layer-02">
-            <div class="layer" data-depth=".55"><img src="images/parallax-scene-02-186x208.png" alt="" width="186" height="208"/>
+            <div class="layer" data-depth=".55"><img src="{{asset('images/parallax-scene-02-186x208.png')}}" alt="" width="186" height="208"/>
             </div>
         </div>
         <div class="layer-03">
-            <div class="layer" data-depth="0.1"><img src="images/parallax-scene-03-108x120.png" alt="" width="108" height="120"/>
+            <div class="layer" data-depth="0.1"><img src="{{asset('images/parallax-scene-03-108x120.png')}}" alt="" width="108" height="120"/>
             </div>
         </div>
         <div class="layer-04">
-            <div class="layer" data-depth="0.35"><img src="images/parallax-scene-04-124x145.png" alt="" width="124" height="145"/>
+            <div class="layer" data-depth="0.35"><img src="{{asset('images/parallax-scene-04-124x145.png')}}" alt="" width="124" height="145"/>
             </div>
         </div>
         <div class="layer-05">
-            <div class="layer" data-depth="0.08"><img src="images/parallax-scene-05-100x101.png" alt="" width="100" height="101"/>
+            <div class="layer" data-depth="0.08"><img src="{{asset('images/parallax-scene-05-100x101.png')}}" alt="" width="100" height="101"/>
             </div>
         </div>
         <div class="layer-06">
-            <div class="layer" data-depth="0.7"><img src="images/parallax-scene-06-240x243.png" alt="" width="240" height="243"/>
+            <div class="layer" data-depth="0.7"><img src="{{asset('images/parallax-scene-06-240x243.png')}}" alt="" width="240" height="243"/>
             </div>
         </div>
     </div>

@@ -9,6 +9,8 @@ use App\Models\City;
 use App\Models\FontAwesome;
 use App\Models\MenuItem;
 use App\Models\Page;
+use App\Models\Tag;
+use App\User;
 use Illuminate\Http\Request;
 
 class AutoCompleteController extends Controller
@@ -53,6 +55,18 @@ class AutoCompleteController extends Controller
         $q = str_replace(' ', '%', $request->get('q', ''));
         $data = City::whereRaw('upper(cities.name_' . $this->lang . ') like upper(\'%' . $q . '%\')');
         return ['items' => $data->get(['name_' . $this->lang . ' as name', 'city_id as id'])];
+    }
+    public function tagsAutocomplete(Request $request)
+    {
+        $q = str_replace(' ', '%', $request->get('q', ''));
+        $data = Tag::whereRaw('upper(name_' . $this->lang . ') like upper(\'%' . $q . '%\')');
+        return ['items' => $data->get(['name_' . $this->lang . ' as name', 'tag_id as id'])];
+    }
+    public function usersAutocomplete(Request $request)
+    {
+        $q = str_replace(' ', '%', $request->get('q', ''));
+        $data = User::whereRaw('upper(name) like upper(\'%' . $q . '%\')');
+        return ['items' => $data->get(['name as name', 'id as id'])];
     }
 
 }

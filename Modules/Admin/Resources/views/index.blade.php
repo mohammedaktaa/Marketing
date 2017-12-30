@@ -1,4 +1,4 @@
-@extends('admin::layouts.master')
+@extends('admin::admin-layout.app1')
 
 @section('content')
     <section>
@@ -32,7 +32,7 @@
                                 <em class="icon-people fa-3x"></em>
                             </div>
                             <div class="col-xs-8 pv-lg">
-                                <div class="h2 mt0">{{$studebtsNum}}</div>
+{{--                                <div class="h2 mt0">{{$studebtsNum}}</div>--}}
                                 <div class="text-uppercase">{{trans('app.student')}}</div>
                             </div>
                         </div>

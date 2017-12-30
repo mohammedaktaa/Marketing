@@ -1,7 +1,5 @@
 @extends('layouts.app')
-    @section('title')
-        {{$pageName['title_'.$lang]}}
-        @endsection
+    @section('title',$info['title_'.$lang])
 @section('content')
     <section class="section fullwidth-page bg-gradient-3">
         <div class="fullwidth-page-inner">

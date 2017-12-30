@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Attribute;
 use App\Models\Career;
+use App\Models\ContactMail;
 use App\Models\Coupon;
 use App\Models\Page;
 use App\Models\PrivacyPolicy;
@@ -36,7 +37,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        dd(Auth::user()->notifications[0]->data['date']['date']);
         return view('home');
     }
 
@@ -88,7 +88,7 @@ class HomeController extends Controller
         return view('new-requests.requests', compact('types_request', 'paper_type', 'doc_type', 'yesNo', 'delivery_type', 'print_type', 'payment_type', 'other_choices'));
     }
 
-    public function request(Request $request, $id)
+    public function request(Request $request)
     {
         $req = new \App\Models\Request;
         $req->create($request->all());
@@ -168,13 +168,38 @@ class HomeController extends Controller
         $info = [];
         $pageContent = Page::where('page_name', $page)->with(['attributePage.attribute'])->first();
         $attrs = Attribute::all();
-        foreach ($pageContent->attributePage as $item) {
-            foreach ($attrs as $attr) {
-                if ($item->attribute->text == $attr->text)
-                    $info[$item->attribute->text] = [$item->attribute->text => $item->attribute_value];
+        if (isset($pageContent->attributePage)) {
+            foreach ($pageContent->attributePage as $item) {
+                foreach ($attrs as $attr) {
+                    if ($item->attribute->text == $attr->text)
+                        $info[$item->attribute->text] = [$item->attribute->text => $item->attribute_value];
+                }
+            }
+            if (isset($info['title_en'])){
+                $title_en=$info['title_en']['title_en'];
+                $info['title_en']=$title_en;
+            }
+            if (isset($info['title_ar'])){
+                $title_ar=$info['title_ar']['title_ar'];
+                $info['title_ar']=$title_ar;
+            }
+            if (isset($info['content_en'])){
+                $content_en=$info['content_en']['content_en'];
+                $info['content_en']=$content_en;
+            }
+            if (isset($info['content_ar'])){
+                $content_ar=$info['content_ar']['content_ar'];
+                $info['content_ar']=$content_ar;
+            }
+            if (isset($info['phone'])){
+                $phone=$info['phone']['phone'];
+                $info['phone']=$phone;
+            }
+            if (isset($info['address'])){
+                $address=$info['address']['address'];
+                $info['address']=$address;
             }
         }
-
         return view('pages.' . $page, compact('pageContent', 'info'));
     }
 
@@ -206,13 +231,34 @@ class HomeController extends Controller
         return view('privacy', compact('privacy'));
     }
 
-    public function sendRequest(Request $request,$id)
+    public function sendRequest(Request $request, $id)
     {
-//        $user = Auth::user();
-        $req=\App\Models\Request::findOrFail($id);
+        $req = \App\Models\Request::findOrFail($id);
         $req->update($request->all());
         $user=User::findOrFail($req->user_id);
         $user->notify(new RequestNotification($req));
+        return ['success' => true];
+    }
+
+    public function acceptRequest($id)
+    {
+        $req=\App\Models\Request::findOrFail($id);
+        $req->is_accepted='1';
+        $req->save();
+        return['success'=>true];
+    }
+
+    public function contact(Request $request)
+    {
+        $contact=ContactMail::create($request->input());
         return ['success'=>true];
+    }
+    public function services()
+    {
+        return view('market.services');
+    }
+    public function team()
+    {
+        return view('team');
     }
 }

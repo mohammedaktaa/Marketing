@@ -5,7 +5,7 @@
              data-md-layout="rd-navbar-fullwidth" data-md-device-layout="rd-navbar-fixed"
              data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static" data-md-stick-up-offset="2px"
              data-lg-stick-up-offset="2px" data-stick-up="true" data-sm-stick-up="true" data-md-stick-up="true"
-             data-lg-stick-up="true">
+             data-lg-stick-up="true" style="">
             <div class="rd-navbar-inner">
                 <!-- RD Navbar Panel-->
                 <div class="rd-navbar-panel">
@@ -80,6 +80,9 @@
                                                 <div class="row"
                                                      style="color: rgba(51,51,51,0.52)">{{trans('profile.email')}}
                                                     <b>{{Auth::user()->email}}</b></div>
+                                                <div class="row"
+                                                     style="color: rgba(51,51,51,0.52)">
+                                                    <b><a href="{{localizeURL('insert')}}">{{trans('app.insert_code')}}</a></b></div>
                                                 @if(Auth::user()->isAdmin())
                                                     <div class="row"
                                                          style="color: rgba(51,51,51,0.52)">
@@ -100,27 +103,50 @@
                             </li>
                         </ul>
                     </div>
+                    @if(Auth::check())
                     <div class="rd-navbar-nav-wrap">
                         <!-- RD Navbar Nav-->
                         <ul class="rd-navbar-nav">
-                            <li><a href="#"><span class="fa fa-user fa-2x">  <em class="btn-danger badge"
+                            <li><a href="#"><span class="fa fa-bell fa-2x">  <em class="btn-danger badge"
                                                                                  style="background-color: #ff353e !important;">
-                                        {{Auth::check()?Auth::user()->notifications->count():''}}
+                                        {{Auth::check()?Auth::user()->notifications->count():'0'}}
                                     </em></span></a>
-                                <ul class="rd-navbar-dropdown"
-                                    style="{{$dir=='rtl'?'right:auto !important;left:0':'0'}}">
-                                    @if(Auth::check())
+                                @if(Auth::check())
+                                    <ul class="rd-navbar-dropdown"
+                                        style="{{$dir=='rtl'?'right:auto !important;left:0':'0'}}">
                                         @if(Auth::user()->notifications)
                                             @foreach(Auth::user()->notifications as $notification)
                                                 {{$notification->markAsRead()}}
+                                            <form method="POST" action="{{localizeURL('request-accept')}}" enctype="multipart/form-data">
+                                                {{csrf_field()}}
                                                 <li>
-                                                    <a href="#">{{--{{trans('app.request_replay')}}--}}{!! $notification->data['title'] !!}</a>
-{{--                                                    <em>{{$notification->data['date']['date']}}</em>--}}
+                                                    <a href="#" data-id="{{$notification->data['id']}}" onclick="_accept('{{$notification->data['id']}}','{{$notification->data['price']}}')">{{--{{trans('app.request_replay')}}--}}{!! $notification->data['title'] !!}</a>
+                                                    {{--                                                    <em>{{$notification->data['date']['date']}}</em>--}}
                                                 </li>
+                                            </form>
                                             @endforeach
                                         @endif
-                                    @endif
-                                </ul>
+                                    </ul>
+                                @endif
+                            </li>
+                        </ul>
+                    </div>
+                    @endif
+                    <div class="rd-navbar-nav-wrap" >
+                        <!-- RD Navbar Nav-->
+                        <ul class="rd-navbar-nav" >
+                            <li><a href="#"><span class="icon icon-location fa-2x">   </span></a>
+                                    <ul class="rd-navbar-dropdown"
+                                        style=" {{$dir=='rtl'?'right:auto !important;left:0;text-align: left':'0'}} " dir="ltr">
+                                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                          <li><a href="{{LaravelLocalization::getLocalizedURL($localeCode)}}"
+                                               hreflang="{{$localeCode}}" class="">
+                                                        <img src="{{asset('images/icons/'.$localeCode.'.png')}}">
+                                                        {{ $properties['native'] }}
+                                            </a>
+                                          </li>
+                                        @endforeach
+                                    </ul>
                             </li>
                         </ul>
                     </div>
@@ -133,28 +159,7 @@
             </div>
         </nav>
     </div>
-    @if(URL::current()!=route('login'))
+    @if(URL::current()==route('home'))
         @include('layouts.slider')
     @endif
 </header>
-<script>
-    swal({
-        content: {
-            element: "input",
-            attributes: {
-                placeholder: "Type your password",
-                type: "password",
-            },
-        },
-    });
-    swal({
-        buttons: {
-            cancel: true,
-            confirm: "Confirm",
-            roll: {
-                text: "Do a barrell roll!",
-                value: "roll",
-            },
-        },
-    });
-</script>

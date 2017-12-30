@@ -16,7 +16,9 @@ class GeneralFactory extends GlobalFactory
         parent::__construct($table);
         $this->types=[
             'loader'=>trans('app.loader'),
-//            'slider_state'=>trans('app.slider_state'),
+            'phone'=>trans('app.phone'),
+            'email'=>trans('app.email'),
+            'address'=>trans('app.address'),
             'project_name'=>trans('app.name_project'),
             'logo'=>trans('app.logo')
         ];

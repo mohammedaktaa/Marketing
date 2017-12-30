@@ -29,7 +29,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="">
                     <a href="{{route('table',['table'=>'requests'])}}">
-                        <em class="fa fa-inbox"></em>
+                        <em class="fa fa-inbox" title="{{trans('app.requests')}}"><em class="badge" style="background-color: #ff353e">{{\App\Models\Request::where('is_accepted','0')->count()}}</em></em>
                     </a>
                 </li>
                 @if(Auth::check())
@@ -121,6 +121,12 @@
                                 </a>
                             </li>
                             <li class=" ">
+                                <a href="{{route('table',['table'=>'attributes'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'attributes'])){{ 'current' }}@endif ">
+                                    <em class="icon icon-menu"></em><span>{{trans('app.attributes')}}</span>
+                                </a>
+                            </li>
+                            <li class=" ">
                                 <a href="{{route('table',['table'=>'requests'])}}"
                                    class="@if(URL::current()==route('table',['table'=>'requests'])){{ 'current' }}@endif ">
                                     <em class="fa fa-spinner"></em><span>{{trans('app.requests')}}</span>
@@ -169,6 +175,12 @@
                                 </a>
                             </li>
                             <li class="">
+                                <a href="{{route('table',['table'=>'contact-mails'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'contact-mails'])){{ 'current' }}@endif ">
+                                    <em class="icon icon-envelope-open"></em> <span>{{trans('app.contact_mails')}}</span>
+                                </a>
+                            </li>
+                            <li class="">
                                 <a href="{{route('table',['table'=>'sections'])}}"
                                    class="@if(URL::current()==route('table',['table'=>'sections'])){{ 'current' }}@endif ">
                                     <em class="icon icon-layers"></em> <span>{{trans('app.sections')}}</span>
@@ -182,78 +194,100 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="">
-                        <a href="{{route('table',['table'=>'users'])}}"
-                           class="@if(URL::current()==route('table',['table'=>'users'])){{ 'current' }}@endif ">
-                            <em class="fa fa-group"></em> <span>{{trans('app.users')}}</span>
+                    <li class=" ">
+                        <a href="#settings_website" title="Elements" data-toggle="collapse">
+                            <em class="fa fa-cogs"></em>
+                            <span data-localize="sidebar.nav.element.SETTINGS">{{trans('app.settings_website')}}</span>
                         </a>
+                        <ul id="settings_website" class="nav sidebar-subnav collapse" style="{{$dir=='rtl'?'margin-right:10px':'margin-left:10px'}}">
+                            <li class="sidebar-subnav-header">{{trans('app.settings_website')}}</li>
+                            <li class="">
+                                <a href="{{route('table',['table'=>'users'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'users'])){{ 'current' }}@endif ">
+                                    <em class="fa fa-group"></em> <span>{{trans('app.users')}}</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="{{route('table',['table'=>'clients'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'clients'])){{ 'current' }}@endif ">
+                                    <em class="fa fa-group"></em> <span>{{trans('app.clients')}}</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="{{route('table',['table'=>'services'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'services'])){{ 'current' }}@endif ">
+                                    <em class="fa fa-server"></em> <span>{{trans('app.services')}}</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="{{route('table',['table'=>'blogs'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'blogs'])){{ 'current' }}@endif ">
+                                    <em class="icon-speech"></em> <span>{{trans('app.blogs')}}</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="{{route('table',['table'=>'advantages'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'advantages'])){{ 'current' }}@endif ">
+                                    <em class="fa fa-briefcase"></em> <span>{{trans('app.advantages')}}</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="{{route('table',['table'=>'courses'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'courses'])){{ 'current' }}@endif ">
+                                    <em class="fa fa-book"></em> <span>{{trans('app.courses')}}</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="{{route('table',['table'=>'team'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'team'])){{ 'current' }}@endif ">
+                                    <em class="fa fa-users"></em> <span>{{trans('app.team')}}</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="{{route('table',['table'=>'questions'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'questions'])){{ 'current' }}@endif ">
+                                    <em class="icon icon-question"></em> <span>{{trans('app.questions')}}</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="{{route('table',['table'=>'cards'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'cards'])){{ 'current' }}@endif ">
+                                    <em class="fa fa-credit-card"></em> <span>{{trans('app.cards')}}</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="{{route('table',['table'=>'coupons'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'coupons'])){{ 'current' }}@endif ">
+                                    <em class="icon-wallet"></em> <span>{{trans('app.coupons')}}</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="{{route('table',['table'=>'sliders'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'sliders'])){{ 'current' }}@endif ">
+                                    <em class="icon-map"></em> <span>{{trans('app.sliders')}}</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="{{route('table',['table'=>'manager'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'manager'])){{ 'current' }}@endif ">
+                                    <em class="icon-user"></em> <span>{{trans('app.about_manager')}}</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="{{route('table',['table'=>'careers'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'careers'])){{ 'current' }}@endif ">
+                                    <em class="fa fa-sign-in"></em> <span>{{trans('app.careers')}}</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="{{route('table',['table'=>'privacy'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'privacy'])){{ 'current' }}@endif ">
+                                    <em class="icon-notebook"></em> <span>{{trans('app.privacy')}}</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="">
-                        <a href="{{route('table',['table'=>'services'])}}"
-                           class="@if(URL::current()==route('table',['table'=>'services'])){{ 'current' }}@endif ">
-                            <em class="fa fa-server"></em> <span>{{trans('app.services')}}</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="{{route('table',['table'=>'advantages'])}}"
-                           class="@if(URL::current()==route('table',['table'=>'advantages'])){{ 'current' }}@endif ">
-                            <em class="fa fa-briefcase"></em> <span>{{trans('app.advantages')}}</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="{{route('table',['table'=>'courses'])}}"
-                           class="@if(URL::current()==route('table',['table'=>'courses'])){{ 'current' }}@endif ">
-                            <em class="fa fa-book"></em> <span>{{trans('app.courses')}}</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="{{route('table',['table'=>'team'])}}"
-                           class="@if(URL::current()==route('table',['table'=>'team'])){{ 'current' }}@endif ">
-                            <em class="fa fa-users"></em> <span>{{trans('app.team')}}</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="{{route('table',['table'=>'questions'])}}"
-                           class="@if(URL::current()==route('table',['table'=>'questions'])){{ 'current' }}@endif ">
-                            <em class="icon icon-question"></em> <span>{{trans('app.questions')}}</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="{{route('table',['table'=>'cards'])}}"
-                           class="@if(URL::current()==route('table',['table'=>'cards'])){{ 'current' }}@endif ">
-                            <em class="fa fa-credit-card"></em> <span>{{trans('app.cards')}}</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="{{route('table',['table'=>'coupons'])}}"
-                           class="@if(URL::current()==route('table',['table'=>'coupons'])){{ 'current' }}@endif ">
-                            <em class="icon-wallet"></em> <span>{{trans('app.coupons')}}</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="{{route('table',['table'=>'sliders'])}}"
-                           class="@if(URL::current()==route('table',['table'=>'sliders'])){{ 'current' }}@endif ">
-                            <em class="icon-map"></em> <span>{{trans('app.sliders')}}</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="{{route('table',['table'=>'manager'])}}"
-                           class="@if(URL::current()==route('table',['table'=>'manager'])){{ 'current' }}@endif ">
-                            <em class="icon-user"></em> <span>{{trans('app.about_manager')}}</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="{{route('table',['table'=>'careers'])}}"
-                           class="@if(URL::current()==route('table',['table'=>'careers'])){{ 'current' }}@endif ">
-                            <em class="fa fa-sign-in"></em> <span>{{trans('app.careers')}}</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="{{route('table',['table'=>'privacy'])}}"
-                           class="@if(URL::current()==route('table',['table'=>'privacy'])){{ 'current' }}@endif ">
-                            <em class="icon-notebook"></em> <span>{{trans('app.privacy')}}</span>
-                        </a>
-                    </li>
+
                 </ul>
                 <!-- END sidebar nav-->
             </nav>

@@ -298,5 +298,17 @@ return [
     'newsletter'=>'Newsletter',
     'consolution'=>'Do You Need AConsultation?',
     'contact_content'=>'Feel free to contact us if you have any questions on how you can use Inkom.',
-    'continue_reading'=>'Continue reading'
+    'continue_reading'=>'Continue reading',
+    'blogs'=>'Blogs',
+    'contact_mails'=>'Contact Mails',
+    'contact-mails'=>'Contact Mails',
+    'accept'=>'Do you want to accept this price? ',
+    'is_admin'=>'Is it Admin?',
+    'all'=>'All',
+    'modern_blogs'=>'Modern Blogs',
+    'modern_courses'=>'Modern Courses',
+    'modern_products'=>'Modern Products',
+    'new_sign_up'=>'New Sign Up?',
+    'learn_more'=>'Learn More',
+    'settings_website'=>'Settings Website'
 ];

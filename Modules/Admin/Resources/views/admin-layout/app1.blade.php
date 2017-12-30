@@ -24,29 +24,30 @@
     <link rel="stylesheet" href="{{asset('css/theme-g.css')}}" id="theme">
     @yield('styles')
     <style>
-        body {
-            font-family: "JF Flat Regular" !important;
+        body{
+            font-family: "Oswald", Helvetica, Arial, sans-serif;
+        @font-face {
+            font-family: "messeri";
+            src: url('../../../../../css/fonts/ElMessiri-SemiBold.ttf');
         }
-
+        @if($dir=='rtl')
+        * {
+            font-family: "messeri";
+        }
+        body {
+            font-family: "messeri";
+        }
+        @endif
+        }
     </style>
     <script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
 </head>
 <body class="">
 <div class="wrapper" style="position: absolute">
-    {{--<div class="preloader">--}}
-        {{--<div class="loader">--}}
-            {{--<div class="loader__figure"></div>--}}
-            {{--<p class="loader__label">Angle</p>--}}
-        {{--</div>--}}
-    {{--</div>--}}
     @include('admin::admin-layout.header')
     @yield('content')
     @include('admin::admin-layout.footer')
 </div>
-{{--@yield('modal')--}}
-<!-- =============== VENDOR SCRIPTS ===============-->
-{{--<script src="{{asset('js/modernizr.custom.js')}}"></script>--}}
-{{--<script src="{{asset('js/matchMedia.js')}}"></script>--}}
 
 <script>
     var language = {
@@ -67,6 +68,7 @@
     var dir = "{{$dir}}";
     var DIR = "{{$dir}}";
     var of = "@lang('app.of')";
+    var style='{{$style->value}}';
     var _csrf = '{{csrf_token()}}';
     var lang = '{{$lang}}';
     var LANG = '{{$lang}}';
@@ -82,6 +84,7 @@
 <script type="text/javascript" src="{{asset('js/jquery.storageapi.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.nicescroll.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/notify.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/moment-with-locales.min.js')}}"></script>
 <script type="text/javascript" src="{{asset ('js/plugins.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/functions.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery-request-types.js')}}"></script>

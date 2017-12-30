@@ -7,11 +7,15 @@ Route::group(['middleware' => ['web','auth','auth.admin'], 'prefix' => LaravelLo
     Route::get('menu-items-autocomplete','AutoCompleteController@menuItemAutocomplete');
     Route::get('icons-autocomplete','AutoCompleteController@iconAutocomplete');
     Route::get('pages-autocomplete','AutoCompleteController@pageAutocomplete');
+    Route::get('users-autocomplete','AutoCompleteController@usersAutocomplete');
+    Route::get('tags-autocomplete','AutoCompleteController@tagsAutocomplete');
     Route::get('city-autocomplete','AutoCompleteController@cityAutocomplete');
     Route::get('attributes-autocomplete','AutoCompleteController@attributeAutocomplete');
     Route::put('courses/{id}','AdminController@updateImageCourses');
     Route::put('products/{id}','AdminController@updateImageCourses');
     Route::put('team/{id}','AdminController@updateImageTeam');
+    Route::put('users/{id}','AdminController@updateImageUser');
+    Route::put('blogs/{id}','AdminController@updateImageBlog');
     Route::put('manager/{id}','AdminController@updateImageManager');
     Route::put('generals/{id}','AdminController@updateImageGenerals');
     Route::post('upload-image/{resize?}', 'AdminController@uploadImage');

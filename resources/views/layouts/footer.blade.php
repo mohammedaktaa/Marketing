@@ -5,7 +5,7 @@
              data-styles="[ { &quot;featureType&quot;: &quot;all&quot;, &quot;elementType&quot;: &quot;labels.text.fill&quot;, &quot;stylers&quot;: [ { &quot;saturation&quot;: 36 }, { &quot;color&quot;: &quot;#000000&quot; }, { &quot;lightness&quot;: 40 } ] }, { &quot;featureType&quot;: &quot;all&quot;, &quot;elementType&quot;: &quot;labels.text.stroke&quot;, &quot;stylers&quot;: [ { &quot;visibility&quot;: &quot;on&quot; }, { &quot;color&quot;: &quot;#000000&quot; }, { &quot;lightness&quot;: 16 } ] }, { &quot;featureType&quot;: &quot;all&quot;, &quot;elementType&quot;: &quot;labels.icon&quot;, &quot;stylers&quot;: [ { &quot;visibility&quot;: &quot;off&quot; } ] }, { &quot;featureType&quot;: &quot;administrative&quot;, &quot;elementType&quot;: &quot;geometry.fill&quot;, &quot;stylers&quot;: [ { &quot;color&quot;: &quot;#000000&quot; }, { &quot;lightness&quot;: 20 } ] }, { &quot;featureType&quot;: &quot;administrative&quot;, &quot;elementType&quot;: &quot;geometry.stroke&quot;, &quot;stylers&quot;: [ { &quot;color&quot;: &quot;#000000&quot; }, { &quot;lightness&quot;: 17 }, { &quot;weight&quot;: 1.2 } ] }, { &quot;featureType&quot;: &quot;landscape&quot;, &quot;elementType&quot;: &quot;geometry&quot;, &quot;stylers&quot;: [ { &quot;color&quot;: &quot;#000000&quot; }, { &quot;lightness&quot;: 20 } ] }, { &quot;featureType&quot;: &quot;poi&quot;, &quot;elementType&quot;: &quot;geometry&quot;, &quot;stylers&quot;: [ { &quot;color&quot;: &quot;#000000&quot; }, { &quot;lightness&quot;: 21 } ] }, { &quot;featureType&quot;: &quot;road.highway&quot;, &quot;elementType&quot;: &quot;geometry.fill&quot;, &quot;stylers&quot;: [ { &quot;color&quot;: &quot;#000000&quot; }, { &quot;lightness&quot;: 17 } ] }, { &quot;featureType&quot;: &quot;road.highway&quot;, &quot;elementType&quot;: &quot;geometry.stroke&quot;, &quot;stylers&quot;: [ { &quot;color&quot;: &quot;#000000&quot; }, { &quot;lightness&quot;: 29 }, { &quot;weight&quot;: 0.2 } ] }, { &quot;featureType&quot;: &quot;road.arterial&quot;, &quot;elementType&quot;: &quot;geometry&quot;, &quot;stylers&quot;: [ { &quot;color&quot;: &quot;#000000&quot; }, { &quot;lightness&quot;: 18 } ] }, { &quot;featureType&quot;: &quot;road.local&quot;, &quot;elementType&quot;: &quot;geometry&quot;, &quot;stylers&quot;: [ { &quot;color&quot;: &quot;#000000&quot; }, { &quot;lightness&quot;: 16 } ] }, { &quot;featureType&quot;: &quot;transit&quot;, &quot;elementType&quot;: &quot;geometry&quot;, &quot;stylers&quot;: [ { &quot;color&quot;: &quot;#000000&quot; }, { &quot;lightness&quot;: 19 } ] }, { &quot;featureType&quot;: &quot;water&quot;, &quot;elementType&quot;: &quot;geometry&quot;, &quot;stylers&quot;: [ { &quot;color&quot;: &quot;#000000&quot; }, { &quot;lightness&quot;: 17 } ] } ]">
             <ul class="map_locations">
                 <li data-y="40.643180" data-x="-73.9874068">
-                    <p>9870 St Vincent Place, Glasgow, DC 45 Fr 45.</p>
+                    <p>{{$address?$address:'9870 St Vincent Place, Glasgow, DC 45 Fr 45.'}}</p>
                 </li>
             </ul>
         </div>
@@ -155,48 +155,15 @@
                 </div>
             </div>
             <div class="cell-sm-8 cell-md-5 cell-lg-3">
-                <h6>recent blog posts</h6>
+                <h6>{{trans('app.recent_blog_posts')}}</h6>
                 <div class="blog-inline-wrap">
-                    <!-- Blog Inline-->
-                    <article class="blog-inline">
-                        <div class="blog-inline-title"><a href="single-post.html">How to Turn Small Talk Into Smart
-                                Conversation</a></div>
-                        <ul class="blog-inline-meta">
-                            <li><a href="single-post.html"> 2 days ago</a></li>
-                            <li>
-                                by&nbsp;<a class="text-normal" href="single-post.html">Ronald Chen</a></li>
-                        </ul>
-                    </article>
-                    <!-- Blog Inline-->
-                    <article class="blog-inline">
-                        <div class="blog-inline-title"><a href="single-post.html">The Top 5 Reasons Why ‘The Customer Is
-                                Always Right’ Is Wrong</a></div>
-                        <ul class="blog-inline-meta">
-                            <li><a href="single-post.html"> 2 days ago</a></li>
-                            <li>
-                                by&nbsp;<a class="text-normal" href="single-post.html">Ronald Chen</a></li>
-                        </ul>
-                    </article>
-                    <!-- Blog Inline-->
-                    <article class="blog-inline">
-                        <div class="blog-inline-title"><a href="single-post.html">Think You’re Too Old to Be an
-                                Entrepreneur? Think Again.</a></div>
-                        <ul class="blog-inline-meta">
-                            <li><a href="single-post.html"> 2 days ago</a></li>
-                            <li>
-                                by&nbsp;<a class="text-normal" href="single-post.html">Ronald Chen</a></li>
-                        </ul>
-                    </article>
-                    <!-- Blog Inline-->
-                    <article class="blog-inline">
-                        <div class="blog-inline-title"><a href="single-post.html">Why Google Doesn’t Care About College
-                                Degrees</a></div>
-                        <ul class="blog-inline-meta">
-                            <li><a href="single-post.html"> 2 days ago</a></li>
-                            <li>
-                                by&nbsp;<a class="text-normal" href="single-post.html">Ronald Chen</a></li>
-                        </ul>
-                    </article>
+                    @foreach($blog4 as $item)
+                        <article class="post-minimal">
+                            <p class="post-minimal-title"><a href="{{localizeURL('blogs/'.$item->blog_id)}}">{{$item->title}}</a></p>
+                            <time class="post-minimal-time"
+                                  datetime="2017">{{$item->created_at->format(' j F Y')}} {{trans('app.at')}} {{$item->created_at->format('H:i:s')}}</time>
+                        </article>
+                     @endforeach
                 </div>
             </div>
             <div class="cell-lg-8">
@@ -216,11 +183,7 @@
                         </ul>
                     </div>
                     <div class="cell-sm-10 cell-md-7 cell-lg-7 cell-xl-6">
-                        <p class="right">&#169;&nbsp;<span class="copyright-year"></span> All Rights Reserved&nbsp;<a
-                                    href="#">Terms of Use</a>&nbsp;and&nbsp;<a href="privacy-policy.html">Privacy
-                                Policy</a></p>
-                        More <a rel="nofollow" href="http://www.templatemonster.com/category.php?category=347&type=1"
-                                target="_blank">Web Development Templates at TemplateMonster.com</a>
+                        <p class="right">&#169;&nbsp;<span class="copyright-year"></span> {{trans('app.copyright')}}</p>
                     </div>
                 </div>
             </div>

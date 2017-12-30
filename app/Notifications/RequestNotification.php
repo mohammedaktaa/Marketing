@@ -35,6 +35,8 @@ class RequestNotification extends Notification
     public function toDatabase()
     {
         return [
+            'id'=>$this->request['request_id'],
+            'price'=>$this->request['price'],
             'title' => trans('app.'.$this->request['payment_way']),
             'date' => Carbon::now()
         ];

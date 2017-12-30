@@ -5,7 +5,7 @@
         <div class="fullwidth-page-inner">
             <div class="section-md text-center">
                 <div class="shell-wide">
-                    <h1 class="breadcrumbs-custom-subtitle">404</h1>
+                    <p class="heading-1 breadcrumbs-custom-title">404</p>
                 </div>
             </div>
         </div>

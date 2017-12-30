@@ -10,7 +10,7 @@
             @foreach($blogss as $blogs)
             <div class="cell-sm-6 cell-lg-5 cell-xl-6">
                 <article class="post-blog-large">
-                    <figure class="post-blog-large-image"><img src="{{asset('images/blog-01-868x640.jpg')}}" alt="" width="868" height="640"/>
+                    <figure class="post-blog-large-image"><img src="{{$blogs->image?asset(\App\Models\Blog::IMAGE_File_PATH.$blogs->image):asset('images/blog-01-868x640.jpg')}}" alt="" width="868" height="640"/>
                     </figure>
                     <ul class="post-blog-meta">
                         <li><span>by</span>&nbsp;<a href="#">{{$blogs->user->name}}</a></li>

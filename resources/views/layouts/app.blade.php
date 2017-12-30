@@ -26,16 +26,26 @@
 
     @yield('styles')
     <style>
-        body {
-            font-family: "JF Flat Regular" !important;
-        }
         .page-loader .page-loader-body:before {
             content: '{{$loader->value}}' !important; ;
+            font-family: mess;
         }
+        @font-face {
+            font-family: "messeri";
+            src: url('../../../css/fonts/ElMessiri-SemiBold.ttf');
+        }
+        @if($dir=='rtl')
+        * {
+            font-family: "messeri";
+        }
+        body {
+            font-family: "messeri";
+        }
+        @endif
     </style>
 </head>
 <body class="">
-<div class="page">
+<div class="page" style="">
     <div class="page-loader">
         <div class="page-loader-body">
 
@@ -98,9 +108,15 @@
 <script type="text/javascript" src="{{url('js/jquery-1-2.js')}}"></script>
 
 <script>
+    var language = {
+        'ok': '@lang("app.sweet.ok")',
+        'cancel': "@lang('app.sweet.cancel')",
+    };
     var success_payed='{{trans('app.success_payed')}}';
+    var accept='{{trans('app.accept')}}';
     var account='{{trans('app.account')}}';
     var okay='{{trans('app.sweet.ok')}}';
+    var style='{{$style->value}}';
     var dir = "{{$dir}}";
     var _csrf = '{{csrf_token()}}';
     var lang = '{{$lang}}';
@@ -110,6 +126,7 @@
     var Hours ="{{trans('app.hour')}}";
     var Minutes ="{{trans('app.minute')}}";
     var Seconds ="{{trans('app.second')}}";
+    var baseUrl = '{{localizeURL('').'/'}}';
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': _csrf

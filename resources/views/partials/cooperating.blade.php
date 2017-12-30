@@ -10,7 +10,7 @@
                 <h3 class="box-cta-title">let’s start cooperating</h3>
                 <p>Brave can give you lots of advantages, from which you will surely benefit.</p>
             </div>
-            <div class="box-cta-inner"><a class="button button-default-outline button-nina" href="#advantages" data-custom-scroll-to="#advantages">View advantages</a></div>
+            <div class="box-cta-inner"><a class="button button-default-outline button-nina" href="{{route('page',['page'=>''])}}" data-custom-scroll-to="#advantages">View advantages</a></div>
         </div>
     </div>
 </section>

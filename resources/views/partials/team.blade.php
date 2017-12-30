@@ -7,7 +7,7 @@
                 </div>
                 <hr class="divider divider-default">
             </div>
-            <div class="cell-lg-3 text-lg-right"><a class="button button-secondary button-nina" href="about-us.html">{{trans('app.view_all_team')}}</a></div>
+            <div class="cell-lg-3 text-lg-right"><a class="button button-secondary button-nina" href="{{localizeURL('team')}}">{{trans('app.view_all_team')}}</a></div>
         </div>
         <!-- Owl Carousel-->
         <div class="owl-carousel owl-carousel-team" data-items="1" data-xs-items="2" data-sm-items="3" data-lg-items="4" data-xl-items="6" data-stage-padding="0" data-loop="true" data-margin="30" data-mouse-drag="false" data-dots="true">

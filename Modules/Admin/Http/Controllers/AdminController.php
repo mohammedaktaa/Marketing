@@ -3,11 +3,13 @@
 namespace Modules\Admin\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\CmpGeneral;
 use App\Models\Course;
 use App\Models\Manager;
 use App\Models\Product;
 use App\Models\Team;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Intervention\Image\ImageManager;
@@ -133,6 +135,24 @@ class AdminController extends Controller
           $this->moveFileFromTemp(Team::IMAGE_URL_PATH, $request->get('image'));
         }
         $team->update($request->input());
+    }
+    public function updateImageUser($id, Request $request)
+    {
+        $user = User::find($id);
+        if ($request->get('image') != $user->image) {
+            \File::delete($user->getImageFileSystem());
+          $this->moveFileFromTemp(User::IMAGE_URL_PATH, $request->get('image'));
+        }
+        $user->update($request->input());
+    }
+    public function updateImageBlog($id, Request $request)
+    {
+        $blog = Blog::find($id);
+        if ($request->get('image') != $blog->image) {
+            \File::delete($blog->getImageFileSystem());
+          $this->moveFileFromTemp(Blog::IMAGE_URL_PATH, $request->get('image'));
+        }
+        $blog->update($request->input());
     }
     public function updateImageGenerals($id, Request $request)
     {

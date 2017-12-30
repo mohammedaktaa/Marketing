@@ -118,7 +118,22 @@ return [
     'styles' => [
         'model'         => \App\Models\Style::class,
         'factory' => \App\Factories\StyleFactory::class,
-
+    ],
+    'blogs' => [
+        'model'         => \App\Models\Blog::class,
+        'factory' => \App\Factories\BlogFactory::class,
+    ],
+    'contact-mails' => [
+        'model'         => \App\Models\ContactMail::class,
+        'factory' => \App\Factories\ContactMailFactory::class,
+    ],
+    'users' => [
+        'model'         => \App\User::class,
+        'factory' => \App\Factories\UserFactory::class,
+    ],
+    'clients' => [
+        'model'         => \App\Models\Client::class,
+        'factory' => \App\Factories\ClientFactory::class,
     ],
 
 ];

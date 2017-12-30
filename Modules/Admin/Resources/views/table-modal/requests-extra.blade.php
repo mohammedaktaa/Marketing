@@ -22,9 +22,11 @@
 <script>
     var modal = $("#modal-accept");
     function open_request_modal($this) {
+        modal.find('#price').val('');
         var obj = _aut_datatable_getSelectedRow(_aut_datatable_getTableObjectApi('#{{$table}}'), $(($this).closest('tr')));
         modal.attr('data-id', obj.request_id);
-        if(obj.price){
+        console.log(obj);
+        if(obj.price!==null){
             modal.find('#price').val(obj.price);
         }
         $('#modal-accept').modal('show');

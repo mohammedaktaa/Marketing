@@ -317,7 +317,7 @@ function aut_datatable_copyBladeToHisCont(t) {
 }
 
 function aut_datatable_deleteRow(t, e) {
-    $(".dataTable tbody").on("click", "tr .dialog-delete", function (n) {
+    $('.datatable[role=datatable][data-table="' + ((aut_datatable.ids.table).replace('#' ,'')).replaceAll('_' ,'-') + '"]').off('click', 'tr .dialog-delete').on( 'click', 'tr .dialog-delete', function (n) {
         n.preventDefault();
         var r = $(this).data("key"),
             a = "" != $(this).data("parent-key") ? {parent_id: $(this).data("parent-key")} : {};

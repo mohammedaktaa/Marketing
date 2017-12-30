@@ -10,12 +10,12 @@
                     @foreach($questions as $question)
                         @if($loop->first)
                         <div class="panel panel-custom panel-corporate">
-                            <div class="panel-heading" id="accordion1Heading1" role="tab">
-                                <div class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion1" href="#accordion1Collapse1" aria-controls="accordion1Collapse1" aria-expanded="true">{{$question->text}}
+                            <div class="panel-heading" id="accordion1Heading{{$question->question_id}}" role="tab">
+                                <div class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion1" href="#accordion1Collapse{{$question->question_id}}" aria-controls="accordion1Collapse{{$question->question_id}}" aria-expanded="true">{{$question->text}}
                                         <div class="panel-arrow"></div></a>
                                 </div>
                             </div>
-                            <div class="panel-collapse collapse in" id="accordion1Collapse1" role="tabpanel" aria-labelledby="accordion1Heading1">
+                            <div class="panel-collapse collapse in" id="accordion1Collapse{{$question->question_id}}" role="tabpanel" aria-labelledby="accordion1Heading{{$question->question_id}}">
                                 <div class="panel-body">
                                     <p>{{$question->answer}}</p>
                                 </div>
@@ -23,12 +23,12 @@
                         </div>
                         @else
                             <div class="panel panel-custom panel-corporate">
-                                <div class="panel-heading" id="accordion1Heading3" role="tab">
-                                    <div class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#accordion1Collapse3" aria-controls="accordion1Collapse3">{{$question->text}}
+                                <div class="panel-heading" id="accordion1Heading{{$question->question_id}}" role="tab">
+                                    <div class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#accordion1Collapse{{$question->question_id}}" aria-controls="accordion1Collapse{{$question->question_id}}">{{$question->text}}
                                             <div class="panel-arrow"></div></a>
                                     </div>
                                 </div>
-                                <div class="panel-collapse collapse" id="accordion1Collapse3" role="tabpanel" aria-labelledby="accordion1Heading3">
+                                <div class="panel-collapse collapse" id="accordion1Collapse{{$question->question_id}}" role="tabpanel" aria-labelledby="accordion1Heading{{$question->question_id}}">
                                     <div class="panel-body">
                                         <p>{{$question->answer}}</p>
                                     </div>
