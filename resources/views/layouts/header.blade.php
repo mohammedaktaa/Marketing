@@ -28,28 +28,28 @@
                             @foreach($menuItems as $menuItem )
 
                                 @if($menuItem->type=='V')
-                                    <li><a href="{{$menuItem->url}}">{{$menuItem['name_'.$lang]}}</a>
+                                    <li><a href="{{$menuItem->url}}" style="font-family: 'messeri'">{{$menuItem['name_'.$lang]}}</a>
                                         @if($menuItem->children->count())
                                             <ul class="rd-navbar-dropdown">
                                                 @foreach($menuItem->children as $child)
-                                                    <li><a href="{{$child->url}}">{{$child['name_'.$lang]}}</a></li>
+                                                    <li><a href="{{$child->url}}" style="font-family: 'messeri'">{{$child['name_'.$lang]}}</a></li>
                                                 @endforeach
                                             </ul>
                                         @endif
                                     </li>
                                 @endif
                                 @if(($menuItem->type=='I'||$menuItem->type=='E') && $menuItem->parent_id==null)
-                                    <li><a href="{{$menuItem->url}}">{{$menuItem['name_'.$lang]}}</a></li>
+                                    <li><a href="{{$menuItem->url}}" style="font-family: 'messeri'">{{$menuItem['name_'.$lang]}}</a></li>
                                 @endif
                             @endforeach
                             <li><a href="#"><span class="fa fa-user fa-2x"></span></a>
                                 <ul class="rd-navbar-dropdown"
                                     style="{{$dir=='rtl'?'right:auto !important;left:0':''}}">
                                     @if(!Auth::check())
-                                        <li>
+                                        <li style="font-family: 'messeri'">
                                             <form class="form-horizontal ajax-form" action="{{route('login')}}"
                                                   method="post"
-                                                  enctype="multipart/form-data">
+                                                  enctype="multipart/form-data" style="font-family: 'messeri'">
                                                 {{csrf_field()}}
                                                 <div class="context-dark icon-primary">{{trans('app.login')}}</div>
                                                 <div class="form-group">
@@ -61,7 +61,7 @@
                                                            placeholder="{{trans('app.password')}}">
                                                 </div>
                                                 <div class="text-center">
-                                                    <a href="{{localizeURL('logout')}}"
+                                                    <a href="{{localizeURL('register')}}"
                                                        class="text-center">{{trans('app.new_sign_up')}}</a>
                                                 </div>
                                                 <div class="form-group center" style="text-align: center">
@@ -71,7 +71,7 @@
                                             </form>
                                         </li>
                                     @else
-                                        <div class="row " style="margin-{{$dir=='rtl'?'right':'left'}}:20px ">
+                                        <div class="row " style="margin-{{$dir=='rtl'?'right':'left'}}:20px;font-family: 'messeri' " >
                                             <div class='col-xs-12'>
                                                 <div class="row"
                                                      style="color: rgba(51,51,51,0.52)">{{trans('profile.name')}}
@@ -82,7 +82,8 @@
                                                     <b>{{Auth::user()->email}}</b></div>
                                                 <div class="row"
                                                      style="color: rgba(51,51,51,0.52)">
-                                                    <b><a href="{{localizeURL('insert')}}">{{trans('app.insert_code')}}</a></b></div>
+                                                    <b><a href="{{localizeURL('insert')}}">{{trans('app.insert_code')}}</a></b>
+                                                </div>
                                                 @if(Auth::user()->isAdmin())
                                                     <div class="row"
                                                          style="color: rgba(51,51,51,0.52)">
@@ -104,49 +105,52 @@
                         </ul>
                     </div>
                     @if(Auth::check())
+                        <div class="rd-navbar-nav-wrap">
+                            <!-- RD Navbar Nav-->
+                            <ul class="rd-navbar-nav">
+                                <li><a href="#"><span class="fa fa-bell fa-2x">  <em class="btn-danger badge"
+                                                                                     style="background-color: #ff353e !important;">
+                                        {{Auth::check()?count(Auth::user()->unreadNotifications):'0'}}
+                                    </em></span></a>
+                                    @if(Auth::check())
+                                        @if(Auth::user()->unreadNotifications)
+                                            <ul class="rd-navbar-dropdown"
+                                                style="{{$dir=='rtl'?'right:auto !important;left:0':'0'}}">
+                                                @foreach(Auth::user()->unreadNotifications as $notification)
+                                                    {{$notification->markAsRead()}}
+                                                    <form method="POST" action="{{localizeURL('request-accept')}}"
+                                                          enctype="multipart/form-data">
+                                                        {{csrf_field()}}
+                                                        <li>
+                                                            <a href="#" data-id="{{$notification->data['id']}}" style="font-family: 'messeri'"
+                                                               onclick="_accept('{{$notification->data['id']}}','{{$notification->data['price']}}')">{{--{{trans('app.request_replay')}}--}}{!! $notification->data['title'] !!}</a>
+                                                            {{--                                                    <em>{{$notification->data['date']['date']}}</em>--}}
+                                                        </li>
+                                                    </form>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    @endif
+                                </li>
+                            </ul>
+                        </div>
+                    @endif
                     <div class="rd-navbar-nav-wrap">
                         <!-- RD Navbar Nav-->
                         <ul class="rd-navbar-nav">
-                            <li><a href="#"><span class="fa fa-bell fa-2x">  <em class="btn-danger badge"
-                                                                                 style="background-color: #ff353e !important;">
-                                        {{Auth::check()?Auth::user()->notifications->count():'0'}}
-                                    </em></span></a>
-                                @if(Auth::check())
-                                    <ul class="rd-navbar-dropdown"
-                                        style="{{$dir=='rtl'?'right:auto !important;left:0':'0'}}">
-                                        @if(Auth::user()->notifications)
-                                            @foreach(Auth::user()->notifications as $notification)
-                                                {{$notification->markAsRead()}}
-                                            <form method="POST" action="{{localizeURL('request-accept')}}" enctype="multipart/form-data">
-                                                {{csrf_field()}}
-                                                <li>
-                                                    <a href="#" data-id="{{$notification->data['id']}}" onclick="_accept('{{$notification->data['id']}}','{{$notification->data['price']}}')">{{--{{trans('app.request_replay')}}--}}{!! $notification->data['title'] !!}</a>
-                                                    {{--                                                    <em>{{$notification->data['date']['date']}}</em>--}}
-                                                </li>
-                                            </form>
-                                            @endforeach
-                                        @endif
-                                    </ul>
-                                @endif
-                            </li>
-                        </ul>
-                    </div>
-                    @endif
-                    <div class="rd-navbar-nav-wrap" >
-                        <!-- RD Navbar Nav-->
-                        <ul class="rd-navbar-nav" >
                             <li><a href="#"><span class="icon icon-location fa-2x">   </span></a>
-                                    <ul class="rd-navbar-dropdown"
-                                        style=" {{$dir=='rtl'?'right:auto !important;left:0;text-align: left':'0'}} " dir="ltr">
-                                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                          <li><a href="{{LaravelLocalization::getLocalizedURL($localeCode)}}"
-                                               hreflang="{{$localeCode}}" class="">
-                                                        <img src="{{asset('images/icons/'.$localeCode.'.png')}}">
-                                                        {{ $properties['native'] }}
+                                <ul class="rd-navbar-dropdown"
+                                    style=" {{$dir=='rtl'?'right:auto !important;left:0;text-align: left':'0'}} "
+                                    dir="ltr">
+                                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                        <li><a href="{{LaravelLocalization::getLocalizedURL($localeCode)}}"
+                                               hreflang="{{$localeCode}}" style="font-family: 'messeri'">
+                                                <img src="{{asset('images/icons/'.$localeCode.'.png')}}">
+                                                {{ $properties['native'] }}
                                             </a>
-                                          </li>
-                                        @endforeach
-                                    </ul>
+                                        </li>
+                                    @endforeach
+                                </ul>
                             </li>
                         </ul>
                     </div>

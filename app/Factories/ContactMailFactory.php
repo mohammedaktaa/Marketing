@@ -32,7 +32,7 @@ class ContactMailFactory extends GlobalFactory
                 ->addInputText(trans('app.phone'), 'phone', 'phone', 'req required')
                 ->addInputText(trans('app.email'), 'email', 'email', 'req required')
                 ->addInputText(trans('app.message'), 'message', 'message', 'req required')
-                ->addNavButton()
+                ->addNavButton([],['code'])
                 ->render();
         } catch (\Exception $e) {
         }

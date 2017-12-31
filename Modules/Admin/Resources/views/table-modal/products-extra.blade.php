@@ -32,7 +32,8 @@
     @if($imageWidth!==null)
     $(function () {
         $('#modal-image').on('shown.bs.modal', function () {
-            _imageCropUpload($(this));
+            var name=$(this).data('name');
+            _imageCropUpload($(this),name);
         });
     });
 
@@ -43,6 +44,7 @@
         if (typeof ($imageUrl) == typeof (undefined))
             $imageUrl = $(obj.image).find('img').attr('src');
         var $modal = $('#modal-image');
+        $modal.attr('data-name',obj.name_en.toLowerCase());
         $modal.find('form').attr('action', '{{localizeURL('admin/'.$table)}}/' + obj['{{$id}}']);
         @if($imageWidth===null)
         $modal.find('#image').attr('data-url', $imageUrl)/*.attr('data-title',obj.template_en)*/;

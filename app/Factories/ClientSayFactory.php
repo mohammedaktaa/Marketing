@@ -35,7 +35,7 @@ class ClientSayFactory extends GlobalFactory
                 ->addInputText(trans('app.active'), 'active', 'active')
                 ->addActionButton($this->update, 'update', 'update')
                 ->addActionButton($this->delete, 'delete', 'delete')
-                ->addNavButton()
+                ->addNavButton([],['code'])
                 ->render();
         } catch (\Exception $e) {
         }

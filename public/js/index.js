@@ -23,37 +23,39 @@ $(document).ready(function ($) {
 $(document).ajaxStop(function () {
     $("body").getNiceScroll().resize();
 });
+
 function _loadEvents($container, callback) {
     if (null == $container) $container = $('#wrapper');
     _validate($container, callback); // Dynamic ajax validation
     _editable($container); // Dynamic editable
     _imageUpload($container);  // Dynamic image Uploads
     _imageCropUpload($container);
-     _docUpload($container);// Dynamic documents Uploads
+    _docUpload($container);// Dynamic documents Uploads
     _textEditor($container);    //CK Editor
     _ajaxreqs($('body')); // Dynamic ajax requests
     _select2($container); // Dynamic select2
     _datePicker($container);
     _dateTimePicker($container);
     _timePicker($container);
+    _bar_chart();
 }
 
-function _accept($id,$price) {
+function _accept($id, $price) {
     swal({
-            title: accept+$price,
+            title: accept + $price,
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
             confirmButtonText: language.ok,
             cancelButtonText: language.cancel
         },
-        function(isConfirm){
+        function (isConfirm) {
             if (isConfirm) {
                 $.ajax({
-                   type:'POST',
-                   url:baseUrl+'request-accept'+'/'+$id,
-                    data:{_token:_csrf},
-                    success:function (data) {
+                    type: 'POST',
+                    url: baseUrl + 'request-accept' + '/' + $id,
+                    data: {_token: _csrf},
+                    success: function (data) {
                         swal({
                             type: "success",
                             confirmButtonColor: "#31A788",
@@ -67,17 +69,17 @@ function _accept($id,$price) {
 
 function _scroll() {
     $('body').niceScroll({
-        cursorcolor: style==='pink'?"#FF2558":"#564aa3",
+        cursorcolor: style === 'pink' ? "#FF2558" : "#564aa3",
         cursorwidth: "5px",
         zindex: 9999999,
         background: "rgba(20,20,20,0.7)",
-        cursorborder: "1px solid "+style==='pink'?"#FF2558":"#564aa3",
+        cursorborder: "1px solid " + style === 'pink' ? "#FF2558" : "#564aa3",
         cursorborderradius: 10
     });
 }
 
-function _validate($cont, inCallback, inMethod, resetForm,event) {
-      var ee=event? event.preventDefault():"";
+function _validate($cont, inCallback, inMethod, resetForm, event) {
+    var ee = event ? event.preventDefault() : "";
     if (typeof($.fn.validate) != 'undefined') {
         $cont = $($cont);
         $cont.find('form.ajax-form').each(function () {
@@ -285,7 +287,7 @@ function _imageUpload($cont) {
                 showCaption: false,
                 mainClass: " ",
                 /*showUpload: false,*/
-                theme:"fa",
+                theme: "fa",
                 uploadUrl: baseUrl + "upload-image",
                 previewFileType: previewFileType,
                 browseClass: "btn button button-3d button-mini button-rounded button-green ",
@@ -326,7 +328,7 @@ function _imageUpload($cont) {
     /*else console.log('warning: fileinput is not defined');*/
 }
 
-function _imageCropUpload($cont,$name) {
+function _imageCropUpload($cont, $name) {
     /*if ($fileInput.data('width')) {
      var $corpModal = $fileInput.parents('.image-upload-cont:first').next();
      $('body').append($corpModal);
@@ -364,7 +366,7 @@ function _imageCropUpload($cont,$name) {
             //Handle Choose Image Operation
             _imageCropUpload_handleChooseImage($this, options);
             //Handle Crop Operation
-            _imageCropUpload_handleCropImage($this,$name);
+            _imageCropUpload_handleCropImage($this, $name);
 
             /*i*/
         });
@@ -397,7 +399,7 @@ function _imageCropUpload_handleChooseImage($image, options) {
     });
 }
 
-function _imageCropUpload_handleCropImage($image,$name) {
+function _imageCropUpload_handleCropImage($image, $name) {
     var $this = $image;
     var $cropImageAction = $this.prev();
     $cropImageAction.unbind('click').click(function (event) {
@@ -431,81 +433,84 @@ function _imageCropUpload_handleCropImage($image,$name) {
     });
 }
 
-function _docUpload($cont ,id,files,configs) {
+function _docUpload($cont, id, files, configs) {
     if (typeof($.fn.fileinput) != 'undefined') {
         $cont = $($cont);
         var allfiles = [];
-        var initialPreviewConfig=[];
-        $.each(files , function (i ,v) {
-            allfiles.push(v);
-        });
-        for (var i=0;i<allfiles.length;i++) {
-            initialPreviewConfig[i] = [
-                {
-                    type: "pdf",
-                    size: configs[i].size,
-                    caption: configs[i].caption,
-                    key: configs[i].key,
-                    url: configs[i].url,
-                    downloadUrl:configs[i].downloadUrl
-                }
-            ];
+        var initialPreviewConfig = [];
+        if (files === undefined||files==='')
+            console.log('failed')
+        else {
+            $.each(files, function (i, v) {
+                allfiles.push(v);
+            });
+            for (var i = 0; i < allfiles.length; i++) {
+                initialPreviewConfig[i] = [
+                    {
+                        type: "pdf",
+                        size: configs[i].size,
+                        caption: configs[i].caption,
+                        key: configs[i].key,
+                        url: configs[i].url,
+                        downloadUrl: configs[i].downloadUrl
+                    }
+                ];
+            }
         }
 
         $cont.find(".doc-upload").fileinput('destroy');
         $cont.find(".doc-upload").each(function () {
 
-            var $this       = $(this),
-                   param   = $this.attr('data-param')       || '';
-
+            var $this = $(this),
+                param = $this.attr('data-param') || '';
             var uploadExtraData = {};
 
-            if(param != '')
-                _.each(param.split('&') , function(v ,i) {
+            if (param !== '')
+                _.each(param.split('&'), function (v, i) {
                     var extra = JSON.parse('{"' + v.split('=')[0] + '" : "' + v.split('=')[1] + '"}');
-                    $.extend(uploadExtraData ,extra);
+                    $.extend(uploadExtraData, extra);
                 });
 
             $(this).fileinput({
-                theme:"fa",
-                showCaption:false,
-                fileActionSettings:{
+                theme: "fa",
+                showCaption: false,
+                fileActionSettings: {
                     downloadIcon: '<i class="fa fa-download"></i>',
                     dragIcon: '',
-                    indicatorNew:''
+                    indicatorNew: ''
                 },
-                showCancel:false,
+                showCancel: false,
                 browseLabel: pickdoc,
                 browseIcon: "<i class=\"icon-picture\"></i> ",
                 removeLabel: del,
                 removeIcon: "<i class=\"icon-trash\"></i> ",
-                uploadUrl: baseUrl + 'admin/upload-doc/'+id,
+                uploadUrl: baseUrl + 'admin/upload-doc/' + id,
                 uploadExtraData: uploadExtraData,
                 uploadAsync: false,
                 maxFileCount: 1,
                 overwriteInitial: false,
-                initialPreview:allfiles,
+                initialPreview: allfiles,
                 initialPreviewAsData: true, // defaults markup
                 previewFileType: 'any',
                 initialPreviewFileType: 'pdf', // image is the default and can be overridden in config below
-                initialPreviewConfig:configs,
-                autoReplace:true,
-                showUpload:false
+                initialPreviewConfig: configs,
+                autoReplace: true,
+                showUpload: false
             });
             // if(type=='input'){
 
-                // console.log('ssss');
+            // console.log('ssss');
 
-                $(this).on('fileuploaded', function (event, data, previewId, index) {
-                    $('#upload_pdf_name').val(data.response.OriginalFilename);
-                    $('#upload_pdf').val(data.response.filename);
+            $(this).on('fileuploaded', function (event, data, previewId, index) {
+                $('#upload_pdf_name').val(data.response.OriginalFilename);
+                $('#upload_pdf').val(data.response.filename);
 
-                });
+            });
 
-                $(this).on('filedeleted', function (event, data, previewId, index) {
-                    $('#upload_pdf_name').val('');
-                    $('#upload_pdf').val('');
-                });
+            $(this).on('filedeleted', function (event, data, previewId, index) {
+                $('#upload_pdf_name').val('');
+                $('#upload_pdf').val('');
+            });
             // }
         })
     }
@@ -654,15 +659,15 @@ function _select2($cont, onSelectFunc) {
         $cont = $($cont);
         $.fn.select2.defaults.set("theme", "bootstrap");
         $cont.find(".autocomplete:not('.temp')").each(function () {
-            __initAutocomplete(this, onSelectFunc,'')
+            __initAutocomplete(this, onSelectFunc, '')
         });
     }
     /*else console.log('warning: select2 is not defined');*/
 }
 
-function __initAutocomplete(obj, onSelectFunc,options ) {
+function __initAutocomplete(obj, onSelectFunc, options) {
     var $this = $(obj);
-    var data = options||{};
+    var data = options || {};
     if ($this.find('option:selected').length == 1 && !$this.prop('multiple'))
         data = [{id: $this.find('option:selected').val(), name: $this.find('option:selected').text()}];
     else
@@ -757,8 +762,8 @@ var __Select2_formatRepoSelection = function (repo) {
 
     var repoText = repo.text || repo.name;
     var $option = $(repo.element);
-    for(var key in repo){
-        if(key.startsWith('data-')){
+    for (var key in repo) {
+        if (key.startsWith('data-')) {
             $option.attr(key, repo[key]);
             //$option.data('type')
         }
@@ -969,12 +974,12 @@ function __loaderStart(obj) {
         // loaderStyle = $body.attr('data-loader'),
         // loaderColor = $body.attr('data-loader-color'),
         loaderStyleHtml = $body.attr('data-loader-html');
-        // loaderBgStyle = '',
-        // loaderBorderStyle = '',
-        // loaderBgClass = '',
-        // loaderBorderClass = '',
-        // loaderBgClass2 = '',
-        // loaderBorderClass2 = '';
+    // loaderBgStyle = '',
+    // loaderBorderStyle = '',
+    // loaderBgClass = '',
+    // loaderBorderClass = '',
+    // loaderBgClass2 = '',
+    // loaderBorderClass2 = '';
 
     // if (!animationIn) {
     //     animationIn = 'fadeIn';
@@ -1073,3 +1078,45 @@ String.prototype.replaceAll = function (search, replaceAllment) {
     var target = this;
     return target.replace(new RegExp(search, 'g'), replaceAllment);
 };
+function _bar_chart(labels,data,color,name) {
+    var ctx = document.getElementById("bar-chart");
+    if (ctx == null ||ctx =='' ||ctx == undefined){
+        console.log('no canvas here');
+    }else{
+    myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels ? labels : ["customers", "requests", "page_printed", "print_operations", "planted_trees"],
+            datasets: [{
+                label: name?name:'title',
+                data: data ? data : [120, 119, 53, 53, 25, 33],
+                backgroundColor:
+                    color?color:'#472833'
+                ,
+                borderColor:
+                    color?color:'#472833'
+                ,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                xAxes: [{
+                    barPercentage: 0.4
+                }]
+
+            },
+            title: {
+                display: true,
+                // text: 'Predicted Students (millions) in 2050'
+            }
+
+        }
+    });
+    }
+}

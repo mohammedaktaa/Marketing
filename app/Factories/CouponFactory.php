@@ -34,7 +34,7 @@ class CouponFactory extends GlobalFactory
                 ->addInputText(trans('app.date'), 'expire_date', 'expire_date', 'req required d:datepicker')
                 ->addActionButton($this->update, 'update', 'update')
                 ->addActionButton($this->delete, 'delete', 'delete')
-                ->addNavButton()
+                ->addNavButton([],['code'])
                 ->onModalOpen('_datePicker($(modal))')
                 ->render();
         } catch (\Exception $e) {

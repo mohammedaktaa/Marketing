@@ -43,7 +43,7 @@ class AttributePageFactory extends GlobalFactory
                 ->addTextArea(trans('app.value'), 'attribute_value', 'attribute_value', 'req required')
                 ->addActionButton($this->update, 'update', 'update')
                 ->addActionButton($this->delete, 'delete', 'delete')
-                ->addNavButton();
+                ->addNavButton([],['code']);
                 return $table->render();
         } catch (\Exception $e) {
         }

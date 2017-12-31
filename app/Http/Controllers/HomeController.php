@@ -6,9 +6,11 @@ use App\Models\Attribute;
 use App\Models\Career;
 use App\Models\ContactMail;
 use App\Models\Coupon;
+use App\Models\Gallery;
 use App\Models\Page;
 use App\Models\PrivacyPolicy;
 use App\Models\Product;
+use App\Models\Statistic;
 use App\Models\Team;
 use App\Notifications\RequestNotification;
 use App\User;
@@ -175,29 +177,29 @@ class HomeController extends Controller
                         $info[$item->attribute->text] = [$item->attribute->text => $item->attribute_value];
                 }
             }
-            if (isset($info['title_en'])){
-                $title_en=$info['title_en']['title_en'];
-                $info['title_en']=$title_en;
+            if (isset($info['title_en'])) {
+                $title_en = $info['title_en']['title_en'];
+                $info['title_en'] = $title_en;
             }
-            if (isset($info['title_ar'])){
-                $title_ar=$info['title_ar']['title_ar'];
-                $info['title_ar']=$title_ar;
+            if (isset($info['title_ar'])) {
+                $title_ar = $info['title_ar']['title_ar'];
+                $info['title_ar'] = $title_ar;
             }
-            if (isset($info['content_en'])){
-                $content_en=$info['content_en']['content_en'];
-                $info['content_en']=$content_en;
+            if (isset($info['content_en'])) {
+                $content_en = $info['content_en']['content_en'];
+                $info['content_en'] = $content_en;
             }
-            if (isset($info['content_ar'])){
-                $content_ar=$info['content_ar']['content_ar'];
-                $info['content_ar']=$content_ar;
+            if (isset($info['content_ar'])) {
+                $content_ar = $info['content_ar']['content_ar'];
+                $info['content_ar'] = $content_ar;
             }
-            if (isset($info['phone'])){
-                $phone=$info['phone']['phone'];
-                $info['phone']=$phone;
+            if (isset($info['phone'])) {
+                $phone = $info['phone']['phone'];
+                $info['phone'] = $phone;
             }
-            if (isset($info['address'])){
-                $address=$info['address']['address'];
-                $info['address']=$address;
+            if (isset($info['address'])) {
+                $address = $info['address']['address'];
+                $info['address'] = $address;
             }
         }
         return view('pages.' . $page, compact('pageContent', 'info'));
@@ -219,6 +221,12 @@ class HomeController extends Controller
         return view('careers');
     }
 
+    public function gallery()
+    {
+        $gallery = Gallery::all();
+        return view('gallery', compact('gallery'));
+    }
+
     public function career($id)
     {
         $career = Career::findOrFail($id);
@@ -235,30 +243,52 @@ class HomeController extends Controller
     {
         $req = \App\Models\Request::findOrFail($id);
         $req->update($request->all());
-        $user=User::findOrFail($req->user_id);
+        $user = User::findOrFail($req->user_id);
         $user->notify(new RequestNotification($req));
         return ['success' => true];
     }
 
     public function acceptRequest($id)
     {
-        $req=\App\Models\Request::findOrFail($id);
-        $req->is_accepted='1';
+        $req = \App\Models\Request::findOrFail($id);
+        $req->is_accepted = '1';
         $req->save();
-        return['success'=>true];
+        foreach (Auth::user()->notifications as $notification)
+            $notification->markAsRead();
+        return ['success' => true];
     }
 
     public function contact(Request $request)
     {
-        $contact=ContactMail::create($request->input());
-        return ['success'=>true];
+        $contact = ContactMail::create($request->input());
+        return ['success' => true];
     }
+
     public function services()
     {
         return view('market.services');
     }
+
     public function team()
     {
         return view('team');
+    }
+
+    public function chart(Request $request)
+    {
+        $type = $request->get('type');
+        $statistics = Statistic::where('name', $type)->get(['value', 'year']);
+//        $dates[]='x';
+//        $data[]='data1';
+        foreach ($statistics as $static) {
+            $dates[] = $static->year;
+            $data[] = $static->value;
+        }
+        $statistics = ['customers' => '#a820d3',
+            'requests' => '#ed1c94',
+            'page_printed' => '#1D3753',
+            'print_operations' => '#33FF00',
+            'planted_trees' => '#ff0800'];
+        return ['dates' => $dates, 'data' => $data,'color'=>$statistics[$type]];
     }
 }

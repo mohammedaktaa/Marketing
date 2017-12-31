@@ -59,7 +59,7 @@ class GeneralFactory extends GlobalFactory
                 ->addActionButton(trans('app.update_image'), 'update_image', 'update_image')
                 ->addActionButton($this->update, 'update', 'update')
                 ->addActionButton($this->delete, 'delete', 'delete')
-                ->addNavButton()
+                ->addNavButton([],['code'])
                 ->render();
         } catch (\Exception $e) {
         }

@@ -61,7 +61,7 @@ class MenuItemsFactory extends GlobalFactory
             ->addInputText(trans('app.target_extra'), 'target_extra', 'target_extra','')
             ->addActionButton($this->update, 'update', 'update')
             ->addActionButton($this->delete, 'delete', 'delete')
-            ->addNavButton()
+            ->addNavButton([],['code'])
             ->render();
 
     }

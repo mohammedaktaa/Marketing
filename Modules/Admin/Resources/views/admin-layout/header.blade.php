@@ -127,9 +127,27 @@
                                 </a>
                             </li>
                             <li class=" ">
+                                <a href="{{route('table',['table'=>'achievments'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'achievments'])){{ 'current' }}@endif ">
+                                    <em class="fa fa-bookmark"></em><span>{{trans('app.achievments')}}</span>
+                                </a>
+                            </li>
+                            <li class=" ">
                                 <a href="{{route('table',['table'=>'requests'])}}"
                                    class="@if(URL::current()==route('table',['table'=>'requests'])){{ 'current' }}@endif ">
-                                    <em class="fa fa-spinner"></em><span>{{trans('app.requests')}}</span>
+                                    <em class="icon icon-calendar"></em><span>{{trans('app.requests')}}</span>
+                                </a>
+                            </li>
+                            <li class=" ">
+                                <a href="{{route('table',['table'=>'statistics'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'statistics'])){{ 'current' }}@endif ">
+                                    <em class="fa fa-bar-chart"></em><span>{{trans('app.statistics')}}</span>
+                                </a>
+                            </li>
+                            <li class=" ">
+                                <a href="{{route('table',['table'=>'gallery'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'gallery'])){{ 'current' }}@endif ">
+                                    <em class="fa fa-imagefa fa-bar-chart"></em><span>{{trans('app.gallery')}}</span>
                                 </a>
                             </li>
                             <li class=" ">
@@ -201,6 +219,12 @@
                         </a>
                         <ul id="settings_website" class="nav sidebar-subnav collapse" style="{{$dir=='rtl'?'margin-right:10px':'margin-left:10px'}}">
                             <li class="sidebar-subnav-header">{{trans('app.settings_website')}}</li>
+                            <li class="">
+                                <a href="{{route('table',['table'=>'website'])}}"
+                                   class="@if(URL::current()==route('table',['table'=>'website'])){{ 'current' }}@endif ">
+                                    <em class="icon icon-globe"></em> <span>{{trans('app.website')}}</span>
+                                </a>
+                            </li>
                             <li class="">
                                 <a href="{{route('table',['table'=>'users'])}}"
                                    class="@if(URL::current()==route('table',['table'=>'users'])){{ 'current' }}@endif ">

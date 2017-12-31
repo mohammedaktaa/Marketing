@@ -43,7 +43,7 @@ class StyleFactory extends GlobalFactory
                 ->addHiddenInput('style_id', 'style_id', '', true)
                 ->addSelect($this->styles,trans('app.value'), 'value', 'value', 'style','req required')
                 ->addActionButton($this->update, 'update', 'update')
-                ->addNavButton([],['add'])
+                ->addNavButton([],['add','code'])
                 ->render();
         } catch (\Exception $e) {
         }

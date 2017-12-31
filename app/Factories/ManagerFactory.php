@@ -40,7 +40,7 @@ class ManagerFactory extends GlobalFactory
                 ->addViewField('', 'image', 'image', '', 'none')
                 ->addActionButton(trans('app.update_image'), 'update_image', 'update_image')
                 ->addActionButton($this->update, 'update', 'update')
-                ->addNavButton([],['add'])
+                ->addNavButton([],['add','code'])
                 ->render();
         } catch (\Exception $e) {
         }

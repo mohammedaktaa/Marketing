@@ -32,7 +32,11 @@
         }
         @font-face {
             font-family: "messeri";
-            src: url('../../../css/fonts/ElMessiri-SemiBold.ttf');
+            src: url('../../../public/css/fonts/ElMessiri-SemiBold.ttf');
+        }
+        @font-face {
+            font-family: "baloo";
+            src: url('../../../public/css/fonts/Baloo-Regular.ttf');
         }
         @if($dir=='rtl')
         * {
@@ -117,7 +121,13 @@
     var account='{{trans('app.account')}}';
     var okay='{{trans('app.sweet.ok')}}';
     var style='{{$style->value}}';
+    var pickimage = "@lang('app.pick_image')";
+    var pickdoc = "@lang('app.pick_doc')";
+    var pick = "@lang('app.pick')";
+    var del = "@lang('app.delete')";
     var dir = "{{$dir}}";
+    var DIR = "{{$dir}}";
+    var of = "@lang('app.of')";
     var _csrf = '{{csrf_token()}}';
     var lang = '{{$lang}}';
     var right = '{{$right}}';
@@ -137,10 +147,11 @@
 <script type="text/javascript" src="{{url('js/core.min.js')}}"></script>
 <script type="text/javascript" src="{{url('js/jquery.nicescroll.js')}}"></script>
 <script type="text/javascript" src="{{url('js/script.js')}}"></script>
-<script type="text/javascript" src="{{url('js/index.js')}}"></script>
 <script type="text/javascript" src="{{url('js/sweetalert.min.js')}}"></script>
 {{--<script src="https://www.paypalobjects.com/api/checkout.js"></script>--}}
+<script type="text/javascript" src="{{asset('js/Chart.bundle.min.js')}}"></script>
 @yield('scripts')
+<script type="text/javascript" src="{{url('js/index.js')}}"></script>
 {{--<script>--}}
     {{--paypal.Button.render({--}}
         {{--env: 'production', // Or 'sandbox',--}}

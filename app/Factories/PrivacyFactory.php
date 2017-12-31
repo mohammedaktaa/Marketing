@@ -40,7 +40,7 @@ class PrivacyFactory extends GlobalFactory
                 ->endHorizontalTab()
                 ->addActionButton($this->update, 'update', 'update')
                 ->addActionButton($this->delete, 'delete', 'delete')
-                ->addNavButton()
+                ->addNavButton([],['code'])
                 ->onModalOpen('_textEditor($(modal))')
                 ->render();
         } catch (\Exception $e) {

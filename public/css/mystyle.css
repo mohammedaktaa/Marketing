@@ -1,0 +1,9 @@
+.white{
+    color: #fff !important;
+}
+.white:hover{
+    color: #333333;
+}
+.white:focus{
+    color: #333333;
+}

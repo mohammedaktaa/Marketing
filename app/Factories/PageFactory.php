@@ -43,7 +43,7 @@ class PageFactory extends GlobalFactory
                 ->addActionButton(trans('app.attributes'), 'attributes', 'attributes')
                 ->addActionButton($this->update, 'update', 'update')
                 ->addActionButton($this->delete, 'delete', 'delete')
-                ->addNavButton()
+                ->addNavButton([],['code'])
                 ->render();
         } catch (\Exception $e) {
         }

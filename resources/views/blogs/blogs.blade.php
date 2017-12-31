@@ -5,9 +5,9 @@
         <div class="shell">
             <p class="heading-1 breadcrumbs-custom-title">{{trans('app.blogs')}}</p>
             <ul class="breadcrumbs-custom-path">
-                <li><a href="{{route('home')}}">{{trans('app.home')}}</a></li>
-                <li><a href="#">{{trans('app.blogs')}}</a></li>
-                <li class="active">{{trans('app.modern_blogs')}}</li>
+                <li class="  white"><a href="{{route('home')}}">{{trans('app.home')}}</a></li>
+                <li class="  white"><a href="{{localizeURL('blogs')}}">{{trans('app.blogs')}}</a></li>
+                <li class="active white">{{trans('app.modern_blogs')}}</li>
             </ul>
         </div>
         <div class="parallax-scene-js parallax-scene" data-scalar-x="5" data-scalar-y="10">

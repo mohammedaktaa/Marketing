@@ -34,7 +34,7 @@ class CategoryFactory extends GlobalFactory
                 ->addInputText(trans('app.code'), 'code', 'code', 'req required')
                 ->addActionButton($this->update, 'update', 'update')
                 ->addActionButton($this->delete, 'delete', 'delete')
-                ->addNavButton()
+                ->addNavButton([],['code'])
                 ->render();
         } catch (\Exception $e) {
         }

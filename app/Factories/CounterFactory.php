@@ -41,7 +41,7 @@ class CounterFactory extends GlobalFactory
                 ->addViewField(trans('app.icon'), 'icon_name', 'icon_name', 'icon_name')
                 ->addActionButton($this->update, 'update', 'update')
                 ->addActionButton($this->delete, 'delete', 'delete')
-                ->addNavButton()
+                ->addNavButton([],['code'])
                 ->render();
         } catch (\Exception $e) {
         }

@@ -8,9 +8,11 @@ namespace App\Http\ViewComposers;
  * Date: 12/31/2016
  * Time: 10:33 PM
  */
+use App\Models\Achievment;
 use App\Models\Advantage;
 use App\Models\Blog;
 use App\Models\Career;
+use App\Models\Client;
 use App\Models\ClientSay;
 use App\Models\CmpCounter;
 use App\Models\Course;
@@ -21,14 +23,17 @@ use App\Models\Section;
 use App\Models\Service;
 use App\Models\Slider;
 use App\Models\Team;
+use App\Models\Website;
 use Illuminate\Contracts\View\View;
 
 class HomeComposer
 {
     public function compose(View $view)
     {
+        $stopPage=Website::first();
         $counters = CmpCounter::all();
         $clientSay = ClientSay::all();
+        $clients = Client::all();
         $courses = Course::all();
         $team = Team::all();
         $questions = Question::all();
@@ -45,6 +50,6 @@ class HomeComposer
         $address='Oman';
         $phone='096321545';
         $email='Zeyad@gmail.com';
-    $view->with(compact('counters','phone','blog4','email','address','prodcts','blogss','careers','manager','sliders', 'clientSay', 'courses', 'team', 'questions', 'services', 'products', 'sections','advantages'));
+    $view->with(compact('counters','phone','achievments','clients','blog4','stopPage','email','address','prodcts','blogss','careers','manager','sliders', 'clientSay', 'courses', 'team', 'questions', 'services', 'products', 'sections','advantages'));
     }
 }

@@ -747,6 +747,10 @@ a.bg-primary:hover, a.bg-primary:focus { background-color: #286090; }
 
 a.bg-success:hover, a.bg-success:focus { background-color: #c1e2b3; }
 
+.bg-pink { background-color: rgba(255,37,88,0.73); }
+
+a.bg-pink:hover, a.bg-pink:focus { background-color: rgba(255,70,113,0.73); }
+
 .bg-info { background-color: #d9edf7; }
 
 a.bg-info:hover, a.bg-info:focus { background-color: #afd9ee; }

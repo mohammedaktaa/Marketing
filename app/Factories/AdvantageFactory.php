@@ -47,7 +47,7 @@ class AdvantageFactory extends GlobalFactory
                 ->addViewField(trans('app.icon'), 'icon_name', 'icon_name', 'icon_name')
                 ->addActionButton($this->update, 'update', 'update')
                 ->addActionButton($this->delete, 'delete', 'delete')
-                ->addNavButton()
+                ->addNavButton([],['code'])
                 ->onModalOpen('_textEditor($(modal))')
                 ->render();
         } catch (\Exception $e) {

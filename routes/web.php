@@ -23,6 +23,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get('page/{page}','HomeController@page')->name('page');
     Route::resource('products', 'ProductController');
     Route::resource('blogs', 'BlogController');
+    Route::resource('achievments', 'AchievmentController');
     Route::resource('courses', 'CourseController');
     Route::post('blog/comment/{id}', 'BlogController@comment');
     Route::get('requests', 'HomeController@requests');
@@ -40,11 +41,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get('shopping-cart', 'HomeController@shoppingCart');
     Route::get('about/{id}', 'HomeController@about');
     Route::get('careers', 'HomeController@careers');
+    Route::get('gallery', 'HomeController@gallery');
     Route::get('career/{id}', 'HomeController@career');
     Route::get('privacy', 'HomeController@privacy');
     Route::post('request/send/{id}', 'HomeController@sendRequest');
     Route::post('contact','HomeController@contact');
     Route::get('services','HomeController@services');
     Route::get('team','HomeController@team');
+
+    Route::get('chart','HomeController@chart')->name('chart');
 });
 

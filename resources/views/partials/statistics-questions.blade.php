@@ -41,9 +41,17 @@
             <div class="cell-sm-9 cell-md-5 cell-xl-4">
                 <h3>{{trans('app.statistics')}}</h3>
                 <div class="divider divider-default"></div>
-                <div class="d3-chart-wrap">
-                    <div class="d3-chart" id="line-chart" style="width:100%; height: 420px;"></div>
+                <div class="shell">
+                    <canvas id="bar-chart" class="bar-chart" width="777" height="260"
+                            style="direction: {{$dir}}; position: relative; left: 0px; top: 0px; width: 777px; height: 260px;"></canvas>
                 </div>
+                <ul class="list-items" style="list-style: none;display: inline-flex;margin: 25px;">
+                    <li class="bg-pink chart" data-url="{{route('chart')}}" data-chart="customers" style="border-radius: 3px;margin: 0px 5px;color: #fff8f8;cursor: pointer !important;">{{trans('app.customers')}}</li>
+                    <li class="bg-pink chart" data-url="{{route('chart')}}" data-chart="requests" style="border-radius: 3px;margin: 0px 5px;color: #fff8f8;cursor: pointer !important;">{{trans('app.requests')}}</li>
+                    <li class="bg-pink chart" data-url="{{route('chart')}}" data-chart="page_printed" style="border-radius: 3px;margin: 0px 5px;color: #fff8f8;cursor: pointer !important;">{{trans('app.page_printed')}}</li>
+                    <li class="bg-pink chart" data-url="{{route('chart')}}" data-chart="print_operations" style="border-radius: 3px;margin: 0px 5px;color: #fff8f8;cursor: pointer !important;">{{trans('app.print_operations')}}</li>
+                    <li class="bg-pink chart" data-url="{{route('chart')}}" data-chart="planted_trees" style="border-radius: 3px;margin: 0px 5px;color: #fff8f8;cursor: pointer !important;">{{trans('app.planted_trees')}}</li>
+                </ul>
             </div>
         </div>
     </div>

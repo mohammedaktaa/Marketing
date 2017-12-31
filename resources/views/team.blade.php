@@ -5,8 +5,8 @@
         <div class="shell">
             <p class="heading-1 breadcrumbs-custom-title">{{trans('app.team')}}</p>
             <ul class="breadcrumbs-custom-path">
-                <li><a href="{{route('home')}}">{{trans('app.home')}}</a></li>
-                <li class="active"><a href="#">{{trans('app.team')}}</a></li>
+                <li class="white"><a href="{{route('home')}}">{{trans('app.home')}}</a></li>
+                <li class="active white"><a href="#">{{trans('app.team')}}</a></li>
             </ul>
         </div>
         <div class="parallax-scene-js parallax-scene" data-scalar-x="5" data-scalar-y="10">

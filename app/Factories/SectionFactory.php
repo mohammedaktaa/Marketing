@@ -45,11 +45,11 @@ class SectionFactory extends GlobalFactory
                 ->addHiddenInput('section_id', 'section_id', '', true)
                 ->addInputText(trans('app.name_en'), 'name_en', 'name_en', 'en d:en req required')
                 ->addInputText(trans('app.name_ar'), 'name_ar', 'name_ar', 'ar d:ar req required')
-                ->addSelect($this->activeNot,trans('app.value'),'value','value','value_name','req required')
+                ->addSelect($this->activeNot,trans('app.active'),'value','value','value_name','req required')
                 ->addInputText(trans('app.order'), 'order', 'order', 'req required')
                 ->addActionButton($this->update, 'update', 'update')
                 ->addActionButton($this->delete, 'delete', 'delete')
-                ->addNavButton()
+                ->addNavButton([],['code'])
                 ->render();
         } catch (\Exception $e) {
         }

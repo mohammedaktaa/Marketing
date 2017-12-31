@@ -42,7 +42,7 @@
         if (typeof ($imageUrl) == typeof (undefined))
             $imageUrl = $(obj.image).find('img').attr('src');
         var $modal = $('#modal-image');
-        $modal.attr('data-name',obj.type.toLowerCase());
+        $modal.attr('data-name',obj['type'].toLowerCase());
         $modal.find('form').attr('action', '{{localizeURL('admin/'.$table)}}/' + obj['{{$id}}']);
         @if($imageWidth===null)
         $modal.find('#image').attr('data-url', $imageUrl)/*.attr('data-title',obj.template_en)*/;

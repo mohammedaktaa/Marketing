@@ -1,7 +1,7 @@
 @php
     $id='client_id';
-    $imageWidth=276;
-    $imageHeight=207;
+    $imageWidth=173;
+    $imageHeight=114;
 
 @endphp
 <div class="modal fade" id="modal-image">
@@ -39,9 +39,9 @@
         @endif
         function admin_update_image($this) {
             var obj = _aut_datatable_getSelectedRow(_aut_datatable_getTableObjectApi('#{{$table}}'), $($($this).closest('tr')));
-            var $imageUrl = $(obj.image).attr('src');
+            var $imageUrl = $(obj.logo).attr('src');
             if (typeof ($imageUrl) == typeof (undefined))
-                $imageUrl = $(obj.image).find('img').attr('src');
+                $imageUrl = $(obj.logo).find('img').attr('src');
             var $modal = $('#modal-image');
             $modal.attr('data-name',obj['name_en'].toLowerCase());
             $modal.find('form').attr('action', '{{localizeURL('admin/'.$table)}}/' + obj['{{$id}}']);

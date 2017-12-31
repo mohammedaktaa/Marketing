@@ -47,7 +47,7 @@ class RequestFactory extends GlobalFactory
                 ->addInputText(trans('app.paper_type'), 'paper_type', 'paper_type', ' none')
                 ->addInputText(trans('app.price'), 'price', 'price', ' none')
                 ->addActionButton(trans('app.submit'),'accept','accept')
-                ->addNavButton([],['add'])
+                ->addNavButton([],['add','code'])
                 ->onLoad('$("#requests tbody tr:nth-child(-n+' . $count . ')").addClass("red");')
                 ->onModalOpen('_textEditor($(modal))')
                 ->render();

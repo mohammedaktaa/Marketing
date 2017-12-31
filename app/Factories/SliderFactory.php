@@ -45,7 +45,7 @@ public function __construct(DataTableBuilder $table)
                 ->addInputText(trans('app.target').' '.trans('app.btn2'), 'url2', 'url2', 'none')
                 ->addActionButton($this->update, 'update', 'update')
                 ->addActionButton($this->delete, 'delete', 'delete')
-                ->addNavButton()
+                ->addNavButton([],['code'])
                 ->onModalOpen('_datePicker($(modal))')
                 ->render();
         } catch (\Exception $e) {

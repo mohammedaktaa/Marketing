@@ -14,6 +14,9 @@ Route::group(['middleware' => ['web','auth','auth.admin'], 'prefix' => LaravelLo
     Route::put('courses/{id}','AdminController@updateImageCourses');
     Route::put('products/{id}','AdminController@updateImageCourses');
     Route::put('team/{id}','AdminController@updateImageTeam');
+    Route::put('gallery/{id}','AdminController@updateImageGallery');
+    Route::put('achievments/{id}','AdminController@updateImageAchievments');
+    Route::put('clients/{id}','AdminController@updateImageClients');
     Route::put('users/{id}','AdminController@updateImageUser');
     Route::put('blogs/{id}','AdminController@updateImageBlog');
     Route::put('manager/{id}','AdminController@updateImageManager');

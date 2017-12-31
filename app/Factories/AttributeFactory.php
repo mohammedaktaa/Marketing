@@ -32,7 +32,7 @@ class AttributeFactory extends GlobalFactory
                 ->addInputText(trans('app.text'), 'text', 'text', 'req required')
                 ->addActionButton($this->update, 'update', 'update')
                 ->addActionButton($this->delete, 'delete', 'delete')
-                ->addNavButton()
+                ->addNavButton([],['code'])
                 ->render();
         } catch (\Exception $e) {
         }

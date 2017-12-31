@@ -19,6 +19,22 @@ return [
         'model'         => \App\Models\Product::class,
         'factory' => \App\Factories\ProductFactory::class
     ],
+    'statistics' => [
+        'model'         => \App\Models\Statistic::class,
+        'factory' => \App\Factories\StatiticFactory::class
+    ],
+    'achievments' => [
+        'model'         => \App\Models\Achievment::class,
+        'factory' => \App\Factories\AchievmentFactory::class
+    ],
+    'gallery' => [
+        'model'         => \App\Models\Gallery::class,
+        'factory' => \App\Factories\GalleryFactory::class
+    ],
+    'website' => [
+        'model'         => \App\Models\Website::class,
+        'factory' => \App\Factories\WebsiteFactory::class
+    ],
     'generals' => [
         'model'         => \App\Models\CmpGeneral::class,
         'factory' => \App\Factories\GeneralFactory::class

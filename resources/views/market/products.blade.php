@@ -5,9 +5,9 @@
         <div class="shell">
             <p class="heading-1 breadcrumbs-custom-title">{{trans('app.products')}}</p>
             <ul class="breadcrumbs-custom-path">
-                <li><a href="{{route('home')}}">{{trans('app.home')}}</a></li>
-                <li><a href="#">{{trans('app.products')}}</a></li>
-                <li class="active">{{trans('app.modern_products')}}</li>
+                <li class="white"><a href="{{route('home')}}">{{trans('app.home')}}</a></li>
+                <li class="white"><a href="#">{{trans('app.products')}}</a></li>
+                <li class="active white">{{trans('app.modern_products')}}</li>
             </ul>
         </div>
         <div class="parallax-scene-js parallax-scene" data-scalar-x="5" data-scalar-y="10">
@@ -51,16 +51,10 @@
                 <div class="cell-lg-9">
                     <div class="range range-70 text-left">
                         @foreach($produtess as $product)
-                            <div class="cell-sm-6 cell-md-4">
+                            <div class="cell-sm-6 cell-md-4 {{$product->category->name_en}}">
                                 <figure class="block-with-details book-info">
                                     <div class="perspective">
-                                        <div class="book" data-book="book-4">
-                                            <div class="cover">
-                                                <div class="front"></div>
-                                                <div class="inner inner-left"></div>
-                                            </div>
-                                            <div class="inner inner-right"></div>
-                                        </div>
+                                        <div class="product-image"><a href="#"><img src="{{$product->image!=null?asset(\App\Models\Product::IMAGE_File_PATH.$product->image):asset('images/book-01-188x246.jpg')}}" alt="" width="188" height="246"/></a></div>
                                     </div>
                                     <div class="figcaption">
                                         <h5 class="book-title"><a
@@ -110,8 +104,9 @@
                     <div class="shop-aside-item">
                         <h6>{{trans('app.categories')}}</h6>
                         <ul class="list-marked list-marked-secondary" style="color: ">
+                            <li class="category" data-category="all" style="color: #ff2558 !important;cursor: pointer !important;">{{trans('app.all')}}</li>
                             @foreach($categories as $category)
-                                <li><a href="#">{{$category['name_'.$lang]}}</a></li>
+                                <li class="category" data-category="{{$category->name_en}}" style="color: #ff2558 !important;cursor: pointer !important;">{{$category['name_'.$lang]}}</li>
                             @endforeach
                         </ul>
                     </div>
@@ -133,6 +128,38 @@
         });
         @endif
         $(function () {
+            $('.category').click(function () {
+                var category=$(this).data('category');
+                console.log(category);
+                switch (category) {
+                    case 'all': {
+                        $('.Buissnes').fadeIn(1000);
+                        $('.Design').fadeIn(1000);
+                        $('.Management').fadeIn(1000);
+                        break;
+                    }
+                    case 'Buissnes': {
+                        $('.Buissnes').fadeIn(1000);
+                        $('.Design').fadeOut(1000);
+                        $('.Management').fadeOut(1000);
+                        break;
+                    }
+                    case 'Design': {
+                        $('.Buissnes').fadeOut(1000);
+                        $('.Design').fadeIn(1000);
+                        $('.Management').fadeOut(1000);
+                        break;
+                    }
+                    case 'Management': {
+                        $('.Buissnes').fadeOut(1000);
+                        $('.Music').fadeOut(1000);
+                        $('.Management').fadeIn(1000);
+                        break;
+                    }
+                    default:
+                        console.log('failed');
+                }
+            });
             $('.add_cart').click(function (e) {
                 e.preventDefault();
                 var url = $(this).attr('href');

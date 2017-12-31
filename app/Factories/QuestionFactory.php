@@ -34,7 +34,7 @@ class QuestionFactory extends GlobalFactory
                 ->addInputText(trans('app.answer'), 'answer', 'answer', 'req required')
                 ->addActionButton($this->update, 'update', 'update')
                 ->addActionButton($this->delete, 'delete', 'delete')
-                ->addNavButton()
+                ->addNavButton([],['code'])
                 ->render();
         } catch (\Exception $e) {
         }
